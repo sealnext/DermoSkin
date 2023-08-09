@@ -1,4 +1,4 @@
-package com.dermoskin.dermoskin
+package com.example.dermo
 
 import io.flutter.embedding.android.FlutterActivity
 

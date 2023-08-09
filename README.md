@@ -1,6 +1,6 @@
-# dermoskin
+# dermo
 
-Mobile app to help dermatologists
+A new Flutter project.
 
 ## Getting Started
 
