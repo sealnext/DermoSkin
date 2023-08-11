@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "497839570079",
+    "project_id": "dermoskin-2db4e",
+    "storage_bucket": "dermoskin-2db4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497839570079:android:83476e4646febf2bf1b6aa",
+        "android_client_info": {
+          "package_name": "com.example.dermo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497839570079-5vl50hr3pr0hfd8k3ii2h0b8tv8bcead.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT-suFTyi4qm1OCIiTND4TTsoxRwdYiSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497839570079-5vl50hr3pr0hfd8k3ii2h0b8tv8bcead.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "497839570079-5oaah4f5119fmj3q04lmvp6i8gq7v6vm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dermo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,28 @@
+import 'package:dermo/login/login_page.dart';
+import 'package:dermo/register/register_page.dart';
+import 'package:flutter/material.dart';
+
+class AuthPage extends StatefulWidget {
+  const AuthPage({Key? key}) : super(key: key);
+
+  @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
+  bool showLoginPage = true;
+
+  void toggleLoginPage(){
+    setState(() {
+      showLoginPage = !showLoginPage;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if(showLoginPage) {
+      return LoginPage(onTap: toggleLoginPage);
+    }
+    return RegisterPage(onTop: toggleLoginPage);
+  }
+}
