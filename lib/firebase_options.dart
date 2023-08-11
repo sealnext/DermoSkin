@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '497839570079',
     projectId: 'dermoskin-2db4e',
     storageBucket: 'dermoskin-2db4e.appspot.com',
-    iosClientId: '497839570079-5oaah4f5119fmj3q04lmvp6i8gq7v6vm.apps.googleusercontent.com',
+    iosClientId:
+        '497839570079-5oaah4f5119fmj3q04lmvp6i8gq7v6vm.apps.googleusercontent.com',
     iosBundleId: 'com.example.dermo',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '497839570079',
     projectId: 'dermoskin-2db4e',
     storageBucket: 'dermoskin-2db4e.appspot.com',
-    iosClientId: '497839570079-7h845e99scqej0lhph1ut17u3tkc6rpu.apps.googleusercontent.com',
+    iosClientId:
+        '497839570079-7h845e99scqej0lhph1ut17u3tkc6rpu.apps.googleusercontent.com',
     iosBundleId: 'com.example.dermo.RunnerTests',
   );
 }

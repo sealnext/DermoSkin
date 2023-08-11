@@ -1,5 +1,4 @@
 import 'package:dermo/auth/auth_page.dart';
-import 'package:dermo/login/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -13,11 +12,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
 
-  void signOut () {
+  void signOut() {
     FirebaseAuth.instance.signOut();
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => AuthPage()),
+      MaterialPageRoute(builder: (context) => const AuthPage()),
     );
   }
 
@@ -29,22 +28,23 @@ class _HomePageState extends State<HomePage> {
           if (FirebaseAuth.instance.currentUser != null)
             IconButton(
               onPressed: signOut,
-              icon: Icon(Icons.logout),
+              icon: const Icon(Icons.logout),
             )
         ],
-        backgroundColor: Color(0xFF4757E9),
-        title: Text(
+        backgroundColor: const Color(0xFF4757E9),
+        title: const Text(
           'DermoSkin',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
         ),
-        automaticallyImplyLeading: false, // Prevent the back button from being shown
+        automaticallyImplyLeading:
+            false, // Prevent the back button from being shown
       ),
       body: SafeArea(
         child: Center(
-          child: Text("Sunt logat yeyeyey XD" + user.email!),
+          child: Text("Sunt logat yeyeyey XD${user.email!}"),
         ),
       ),
     );

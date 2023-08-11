@@ -12,7 +12,7 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   bool showLoginPage = true;
 
-  void toggleLoginPage(){
+  void toggleLoginPage() {
     setState(() {
       showLoginPage = !showLoginPage;
     });
@@ -20,7 +20,7 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
-    if(showLoginPage) {
+    if (showLoginPage) {
       return LoginPage(onTap: toggleLoginPage);
     }
     return RegisterPage(onTop: toggleLoginPage);
