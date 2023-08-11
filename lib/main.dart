@@ -10,19 +10,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-
   );
-  runApp(const App(
-  ));
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
   const App({super.key});
-
-  // This widget is the root of your application.
-  void signOut () {
-    FirebaseAuth.instance.signOut();
-  }
 
   @override
   Widget build(BuildContext context) {
