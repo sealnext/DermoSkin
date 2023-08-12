@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'auth_page.dart';
 
 class StartPage extends StatelessWidget {
-  const StartPage({Key? key}) : super(key: key);
+  const StartPage({super.key});
 
   @override
   Widget build(BuildContext context) {

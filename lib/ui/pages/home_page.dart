@@ -2,9 +2,10 @@ import 'package:dermo/ui/pages/auth_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dermo/utils/constants.dart';
+import 'package:dermo/ui/widgets/navbar_widget.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -12,20 +13,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
-  int _currentIndex = 0;
-
-  Widget _buildIcon(IconData iconData, int index) {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: _currentIndex == index ? AppColor.primary : Colors.transparent,
-      ),
-      child:
-          Icon(iconData, color: _currentIndex == index ? Colors.white : null),
-    );
-  }
 
   void signOut() {
     FirebaseAuth.instance.signOut();
@@ -338,44 +325,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColor.white,
-        elevation: 0.0,
-        showSelectedLabels:
-            true, // sau `false` dacă doriți să eliminați etichetele
-        showUnselectedLabels:
-            true, // sau `false` dacă doriți să eliminați etichetele
-        selectedItemColor: AppColor.primary, // Culoarea elementului selectat
-        unselectedItemColor: Colors.grey, // Culoarea elementelor neselectate
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icons.home, 0),
-            label: '',
-            activeIcon: _buildIcon(Icons.home, 0), // Se adaugă aceasta linie
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icons.calendar_today, 1),
-            label: '',
-            activeIcon: _buildIcon(Icons.calendar_today, 1),
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icons.chat, 2),
-            label: '',
-            activeIcon: _buildIcon(Icons.chat, 2),
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icons.settings, 3),
-            label: '',
-            activeIcon: _buildIcon(Icons.settings, 3),
-          ),
-        ],
-      ),
+      bottomNavigationBar: const NavBar(),
     );
   }
 }
