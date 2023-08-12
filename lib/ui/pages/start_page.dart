@@ -17,6 +17,7 @@ class StartPage extends StatelessWidget {
               fontSize: 20,
             ),
           ),
+          centerTitle: true,
           automaticallyImplyLeading:
               false, // Prevent the back button from being shown
         ),

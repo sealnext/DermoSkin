@@ -127,6 +127,7 @@ class _LoginPageState extends State<LoginPage> {
             fontSize: 20,
           ),
         ),
+        centerTitle: true,
         automaticallyImplyLeading:
             false, // Prevent the back button from being shown
       ),

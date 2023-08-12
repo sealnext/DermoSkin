@@ -11,4 +11,7 @@ class AppColor {
   static const accent1 = Color.fromARGB(255, 255, 242, 0);
   static const accent2 = Color.fromARGB(255, 255, 67, 67);
   static const gray = Color.fromARGB(255, 233, 233, 233);
+  static const gray2 = Color.fromARGB(255, 138, 138, 138);
+  static const orange = Color.fromARGB(255, 239, 128, 48);
+  static const transparent = Color.fromARGB(255, 215, 219, 255);
 }

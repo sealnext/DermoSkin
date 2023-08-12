@@ -135,6 +135,7 @@ class _RegisterPageState extends State<RegisterPage> {
             fontSize: 20,
           ),
         ),
+        centerTitle: true,
         automaticallyImplyLeading:
             false, // Prevent the back button from being shown
       ),
