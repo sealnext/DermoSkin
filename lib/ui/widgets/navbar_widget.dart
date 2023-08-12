@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:dermo/ui/pages/auth_page.dart';
 
 import 'package:dermo/utils/constants.dart';
 
@@ -11,6 +13,14 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   int _currentIndex = 0;
+
+  void signOut() {
+    FirebaseAuth.instance.signOut();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const AuthPage()),
+    );
+  }
 
   Widget _buildIcon(IconData iconData, int index) {
     return Container(
@@ -38,6 +48,9 @@ class _NavBarState extends State<NavBar> {
       unselectedItemColor: Colors.grey, // Culoarea elementelor neselectate
       currentIndex: _currentIndex,
       onTap: (index) {
+        if (index == 3) {
+          signOut();
+        }
         setState(() {
           _currentIndex = index;
         });

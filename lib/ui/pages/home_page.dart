@@ -1,4 +1,3 @@
-import 'package:dermo/ui/pages/auth_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dermo/utils/constants.dart';
@@ -13,14 +12,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
-
-  void signOut() {
-    FirebaseAuth.instance.signOut();
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const AuthPage()),
-    );
-  }
 
   Widget _buildAppointment({
     required String doctorName,
