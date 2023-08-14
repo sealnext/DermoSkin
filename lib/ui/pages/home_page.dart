@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dermo/utils/constants.dart';
-import 'package:dermo/ui/widgets/navbar_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -164,159 +163,159 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundPrimary,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Hello ${user.email ?? 'User'}",
-                            style: const TextStyle(fontSize: 24)),
-                        const Text(
-                          "Keep healthy!",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
+        backgroundColor: AppColor.backgroundPrimary,
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Hello ${user.displayName ?? 'User'}",
+                              style: const TextStyle(fontSize: 24)),
+                          const Text(
+                            "Keep healthy!",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const CircleAvatar(
+                      radius: 30,
+                      // Replace with actual image
+                      backgroundImage: NetworkImage(
+                          'https://i.pinimg.com/564x/74/d7/b0/74d7b05c3476e062ca7c26452ffb22cb.jpg'),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.search),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: TextFormField(
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            hintText: 'Search a doctor',
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  const CircleAvatar(
-                    radius: 30,
-                    // Replace with actual image
-                    backgroundImage: NetworkImage(
-                        'https://i.pinimg.com/564x/74/d7/b0/74d7b05c3476e062ca7c26452ffb22cb.jpg'),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: Row(
+                const SizedBox(height: 20),
+                Container(
+                  padding: const EdgeInsets.fromLTRB(15, 30, 15, 30),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: AppColor.primary,
+                  ),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment
+                        .start, // Aliniați conținutul la stânga
+                    children: [
+                      Text(
+                        "Tips for fighting \nacne",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
+                      SizedBox(
+                          height:
+                              10), // Adăugați spațiu între text și rândul cu icon
+                      Row(
+                        children: [
+                          Icon(Icons.visibility, color: Colors.white),
+                          SizedBox(width: 5),
+                          Text("x views",
+                              style: TextStyle(color: Colors.white)),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
                   children: [
-                    const Icon(Icons.search),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                          hintText: 'Search a doctor',
-                        ),
+                    _buildSmallItem(icon: Icons.person, label: 'Doctor'),
+                    const SizedBox(width: 16.0), // Ajustează lățimea după nevoi
+                    _buildSmallItem(
+                        icon: Icons.local_hospital, label: 'Hospital'),
+                    const SizedBox(width: 16.0), // Ajustează lățimea după nevoi
+                    _buildSmallItem(
+                        icon: Icons.headset_mic, label: 'Consultant'),
+                    const SizedBox(width: 16.0), // Ajustează lățimea după nevoi
+                    _buildSmallItem(icon: Icons.book_online, label: 'Recipe'),
+                  ],
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Your appointments",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    Text(
+                      "See all",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
                       ),
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 20),
-              Container(
-                padding: const EdgeInsets.fromLTRB(15, 30, 15, 30),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: AppColor.primary,
+                const SizedBox(
+                  height: 10,
                 ),
-                child: const Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start, // Aliniați conținutul la stânga
-                  children: [
-                    Text(
-                      "Tips for fighting \nacne",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    ),
-                    SizedBox(
-                        height:
-                            10), // Adăugați spațiu între text și rândul cu icon
-                    Row(
-                      children: [
-                        Icon(Icons.visibility, color: Colors.white),
-                        SizedBox(width: 5),
-                        Text("x views", style: TextStyle(color: Colors.white)),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Row(
-                children: [
-                  _buildSmallItem(icon: Icons.person, label: 'Doctor'),
-                  const SizedBox(width: 16.0), // Ajustează lățimea după nevoi
-                  _buildSmallItem(
-                      icon: Icons.local_hospital, label: 'Hospital'),
-                  const SizedBox(width: 16.0), // Ajustează lățimea după nevoi
-                  _buildSmallItem(icon: Icons.headset_mic, label: 'Consultant'),
-                  const SizedBox(width: 16.0), // Ajustează lățimea după nevoi
-                  _buildSmallItem(icon: Icons.book_online, label: 'Recipe'),
-                ],
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Your appointments",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
+                Expanded(
+                  child: ListView(
+                    children: [
+                      _buildAppointment(
+                        doctorName: "John Doe",
+                        doctorProfession: "Cardiologist",
+                        reason: "Monthly check-up",
+                        date: "15/05/23",
+                        duration: "09:15-10:10",
+                        clinicLocation: "RS. Sardjito",
+                        imageUrl:
+                            "https://www.jeanlouismedical.com/img/doctor-profile-small.png",
+                      ),
+                      _buildAppointment(
+                        doctorName: "John Doe",
+                        doctorProfession: "Cardiologist",
+                        reason: "Monthly check-up",
+                        date: "15/05/23",
+                        duration: "09:15-10:10",
+                        clinicLocation: "RS. Sardjito",
+                        imageUrl:
+                            "https://www.henrymayo.com/app/files/public/dhanda.l--0002.jpg",
+                      ),
+                      // Adaugă mai multe programări aici
+                    ],
                   ),
-                  Text(
-                    "See all",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Expanded(
-                child: ListView(
-                  children: [
-                    _buildAppointment(
-                      doctorName: "John Doe",
-                      doctorProfession: "Cardiologist",
-                      reason: "Monthly check-up",
-                      date: "15/05/23",
-                      duration: "09:15-10:10",
-                      clinicLocation: "RS. Sardjito",
-                      imageUrl:
-                          "https://www.jeanlouismedical.com/img/doctor-profile-small.png",
-                    ),
-                    _buildAppointment(
-                      doctorName: "John Doe",
-                      doctorProfession: "Cardiologist",
-                      reason: "Monthly check-up",
-                      date: "15/05/23",
-                      duration: "09:15-10:10",
-                      clinicLocation: "RS. Sardjito",
-                      imageUrl:
-                          "https://www.henrymayo.com/app/files/public/dhanda.l--0002.jpg",
-                    ),
-                    // Adaugă mai multe programări aici
-                  ],
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
-        ),
-      ),
-      bottomNavigationBar: const NavBar(),
-    );
+        ));
   }
 }

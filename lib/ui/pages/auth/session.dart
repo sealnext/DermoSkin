@@ -1,7 +1,8 @@
-import 'package:dermo/ui/pages/start_page.dart';
-import 'package:dermo/ui/pages/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../navigation.dart';
+import 'start_page.dart';
 
 class Session extends StatefulWidget {
   const Session({super.key});
@@ -18,7 +19,7 @@ class _SessionState extends State<Session> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return const HomePage();
+            return const Navigation();
           } else {
             return const StartPage();
           }

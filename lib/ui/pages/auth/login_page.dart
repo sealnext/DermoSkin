@@ -1,8 +1,9 @@
-import 'package:dermo/ui/pages/home_page.dart';
 import 'package:dermo/logic/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
+
+import '../navigation.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -94,10 +95,10 @@ class _LoginPageState extends State<LoginPage> {
           print("User not found");
         }
       }
-      
+
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
+        MaterialPageRoute(builder: (context) => const Navigation()),
       );
     }
   }
@@ -106,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
     await AuthServices.signInWithGoogle();
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const HomePage()),
+      MaterialPageRoute(builder: (context) => const Navigation()),
     );
   }
 
