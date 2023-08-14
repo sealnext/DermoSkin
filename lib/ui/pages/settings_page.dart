@@ -142,11 +142,11 @@ class _SettingsState extends State<Settings> {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
-          Icon(icon, size: 30.0), // mărită dimensiunea dacă e necesar
+          Icon(icon, size: 25.0), // mărită dimensiunea dacă e necesar
           const SizedBox(width: 16.0),
           Text(text,
               style: const TextStyle(
-                  fontSize: 20.0)), // Creșteți dimensiunea fontului aici
+                  fontSize: 18.0)), // Creșteți dimensiunea fontului aici
           const Spacer(),
           const Icon(Icons.chevron_right),
         ],
