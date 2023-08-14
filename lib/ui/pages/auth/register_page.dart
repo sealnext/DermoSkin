@@ -1,28 +1,33 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../home_page.dart';
 
 class RegisterPage extends StatefulWidget {
-  final Function()? onTop;
-  const RegisterPage({super.key, this.onTop});
+  final Function()? onTap;
+  const RegisterPage({super.key, this.onTap});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
 
+  String? nameErrorText;
   String? emailErrorText;
   String? passwordErrorText;
-  String? confirmPasswordErrorText;
   bool validate = false;
 
   void validateInputs(String? value, String? type) {
-    if (type == "email") {
+    if (type == "name") {
+      setState(() {
+        nameErrorText = validateName(value!);
+      });
+    } else if (type == "email") {
       setState(() {
         emailErrorText = validateEmail(value!);
       });
@@ -30,18 +35,36 @@ class _RegisterPageState extends State<RegisterPage> {
       setState(() {
         passwordErrorText = validatePassword(value!);
       });
-    } else if (type == "confirmPassword") {
-      setState(() {
-        confirmPasswordErrorText = validateConfirmPassword(value!);
-      });
     } else {
       setState(() {
+        nameErrorText = validateName(_nameController.text);
         emailErrorText = validateEmail(_emailController.text);
         passwordErrorText = validatePassword(_passwordController.text);
-        confirmPasswordErrorText =
-            validateConfirmPassword(_confirmPasswordController.text);
       });
     }
+  }
+
+  bool containsOnlyLetters(String input) {
+    return RegExp(r'^[a-zA-Z]+$').hasMatch(input);
+  }
+
+  String? validateName(String value) {
+    setState(() {
+      validate = false;
+    });
+    if (value.isEmpty) {
+      return "Value Can't Be Empty";
+    }
+    if (value.length < 3) {
+      return "Value needs to have at least 3 characters!";
+    }
+    if (!containsOnlyLetters(value)) {
+      return "Value can only contain letters";
+    }
+    setState(() {
+      validate = true;
+    });
+    return null;
   }
 
   String? validateEmail(String value) {
@@ -78,25 +101,6 @@ class _RegisterPageState extends State<RegisterPage> {
     return null;
   }
 
-  String? validateConfirmPassword(String value) {
-    setState(() {
-      validate = false;
-    });
-    if (value.isEmpty) {
-      return "Value Can't Be Empty";
-    }
-    if (value.length < 8) {
-      return "Value needs to have at least 8 characters!";
-    }
-    if (value != _passwordController.text) {
-      return "Value is not the same as the password";
-    }
-    setState(() {
-      validate = true;
-    });
-    return null;
-  }
-
   void createAccount() async {
     if (validate) {
       showDialog(
@@ -107,12 +111,25 @@ class _RegisterPageState extends State<RegisterPage> {
             );
           });
       try {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        print(0);
+        UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: _emailController.text, password: _passwordController.text);
+        User? user = userCredential.user;
+        print(1);
+        if (user != null) {
+          print(2);
+          print(_nameController.text);
+          print(user.uid);
+          await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+            'name': _nameController.text}, SetOptions(merge: true));
+          print(3);
+        }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
           print("User not found");
         }
+      } on FirebaseException catch (e) {
+        print(e.code);
       }
 
       Navigator.push(
@@ -156,6 +173,25 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 30,
                 ),
+                TextField(
+                  onChanged: (value) {
+                    validateInputs(value, "name");
+                  },
+                  controller: _nameController,
+                  decoration: InputDecoration(
+                      hintText: 'Full Name',
+                      errorText: nameErrorText,
+                      enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      filled: true,
+                      fillColor: Colors.grey.shade200,
+                      hintStyle: TextStyle(color: Colors.grey[500])),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 //email
                 TextField(
                   onChanged: (value) {
@@ -186,26 +222,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   decoration: InputDecoration(
                       hintText: 'Password',
                       errorText: passwordErrorText,
-                      enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                      filled: true,
-                      fillColor: Colors.grey.shade200,
-                      hintStyle: TextStyle(color: Colors.grey[500])),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextField(
-                  onChanged: (value) {
-                    validateInputs(value, "confrimPassword");
-                  },
-                  controller: _confirmPasswordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      hintText: 'Confirm Password',
-                      errorText: confirmPasswordErrorText,
                       enabledBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white)),
                       focusedBorder: const OutlineInputBorder(
@@ -253,7 +269,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       width: 4,
                     ),
                     GestureDetector(
-                      onTap: widget.onTop,
+                      onTap: widget.onTap,
                       child: const Text(
                         "Login now",
                         style: TextStyle(

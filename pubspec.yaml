@@ -41,6 +41,8 @@ dependencies:
   sign_in_with_apple: ^5.0.0
   cloud_firestore: ^4.8.4
   firebase_storage: ^11.2.5
+  flutter_chat_ui: ^1.6.9
+  flutter_firebase_chat_core: ^1.6.7
 
 
 dev_dependencies:
