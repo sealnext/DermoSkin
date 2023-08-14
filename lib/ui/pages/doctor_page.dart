@@ -1,3 +1,4 @@
+import 'package:dermo/ui/pages/about_doctor_page.dart';
 import 'package:dermo/ui/pages/address_doctor_page.dart';
 import 'package:dermo/ui/pages/appointment_page.dart';
 import 'package:dermo/utils/constants.dart';
@@ -235,7 +236,7 @@ class _DoctorPageState extends State<DoctorPage> {
             tabs: [
               Tab(text: "Appointment"),
               Tab(text: "Address"),
-              Tab(text: "Ratings"),
+              Tab(text: "About"),
             ],
           ),
           Expanded(
@@ -243,7 +244,7 @@ class _DoctorPageState extends State<DoctorPage> {
               children: [
                 AppointmentPage(),
                 Address(),
-                Center(child: Text('Content for Tab 3')),
+                AboutDoctorPage(),
               ],
             ),
           ),
