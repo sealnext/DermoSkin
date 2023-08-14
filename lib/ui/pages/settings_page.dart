@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:dermo/utils/constants.dart';
 
 import 'auth/auth_page.dart';
+import 'edit_profile_page.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -42,11 +43,11 @@ class _SettingsState extends State<Settings> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        'Welcome',
+                        'Settings',
                         style: TextStyle(color: Colors.grey, fontSize: 20.0),
                       ),
                       Text(
-                        "Hello ${user.displayName ?? 'User'}",
+                        "Mr. ${user.displayName ?? 'User'}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20.0),
                       ),
@@ -71,9 +72,12 @@ class _SettingsState extends State<Settings> {
               const SizedBox(height: 40),
 
               // Item-uri cu icons
-              buildListItem(Icons.account_circle, 'Profile'),
+              buildListItem(
+                  Icons.account_circle, 'Profile', const EditProfilePage()),
               const SizedBox(height: 20),
               buildListItem(Icons.settings, 'Settings'),
+              const SizedBox(height: 20),
+              buildListItem(Icons.notifications, 'Notifications'),
               const SizedBox(height: 20),
               buildListItem(Icons.dark_mode, 'Switch to Dark mode'),
               const SizedBox(height: 20),
@@ -137,19 +141,31 @@ class _SettingsState extends State<Settings> {
   }
 
   // Funcție pentru crearea itemilor cu icons
-  Widget buildListItem(IconData icon, String text) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        children: [
-          Icon(icon, size: 30.0), // mărită dimensiunea dacă e necesar
-          const SizedBox(width: 16.0),
-          Text(text,
-              style: const TextStyle(
-                  fontSize: 20.0)), // Creșteți dimensiunea fontului aici
-          const Spacer(),
-          const Icon(Icons.chevron_right),
-        ],
+  Widget buildListItem(IconData icon, String text, [Widget? page]) {
+    return GestureDetector(
+      onTap: page != null
+          ? () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => page,
+                ),
+              );
+            }
+          : null,
+      child: Container(
+        color: AppColor.backgroundPrimary,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Row(
+            children: [
+              Icon(icon, size: 25.0),
+              const SizedBox(width: 16.0),
+              Text(text, style: const TextStyle(fontSize: 18.0)),
+              const Spacer(),
+              const Icon(Icons.chevron_right),
+            ],
+          ),
+        ),
       ),
     );
   }
