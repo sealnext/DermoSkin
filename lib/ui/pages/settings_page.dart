@@ -72,18 +72,41 @@ class _SettingsState extends State<Settings> {
               const SizedBox(height: 40),
 
               // Item-uri cu icons
-              buildListItem(
-                  Icons.account_circle, 'Profile', const EditProfilePage()),
-              const SizedBox(height: 20),
-              buildListItem(Icons.settings, 'Settings'),
-              const SizedBox(height: 20),
-              buildListItem(Icons.notifications, 'Notifications'),
-              const SizedBox(height: 20),
-              buildListItem(Icons.dark_mode, 'Switch to Dark mode'),
-              const SizedBox(height: 20),
-              buildListItem(Icons.article_outlined, 'Terms of Service'),
 
-              const SizedBox(height: 40),
+              Container(
+                padding: const EdgeInsets.all(20.0),
+                // margin: const EdgeInsets.all(
+                //     20.0), // Acesta setează o margine de 20 pixeli pe toate laturile
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(
+                      15.0), // Acesta setează o rază de bordură de 15 pixeli
+                  // alte proprietăți ale decoration, dacă sunt necesare...
+                ),
+                child: Column(
+                  children: [
+                    buildListItem(Icons.account_circle, 'Profile',
+                        const EditProfilePage()),
+                    const SizedBox(height: 10),
+                    const Divider(),
+                    const SizedBox(height: 10),
+                    buildListItem(Icons.settings, 'Settings'),
+                    const SizedBox(height: 10),
+                    const Divider(),
+                    const SizedBox(height: 10),
+                    buildListItem(Icons.notifications, 'Notifications'),
+                    const SizedBox(height: 10),
+                    const Divider(),
+                    const SizedBox(height: 10),
+                    buildListItem(Icons.dark_mode, 'Switch to Dark mode'),
+                    const SizedBox(height: 10),
+                    const Divider(),
+                    const SizedBox(height: 10),
+                    buildListItem(Icons.article_outlined, 'Terms of Service'),
+                  ],
+                ),
+              ),
+
               const Spacer(),
               // Container albastru
               Container(
@@ -92,7 +115,7 @@ class _SettingsState extends State<Settings> {
                   borderRadius: BorderRadius.circular(
                       5.0), // Ajustați valoarea pentru a controla rotunjimea colțurilor
                 ),
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(20.0),
                 margin: const EdgeInsets.symmetric(vertical: 16.0),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -153,7 +176,7 @@ class _SettingsState extends State<Settings> {
             }
           : null,
       child: Container(
-        color: AppColor.backgroundPrimary,
+        color: AppColor.white,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Row(
