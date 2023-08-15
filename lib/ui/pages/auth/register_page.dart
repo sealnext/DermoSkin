@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../home_page.dart';
+import '../navigation.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -112,17 +112,27 @@ class _RegisterPageState extends State<RegisterPage> {
           });
       try {
         print(0);
-        UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-            email: _emailController.text, password: _passwordController.text);
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: _emailController.text,
+                password: _passwordController.text);
         User? user = userCredential.user;
         print(1);
         if (user != null) {
           print(2);
           print(_nameController.text);
           print(user.uid);
-          await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
-            'name': _nameController.text}, SetOptions(merge: true));
+
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(user.uid)
+              .set({
+            'name': _nameController.text,
+            'email': _emailController.text
+          }, SetOptions(merge: true));
           print(3);
+
+          // saveUserData(_nameController.text, )
         }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
@@ -134,7 +144,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
+        MaterialPageRoute(builder: (context) => const Navigation()),
       );
     }
   }
@@ -247,7 +257,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           BorderRadius.circular(20), // Set the border radius
                     ),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "Sign Up",
                       style: TextStyle(
