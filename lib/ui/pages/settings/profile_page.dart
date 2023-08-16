@@ -357,10 +357,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
               Column(
                 children: <Widget>[
                   // Linie orizontală deasupra butonului
-                  const Divider(
-                      color: Color.fromARGB(255, 195, 195, 195),
-                      thickness: 1.0,
-                      height: 1.0),
                   const SizedBox(
                     height: 15,
                   ),

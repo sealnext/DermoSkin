@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                 backgroundImage: NetworkImage(imageUrl),
                 radius: 25, // ajustează dimensiunea dacă este necesar
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 15),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,6 +54,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+          const SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -128,34 +129,60 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildSmallItem({required IconData icon, required String label}) {
-    return Expanded(
-      child: Padding(
-        padding:
-            const EdgeInsets.symmetric(vertical: 16.0), // Spatiu sus si jos
-        child: AspectRatio(
-          aspectRatio: 1, // Acest lucru asigură că widget-ul rămâne un pătrat
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(icon, color: AppColor.primary, size: 30),
-                const SizedBox(height: 8),
-                Text(
-                  label,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
+    Color containerColor = Colors.white;
+
+    return StatefulBuilder(
+      builder: (BuildContext context, StateSetter setState) {
+        return Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: GestureDetector(
+                onTapDown: (_) {
+                  setState(() {
+                    containerColor = Colors.grey[300] ?? Colors.white;
+                  });
+                },
+                onTapUp: (_) {
+                  setState(() {
+                    containerColor = Colors.white;
+                  });
+                  // Aici poți adăuga acțiunea care se întâmplă la apăsare
+                },
+                onTapCancel: () {
+                  setState(() {
+                    containerColor = Colors.white;
+                  });
+                },
+                child: AnimatedContainer(
+                  duration:
+                      const Duration(milliseconds: 200), // Durata animației
+                  curve: Curves.easeOut, // Tipul de curba pentru animatie
+                  decoration: BoxDecoration(
+                    color: containerColor,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(icon, color: AppColor.primary, size: 30),
+                      const SizedBox(height: 8),
+                      Text(
+                        label,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -222,34 +249,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(15, 30, 15, 30),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: AppColor.primary,
-                  ),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment
-                        .start, // Aliniați conținutul la stânga
-                    children: [
-                      Text(
-                        "Tips for fighting \nacne",
-                        style: TextStyle(color: Colors.white, fontSize: 30),
-                      ),
-                      SizedBox(
-                          height:
-                              10), // Adăugați spațiu între text și rândul cu icon
-                      Row(
-                        children: [
-                          Icon(Icons.visibility, color: Colors.white),
-                          SizedBox(width: 5),
-                          Text("x views",
-                              style: TextStyle(color: Colors.white)),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                _buildTipContainer(),
                 Row(
                   children: [
                     _buildSmallItem(icon: Icons.person, label: 'Doctor'),
@@ -316,5 +316,69 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ));
+  }
+
+  Widget _buildTipContainer() {
+    Color containerColor = AppColor.primary;
+
+    return StatefulBuilder(
+      builder: (BuildContext context, StateSetter setState) {
+        return GestureDetector(
+          onTapDown: (_) {
+            setState(() {
+              containerColor = AppColor.primary.withOpacity(0.7);
+            });
+          },
+          onTapUp: (_) {
+            setState(() {
+              containerColor = AppColor.primary;
+            });
+            // Aici poți adăuga orice acțiune vrei să se întâmple la tap
+          },
+          onTapCancel: () {
+            setState(() {
+              containerColor = AppColor.primary;
+            });
+          },
+          child: Stack(children: [
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              curve: Curves.easeOut,
+              padding: const EdgeInsets.fromLTRB(15, 30, 15, 30),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: containerColor,
+              ),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Tips for fighting \nacne",
+                    style: TextStyle(color: Colors.white, fontSize: 30),
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Icon(Icons.visibility, color: Colors.white),
+                      SizedBox(width: 5),
+                      Text("3.4k views", style: TextStyle(color: Colors.white)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              right: -30,
+              bottom: -1,
+              child: Image.asset(
+                'assets/images/face.png',
+                width: 170, // Poți ajusta dimensiunea aici
+                height: 170, // și aici
+              ),
+            )
+          ]),
+        );
+      },
+    );
   }
 }
