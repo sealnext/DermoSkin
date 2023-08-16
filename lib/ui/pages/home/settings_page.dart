@@ -2,8 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dermo/utils/constants.dart';
 
-import 'auth/auth_page.dart';
-import 'edit_profile_page.dart';
+import '../auth/auth_page.dart';
+import '../settings/notification_page.dart';
+import '../settings/profile_page.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -47,7 +48,7 @@ class _SettingsState extends State<Settings> {
                         style: TextStyle(color: Colors.grey, fontSize: 20.0),
                       ),
                       Text(
-                        "Mr. ${user.displayName ?? 'User'}",
+                        user.displayName ?? 'User',
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20.0),
                       ),
@@ -73,41 +74,47 @@ class _SettingsState extends State<Settings> {
 
               // Item-uri cu icons
 
-              Container(
-                padding: const EdgeInsets.all(20.0),
-                // margin: const EdgeInsets.all(
-                //     20.0), // Acesta setează o margine de 20 pixeli pe toate laturile
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(
-                      15.0), // Acesta setează o rază de bordură de 15 pixeli
-                  // alte proprietăți ale decoration, dacă sunt necesare...
-                ),
-                child: Column(
-                  children: [
-                    buildListItem(Icons.account_circle, 'Profile',
-                        const EditProfilePage()),
-                    const SizedBox(height: 10),
-                    const Divider(),
-                    const SizedBox(height: 10),
-                    buildListItem(Icons.settings, 'Settings'),
-                    const SizedBox(height: 10),
-                    const Divider(),
-                    const SizedBox(height: 10),
-                    buildListItem(Icons.notifications, 'Notifications'),
-                    const SizedBox(height: 10),
-                    const Divider(),
-                    const SizedBox(height: 10),
-                    buildListItem(Icons.dark_mode, 'Switch to Dark mode'),
-                    const SizedBox(height: 10),
-                    const Divider(),
-                    const SizedBox(height: 10),
-                    buildListItem(Icons.article_outlined, 'Terms of Service'),
-                  ],
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(20.0),
+                  // margin: const EdgeInsets.all(
+                  //     20.0), // Acesta setează o margine de 20 pixeli pe toate laturile
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(
+                        15.0), // Acesta setează o rază de bordură de 15 pixeli
+                    // alte proprietăți ale decoration, dacă sunt necesare...
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        buildListItem(Icons.account_circle, 'Profile',
+                            const EditProfilePage()),
+                        const SizedBox(height: 10),
+                        const Divider(),
+                        const SizedBox(height: 10),
+                        buildListItem(Icons.notifications, 'Notifications',
+                            const NotificationPage()),
+                        const SizedBox(height: 10),
+                        const Divider(),
+                        const SizedBox(height: 10),
+                        buildListItem(Icons.dark_mode, 'Switch to Dark mode'),
+                        const SizedBox(height: 10),
+                        const Divider(),
+                        const SizedBox(height: 10),
+                        buildListItem(Icons.feedback, 'Feedback'),
+                        const SizedBox(height: 10),
+                        const Divider(),
+                        const SizedBox(height: 10),
+                        buildListItem(
+                            Icons.article_outlined, 'Terms of Service'),
+                        const SizedBox(height: 10),
+                      ],
+                    ),
+                  ),
                 ),
               ),
 
-              const Spacer(),
               // Container albastru
               Container(
                 decoration: BoxDecoration(
@@ -137,9 +144,27 @@ class _SettingsState extends State<Settings> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Privacy Policy >'),
-                  const Text('Imprint >'),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment
+                        .start, // Alinează conținutul la stânga
+                    children: <Widget>[
+                      Text('Privacy Policy'), // Textul tău
+                      SizedBox(width: 3.0),
+                      Icon(Icons.arrow_forward_ios, size: 10.0), // Icon-ul tău
+                    ],
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment
+                        .start, // Alinează conținutul la stânga
+                    children: <Widget>[
+                      Text('Imprint'), // Textul tău
+                      SizedBox(width: 3.0),
+                      Icon(Icons.arrow_forward_ios, size: 10.0), // Icon-ul tău
+                    ],
+                  ),
                   DropdownButton<String>(
+                    underline: Container(),
+                    icon: const Icon(Icons.keyboard_arrow_down, size: 17),
                     value: 'English',
                     items: const [
                       DropdownMenuItem(

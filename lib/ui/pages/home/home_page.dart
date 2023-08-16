@@ -43,8 +43,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("DR. $doctorName"),
-                    Text(doctorProfession),
+                    Text("DR. $doctorName, $doctorProfession"),
                     Text(
                       reason,
                       style: const TextStyle(fontWeight: FontWeight.bold),
@@ -177,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Hello ${user.displayName ?? 'User'}",
+                          Text(user.displayName ?? 'User',
                               style: const TextStyle(fontSize: 24)),
                           const Text(
                             "Keep healthy!",
