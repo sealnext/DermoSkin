@@ -57,6 +57,7 @@ class UserService {
 
       if (user != null) {
         await user.updateDisplayName(data.name);
+        await user.reload();
       }
 
       await _firestore.collection(_collectionName).doc(data.uid).update({

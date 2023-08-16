@@ -5,6 +5,7 @@ import 'package:dermo/utils/constants.dart';
 import '../auth/auth_page.dart';
 import '../settings/notification_page.dart';
 import '../settings/profile_page.dart';
+import '../settings/appearance_page.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -98,7 +99,8 @@ class _SettingsState extends State<Settings> {
                         const SizedBox(height: 10),
                         const Divider(),
                         const SizedBox(height: 10),
-                        buildListItem(Icons.dark_mode, 'Switch to Dark mode'),
+                        buildListItem(Icons.dark_mode, 'Appearance',
+                            const AppearancePage()),
                         const SizedBox(height: 10),
                         const Divider(),
                         const SizedBox(height: 10),

@@ -99,7 +99,7 @@ class _NotificationPageState extends State<NotificationPage> {
 
   Widget buildSectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      padding: const EdgeInsets.symmetric(vertical: 5.0),
       child: Text(
         title,
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
