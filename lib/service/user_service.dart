@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../model/user_data.dart';
 
 /// `UserService` este o clasă de serviciu dedicată gestionării interacțiunilor
@@ -52,11 +53,17 @@ class UserService {
   // Actualizează sau creează datele unui utilizator
   Future<void> setUserData(UserData data) async {
     try {
-      await _firestore.collection(_collectionName).doc(data.uid).set({
+      final user = FirebaseAuth.instance.currentUser;
+
+      if (user != null) {
+        await user.updateDisplayName(data.name);
+      }
+
+      await _firestore.collection(_collectionName).doc(data.uid).update({
         'name': data.name,
         'address': data.address,
         'gender': data.gender,
-        'dateOfBirth': data.dateOfBirth,
+        'dateOfBirth': data.dateOfBirth
         // Adaugă și alte câmpuri dacă este necesar
       });
     } catch (e) {

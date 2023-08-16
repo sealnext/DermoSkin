@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../navigation.dart';
+import '../navigator_page.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -117,6 +117,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 email: _emailController.text,
                 password: _passwordController.text);
         User? user = userCredential.user;
+
+        if (user != null) {
+          await user.updateDisplayName(_nameController.text);
+        }
+
         print(1);
         if (user != null) {
           print(2);
