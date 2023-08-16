@@ -32,6 +32,7 @@ class UserData {
   String address = "";
   String gender = "";
   String dateOfBirth = "";
+  String email = "";
   // Poți adăuga și alte câmpuri dacă este necesar
 
   UserData(
@@ -39,7 +40,8 @@ class UserData {
       required this.name,
       required this.address,
       required this.gender,
-      required this.dateOfBirth});
+      required this.dateOfBirth,
+      required this.email});
 
   UserData.empty() {
     uid = "";
@@ -47,6 +49,7 @@ class UserData {
     address = "";
     gender = "";
     dateOfBirth = "";
+    email = "";
   }
 
   factory UserData.fromDocument(DocumentSnapshot doc) {
@@ -57,6 +60,7 @@ class UserData {
       address: (docData?['address'] as String?) ?? "",
       gender: (docData?['gender'] as String?) ?? "",
       dateOfBirth: (docData?['dateOfBirth'] as String?) ?? "",
+      email: (docData?['email'] as String?) ?? "",
       // Similar pentru alte câmpuri
     );
   }
