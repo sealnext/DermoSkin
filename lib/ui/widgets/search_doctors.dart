@@ -16,6 +16,11 @@ class _SearchDoctorState extends State<SearchDoctor> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<List<DoctorData>> _getDoctorSuggestions(String query) async {
+    query = query.toLowerCase();
+    if (query.isEmpty) {
+      return [];
+    }
+
     final doctorsSnapshot = await _firestore
         .collection('doctors')
         .where('fullName', isGreaterThanOrEqualTo: query)
@@ -46,8 +51,27 @@ class _SearchDoctorState extends State<SearchDoctor> {
     return TypeAheadField<DoctorData>(
       textFieldConfiguration: TextFieldConfiguration(
         controller: _searchController,
-        decoration: const InputDecoration(
-          labelText: 'Caută doctor',
+        style: DefaultTextStyle.of(context).style.copyWith(
+            fontStyle: FontStyle
+                .normal), // O necesitate pentru a evita erori legate de stilul textului
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+          filled: true,
+          fillColor: Colors.white,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+          prefixIcon: const Icon(Icons.search),
+          hintText: 'Search a doctor',
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
         ),
       ),
       suggestionsCallback: (pattern) async {
@@ -56,12 +80,12 @@ class _SearchDoctorState extends State<SearchDoctor> {
       itemBuilder: (context, DoctorData doctor) {
         return ListTile(
           title: Text(toTitleCase(doctor.fullName)),
-          //alte atribute ale doctorului sa se afiseze
+          // show everything you want beside the name if u want
         );
       },
       onSuggestionSelected: (DoctorData doctor) {
         _searchController.text = toTitleCase(doctor.fullName);
-        // cand selectezi doctorul
+        // when u click on a name form suggestions
       },
     );
   }
