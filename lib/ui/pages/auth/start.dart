@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'auth_page.dart';
+import 'auth.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});

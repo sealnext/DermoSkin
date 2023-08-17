@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../navigator_page.dart';
-import 'start_page.dart';
+import '../navigator.dart';
+import 'start.dart';
 
 class Session extends StatefulWidget {
   const Session({super.key});

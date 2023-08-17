@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dermo/utils/constants.dart';
 
-import '../auth/auth_page.dart';
-import '../settings/notification_page.dart';
-import '../settings/profile_page.dart';
-import '../settings/appearance_page.dart';
+import '../auth/auth.dart';
+import '../settings/notification.dart';
+import '../settings/profile.dart';
+import '../settings/appearance.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
-import '../navigator_page.dart';
+import '../navigator.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void signWithGoogle() async {
-    await AuthServices.signInWithGoogle();
+    await AuthService.signInWithGoogle();
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const Navigation()),
@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void signInWithApple() async {
-    await AuthServices.signInWhithApple();
+    await AuthService.signInWhithApple();
   }
 
   @override

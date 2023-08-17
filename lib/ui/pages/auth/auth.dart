@@ -1,5 +1,5 @@
-import 'package:dermo/ui/pages/auth/login_page.dart';
-import 'package:dermo/ui/pages/auth/register_page.dart';
+import 'package:dermo/ui/pages/auth/login.dart';
+import 'package:dermo/ui/pages/auth/register.dart';
 import 'package:flutter/material.dart';
 
 class AuthPage extends StatefulWidget {
