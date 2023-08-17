@@ -111,7 +111,6 @@ class _RegisterPageState extends State<RegisterPage> {
             );
           });
       try {
-        print(0);
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
                 email: _emailController.text,
@@ -122,11 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
           await user.updateDisplayName(_nameController.text);
         }
 
-        print(1);
         if (user != null) {
-          print(2);
-          print(_nameController.text);
-          print(user.uid);
 
           await FirebaseFirestore.instance
               .collection('users')
@@ -135,7 +130,6 @@ class _RegisterPageState extends State<RegisterPage> {
             'name': _nameController.text,
             'email': _emailController.text
           }, SetOptions(merge: true));
-          print(3);
 
           // saveUserData(_nameController.text, )
         }
