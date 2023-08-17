@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dermo/utils/constants.dart';
 
+import '../../widgets/search_doctors.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -224,30 +226,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.search),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: TextFormField(
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            hintText: 'Search a doctor',
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                const SearchDoctor(),
                 const SizedBox(height: 20),
                 _buildTipContainer(),
                 Row(
