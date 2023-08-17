@@ -227,30 +227,6 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 20),
                 const SearchDoctor(),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Row(
-                    children: [
-                      // const Icon(Icons.search),
-                      // const SizedBox(width: 10),
-                      // Expanded(
-                      //   child: TextFormField(
-                      //     decoration: const InputDecoration(
-                      //       border: InputBorder.none,
-                      //       enabledBorder: InputBorder.none,
-                      //       focusedBorder: InputBorder.none,
-                      //       disabledBorder: InputBorder.none,
-                      //       hintText: 'Search a doctor',
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ),
                 const SizedBox(height: 20),
                 _buildTipContainer(),
                 Row(
