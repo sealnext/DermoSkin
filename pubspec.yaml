@@ -44,7 +44,8 @@ dependencies:
   flutter_chat_ui: ^1.6.9
   flutter_firebase_chat_core: ^1.6.7
   flutter_typeahead: ^4.6.2
-
+  camera: ^0.10.5+3
+  image_picker: ^1.0.2
 
 dev_dependencies:
   flutter_test:
