@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:dermo/utils/constants.dart';
-import 'package:dermo/ui/pages/chat/chat.dart';
-import 'package:dermo/ui/pages/home/home.dart';
-import 'package:dermo/ui/pages/appointments/appointments.dart';
-import 'package:dermo/ui/pages/settings/settings.dart';
+import 'package:dermo/old/utils/constants.dart';
+import 'package:dermo/old/ui/pages/chat/chat.dart';
+import 'package:dermo/old/ui/pages/home/home.dart';
+import 'package:dermo/old/ui/pages/appointments/appointments.dart';
+import 'package:dermo/old/ui/pages/settings/settings.dart';
 
 class Navigation extends StatefulWidget {
   const Navigation({super.key});

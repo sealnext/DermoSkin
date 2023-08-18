@@ -1,8 +1,8 @@
-import 'package:dermo/utils/firebase_options.dart';
+import 'package:dermo/old/utils/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'ui/pages/auth/session.dart';
+import 'package:dermo/old/ui/pages/auth/session.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

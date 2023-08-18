@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../model/doctor_data.dart';
+import 'package:dermo/old/model/doctor_data.dart';
 
 class DoctorService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
