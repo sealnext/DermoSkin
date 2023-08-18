@@ -44,6 +44,7 @@ dependencies:
   flutter_chat_ui: ^1.6.9
   flutter_firebase_chat_core: ^1.6.7
   flutter_typeahead: ^4.6.2
+  flutter_chat_types: ^3.6.2
 
 
 dev_dependencies:

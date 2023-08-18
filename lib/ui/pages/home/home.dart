@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dermo/utils/constants.dart';
-
-import '../../widgets/search_doctors.dart';
+import 'package:dermo/ui/shared/search_doctors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

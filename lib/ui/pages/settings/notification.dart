@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/constants.dart';
-import '../../widgets/toggle_button.dart/toggle_switch.dart';
+import 'package:dermo/utils/constants.dart';
+import 'package:dermo/ui/shared/toggle_button.dart/toggle_switch.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
