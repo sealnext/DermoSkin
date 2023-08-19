@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:dermo/old/utils/constants.dart';
 import 'package:dermo/old/ui/shared/search_doctors.dart';
 
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -302,45 +303,22 @@ class _HomePageState extends State<HomePage> {
     return StatefulBuilder(
       builder: (BuildContext context, StateSetter setState) {
         return GestureDetector(
-          onTapDown: (_) {
-            setState(() {
-              containerColor = AppColor.primary.withOpacity(0.7);
-            });
-          },
-          onTapUp: (_) {
-            setState(() {
-              containerColor = AppColor.primary;
-            });
-            // Aici poți adăuga orice acțiune vrei să se întâmple la tap
-          },
-          onTapCancel: () {
-            setState(() {
-              containerColor = AppColor.primary;
-            });
-          },
           child: Stack(children: [
             AnimatedContainer(
+              width: double.infinity,
               duration: const Duration(milliseconds: 200),
               curve: Curves.easeOut,
               padding: const EdgeInsets.fromLTRB(15, 30, 15, 30),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(15),
                 color: containerColor,
               ),
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Tips for fighting \nacne",
-                    style: TextStyle(color: Colors.white, fontSize: 30),
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Icon(Icons.visibility, color: Colors.white),
-                      SizedBox(width: 5),
-                      Text("3.4k views", style: TextStyle(color: Colors.white)),
-                    ],
+                    "Scan your skin now \nto detect potential \ndiseases.",
+                    style: TextStyle(color: Colors.white, fontSize: 28),
                   ),
                 ],
               ),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:dermo/old/utils/constants.dart';
 import 'package:dermo/old/ui/pages/chat/chat.dart';
 import 'package:dermo/old/ui/pages/home/home.dart';
 import 'package:dermo/old/ui/pages/appointments/appointments.dart';
 import 'package:dermo/old/ui/pages/settings/settings.dart';
+import 'package:dermo/old/ui/pages/camera/camera.dart';
 
 class Navigation extends StatefulWidget {
   const Navigation({super.key});
@@ -18,6 +20,7 @@ class _NavigationState extends State<Navigation> {
   final List<Widget> _pages = [
     const HomePage(),
     const Appointments(),
+    const CameraPage(),
     const Chat(),
     const Settings(),
     // Al patrulea item este pentru sign out, deci nu avem o pagină pentru el.
@@ -68,14 +71,19 @@ class _NavigationState extends State<Navigation> {
             activeIcon: _buildIcon(Icons.calendar_today, 1),
           ),
           BottomNavigationBarItem(
-            icon: _buildIcon(Icons.chat, 2),
+            icon: _buildIcon(Icons.camera_alt_sharp, 2),
             label: '',
-            activeIcon: _buildIcon(Icons.chat, 2),
+            activeIcon: _buildIcon(Icons.camera_enhance, 2),
           ),
           BottomNavigationBarItem(
-            icon: _buildIcon(Icons.settings, 3),
+            icon: _buildIcon(Icons.chat, 3),
             label: '',
-            activeIcon: _buildIcon(Icons.settings, 3),
+            activeIcon: _buildIcon(Icons.chat, 3),
+          ),
+          BottomNavigationBarItem(
+            icon: _buildIcon(Icons.settings, 4),
+            label: '',
+            activeIcon: _buildIcon(Icons.settings, 4),
           ),
         ],
       ),
