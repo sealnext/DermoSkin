@@ -1,6 +1,5 @@
+import 'package:dermo/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
-
-import 'package:dermo/core/utility/constants.dart';
 
 class AppearancePage extends StatefulWidget {
   const AppearancePage({super.key});
@@ -35,13 +34,13 @@ class _AppearancePageState extends State<AppearancePage> {
               children: [
                 const Icon(
                   Icons.circle_outlined,
-                  color: Colors.grey,
+                  color: ThemeColors.grey,
                   size: 30,
                 ),
                 if (isSelected) // Afișează doar dacă este selectat
                   const Icon(
                     Icons.circle_rounded,
-                    color: AppColor.primary,
+                    color: ThemeColors.primary,
                     size: 15, // Aceasta este dimensiunea iconiței mici albastre
                   ),
               ],
@@ -55,20 +54,20 @@ class _AppearancePageState extends State<AppearancePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundPrimary,
+      backgroundColor: ThemeColors.backgroundPrimary,
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: AppColor.backgroundPrimary,
+        backgroundColor: ThemeColors.backgroundPrimary,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black, // Setează culoarea iconiței aici
+            color: ThemeColors.black, // Setează culoarea iconiței aici
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(
           "Appearance",
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(fontWeight: FontWeight.bold, color: ThemeColors.black),
         ),
         centerTitle: true,
       ),
@@ -98,7 +97,7 @@ class _AppearancePageState extends State<AppearancePage> {
             ),
             const Text(
               "Selecting a particular option will change the appearance (coloring) of the application according to your preferences.",
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: ThemeColors.grey),
             ),
             const SizedBox(
               height: 40,
@@ -126,8 +125,8 @@ class _AppearancePageState extends State<AppearancePage> {
               width: double.infinity, // Latimea maximă disponibilă
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: AppColor.primary, // Culoarea textului
+                  foregroundColor: ThemeColors.white,
+                  backgroundColor: ThemeColors.primary, // Culoarea textului
                   padding: const EdgeInsets.symmetric(
                       vertical: 15.0), // Mărește înălțimea butonului
                   shape: RoundedRectangleBorder(

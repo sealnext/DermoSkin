@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:dermo/core/utility/constants.dart';
+import 'package:dermo/core/resources/color_manager.dart';
 import 'package:dermo/logic/managers/user_manager.dart';
 import 'package:dermo/core/utility/injector.dart';
 
@@ -59,10 +59,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColor.backgroundPrimary,
+        backgroundColor: ThemeColors.backgroundPrimary,
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: AppColor.backgroundPrimary,
+          backgroundColor: ThemeColors.backgroundPrimary,
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back,
@@ -92,11 +92,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   CircleAvatar(
                     radius:
                         25.0, // 3.0 pixeli mai mare decât CircleAvatar-ul interior
-                    backgroundColor: Colors.white,
+                    backgroundColor: ThemeColors.white,
                     child: CircleAvatar(
-                      backgroundColor: AppColor.primary,
+                      backgroundColor: ThemeColors.primary,
                       radius: 20.0,
-                      child: Icon(Icons.camera_alt, color: Colors.white),
+                      child: Icon(Icons.camera_alt, color: ThemeColors.white),
                     ),
                   )
                 ],
@@ -119,7 +119,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 }),
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: AppColor.white,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(
                     // Aceasta adaugă bordura rotundă
                     borderRadius: BorderRadius.circular(7.0),
@@ -282,7 +282,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 }),
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: AppColor.white,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(
                     // Aceasta adaugă bordura rotundă
                     borderRadius: BorderRadius.circular(7.0),
@@ -325,7 +325,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 }),
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: AppColor.white,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(
                     // Aceasta adaugă bordura rotundă
                     borderRadius: BorderRadius.circular(7.0),
@@ -364,7 +364,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
-                        backgroundColor: AppColor.primary, // Culoarea textului
+                        backgroundColor: ThemeColors.primary, // Culoarea textului
                         padding: const EdgeInsets.symmetric(
                             vertical: 15.0), // Mărește înălțimea butonului
                         shape: RoundedRectangleBorder(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:dermo/core/utility/constants.dart';
+import 'package:dermo/core/resources/color_manager.dart';
 import 'package:dermo/ui/shared_widgets/toggle_switch.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -27,20 +27,20 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundPrimary,
+      backgroundColor: ThemeColors.backgroundPrimary,
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: AppColor.backgroundPrimary,
+        backgroundColor: ThemeColors.backgroundPrimary,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: ThemeColors.black,
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(
           "Notifications",
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(fontWeight: FontWeight.bold, color: ThemeColors.black),
         ),
         centerTitle: true,
       ),

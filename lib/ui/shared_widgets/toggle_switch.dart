@@ -1,6 +1,5 @@
+import 'package:dermo/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
-
-import 'package:dermo/core/utility/constants.dart';
 
 class ToggleSwitch extends StatefulWidget {
   const ToggleSwitch({super.key});
@@ -17,7 +16,7 @@ class _ToggleSwitchState extends State<ToggleSwitch> {
     return Switch(
       // This bool value toggles the switch.
       value: light,
-      activeColor: AppColor.primary,
+      activeColor: ThemeColors.primary,
       onChanged: (bool value) {
         // This is called when the user toggles the switch.
         setState(() {

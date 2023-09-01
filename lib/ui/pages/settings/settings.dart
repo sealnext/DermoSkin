@@ -3,7 +3,7 @@ import 'package:dermo/ui/routes/app_router.gr.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:dermo/core/utility/constants.dart';
+import 'package:dermo/core/resources/color_manager.dart';
 import 'notification.dart';
 import 'profile.dart';
 import 'appearance.dart';
@@ -21,7 +21,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColor.backgroundPrimary,
+        backgroundColor: Colors.backgroundPrimary,
         body: SafeArea(
             child: Padding(
           padding: const EdgeInsets.all(25.0),
@@ -115,7 +115,7 @@ class _SettingsState extends State<Settings> {
 
               Container(
                 decoration: BoxDecoration(
-                  color: AppColor.secondary,
+                  color: Colors.secondary,
                   borderRadius: BorderRadius.circular(5.0),
                 ),
                 padding: const EdgeInsets.all(20.0),
@@ -193,7 +193,7 @@ class _SettingsState extends State<Settings> {
             }
           : null,
       child: Container(
-        color: AppColor.white,
+        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Row(

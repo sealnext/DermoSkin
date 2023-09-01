@@ -1,7 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:dermo/core/utility/constants.dart';
+import 'package:dermo/core/resources/color_manager.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
       margin: const EdgeInsets.symmetric(vertical: 10.0),
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ThemeColors.white,
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: Column(
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
-                backgroundColor: AppColor.gray,
+                backgroundColor: ThemeColors.gray,
                 backgroundImage: NetworkImage(imageUrl),
                 radius: 25, // ajustează dimensiunea dacă este necesar
               ),
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColor.primary,
+                    backgroundColor: ThemeColors.primary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
                           10.0), // Acesta setează un borderRadius de 10.0
@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColor.white,
+                    backgroundColor: ThemeColors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
                           10.0), // Acesta setează un borderRadius de 10.0
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           '...',
                           style: TextStyle(
-                            color: Colors
+                            color: ThemeColors
                                 .black, // Acesta setează culoarea textului la negru
                           ),
                         ),
@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildSmallItem({required IconData icon, required String label}) {
-    Color containerColor = Colors.white;
+    Color containerColor = ThemeColors.white;
 
     return StatefulBuilder(
       builder: (BuildContext context, StateSetter setState) {
@@ -143,18 +143,18 @@ class _HomePageState extends State<HomePage> {
               child: GestureDetector(
                 onTapDown: (_) {
                   setState(() {
-                    containerColor = Colors.grey[300] ?? Colors.white;
+                    containerColor = Colors.grey[300] ?? ThemeColors.white;
                   });
                 },
                 onTapUp: (_) {
                   setState(() {
-                    containerColor = Colors.white;
+                    containerColor = ThemeColors.white;
                   });
                   // Aici poți adăuga acțiunea care se întâmplă la apăsare
                 },
                 onTapCancel: () {
                   setState(() {
-                    containerColor = Colors.white;
+                    containerColor = ThemeColors.white;
                   });
                 },
                 child: AnimatedContainer(
@@ -168,12 +168,12 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(icon, color: AppColor.primary, size: 30),
+                      Icon(icon, color: ThemeColors.primary, size: 30),
                       const SizedBox(height: 8),
                       Text(
                         label,
                         style: const TextStyle(
-                          color: Colors.black,
+                          color: ThemeColors.black,
                           fontSize: 14,
                         ),
                       ),
@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColor.backgroundPrimary,
+        backgroundColor: ThemeColors.backgroundPrimary,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(25.0),
@@ -298,25 +298,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildTipContainer() {
-    Color containerColor = AppColor.primary;
+    Color containerColor = ThemeColors.primary;
 
     return StatefulBuilder(
       builder: (BuildContext context, StateSetter setState) {
         return GestureDetector(
           onTapDown: (_) {
             setState(() {
-              containerColor = AppColor.primary.withOpacity(0.7);
+              containerColor = ThemeColors.primary.withOpacity(0.7);
             });
           },
           onTapUp: (_) {
             setState(() {
-              containerColor = AppColor.primary;
+              containerColor = ThemeColors.primary;
             });
             // Aici poți adăuga orice acțiune vrei să se întâmple la tap
           },
           onTapCancel: () {
             setState(() {
-              containerColor = AppColor.primary;
+              containerColor = ThemeColors.primary;
             });
           },
           child: Stack(children: [
@@ -333,14 +333,15 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text(
                     "Tips for fighting \nacne",
-                    style: TextStyle(color: Colors.white, fontSize: 30),
+                    style: TextStyle(color: ThemeColors.white, fontSize: 30),
                   ),
                   SizedBox(height: 10),
                   Row(
                     children: [
-                      Icon(Icons.visibility, color: Colors.white),
+                      Icon(Icons.visibility, color: ThemeColors.white),
                       SizedBox(width: 5),
-                      Text("3.4k views", style: TextStyle(color: Colors.white)),
+                      Text("3.4k views",
+                          style: TextStyle(color: ThemeColors.white)),
                     ],
                   ),
                 ],
