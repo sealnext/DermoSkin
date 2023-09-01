@@ -6,10 +6,10 @@ import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
 import 'package:dermo/logic/data_objects/value_objects/last_name.dart';
 
 class User extends BaseEntity {
-  final Email email;
-  final FirstName firstName;
-  final LastName lastName;
-  final UserAvatar avatar;
+  Email email;
+  FirstName firstName;
+  LastName lastName;
+  UserAvatar avatar;
 
   User({
     required Id id,

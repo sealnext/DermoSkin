@@ -1,23 +1,22 @@
-import 'package:auto_route/auto_route.dart';
-
 import 'package:dermo/core/utility/types.dart';
 
 import 'package:dermo/logic/data_objects/entities/user/user.dart';
 import 'package:dermo/logic/data_objects/entities/user/user_avatar.dart';
+import 'package:dermo/logic/data_objects/value_objects/date_of_birth.dart';
 import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
 import 'package:dermo/logic/data_objects/value_objects/last_name.dart';
 import 'package:dermo/logic/data_objects/value_objects/password.dart';
-import 'package:dermo/logic/data_objects/value_objects/url.dart';
 import 'package:dermo/logic/data_sources/remote/auth_data_source.dart';
 import 'package:dermo/logic/data_sources/remote/db_data_source.dart';
 
 class UserManager {
   static const _collectionPath = "users";
 
+  User user = User.guest();
+
   final AuthDataSource _authDataSource;
   final DbDataSource _dbDataSource;
-  User user = User.guest();
 
   UserManager({
     required AuthDataSource authDataSource,

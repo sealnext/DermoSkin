@@ -1,4 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:dermo/logic/data_objects/value_objects/email.dart';
+import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dermo/core/resources/color_manager.dart';
@@ -16,11 +17,13 @@ enum Gender { male, female }
 
 class _EditProfilePageState extends State<EditProfilePage> {
   final _userManager = injector<UserManager>();
+
   String name = '';
   String address = '';
   String gender = '';
   String email = '';
   DateTime dateOfBirth = DateTime.now();
+
   final nameController = TextEditingController();
   final addressController = TextEditingController();
   final emailController = TextEditingController();
@@ -49,10 +52,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
       nameController.text = name;
       addressController.text = address;
       emailController.text = email;
-
-      if (_userManager.user.email.value != "") {
-        dateOfBirth = DateTime.parse(userData.dateOfBirth);
-      }
     });
   }
 
@@ -115,7 +114,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 style: const TextStyle(fontSize: 17),
                 controller: nameController,
                 onChanged: (text) => setState(() {
-                  name = text;
+                  try {
+                    _userManager.user.firstName = FirstName(text);
+                  } on InvalidFirstNameException catch (e) {
+                    print(e);
+                  }
                 }),
                 decoration: InputDecoration(
                   filled: true,
@@ -321,7 +324,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 style: const TextStyle(fontSize: 17),
                 controller: emailController,
                 onChanged: (text) => setState(() {
-                  email = text;
+                  try {
+                    _userManager.user.email = Email(text);
+                  } on InvalidEmailException catch (e) {
+                    print(e);
+                  }
                 }),
                 decoration: InputDecoration(
                   filled: true,
@@ -364,7 +371,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
-                        backgroundColor: ThemeColors.primary, // Culoarea textului
+                        backgroundColor:
+                            ThemeColors.primary, // Culoarea textului
                         padding: const EdgeInsets.symmetric(
                             vertical: 15.0), // Mărește înălțimea butonului
                         shape: RoundedRectangleBorder(
@@ -374,14 +382,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         ),
                       ),
                       onPressed: () async {
-                        UserData userDataToSave = UserData(
-                            uid: user.uid,
-                            name: name,
-                            address: address,
-                            gender: gender,
-                            dateOfBirth: dateOfBirth.toIso8601String(),
-                            email: email);
-                        _userService.setUserData(userDataToSave);
+                        _userManager.syncUserWithDb();
                         Navigator.of(context).pop();
                       },
                       child: const Text(
