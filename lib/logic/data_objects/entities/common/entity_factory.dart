@@ -1,4 +1,4 @@
-import 'package:dermo/logic/data_objects/entities/user.dart';
+import 'package:dermo/logic/data_objects/entities/user/user.dart';
 
 class EntityFactory {
   /// Every time a new entity class is added you have to update createFromMap()

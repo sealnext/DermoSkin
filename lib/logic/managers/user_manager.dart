@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 
 import 'package:dermo/core/utility/types.dart';
-import 'package:dermo/logic/data_objects/entities/user.dart';
+
+import 'package:dermo/logic/data_objects/entities/user/user.dart';
+import 'package:dermo/logic/data_objects/entities/user/user_avatar.dart';
 import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
 import 'package:dermo/logic/data_objects/value_objects/last_name.dart';
@@ -29,14 +31,15 @@ class UserManager {
     required Email email,
     required FirstName firstName,
     required LastName lastName,
-    Url? photoUrl,
+    UserAvatar? avatar,
   }) {
     user = User(
-        id: id,
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
-        photoUrl: photoUrl);
+      id: id,
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      avatar: avatar,
+    );
   }
 
   Future<Id> signUp({

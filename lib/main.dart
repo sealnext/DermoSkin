@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dermo/core/utility/firebase_options.dart';
+import 'package:dermo/core/config/firebase_options.dart';
 import 'package:dermo/ui/routes/app_router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

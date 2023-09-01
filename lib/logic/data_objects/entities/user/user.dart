@@ -1,25 +1,23 @@
 import 'package:dermo/core/utility/types.dart';
 import 'package:dermo/logic/data_objects/entities/common/base_entity.dart';
+import 'package:dermo/logic/data_objects/entities/user/user_avatar.dart';
 import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
 import 'package:dermo/logic/data_objects/value_objects/last_name.dart';
-import 'package:dermo/logic/data_objects/value_objects/url.dart';
 
 class User extends BaseEntity {
-  static const _randomAvatarUrl = "https://i.pravatar.cc/300";
-
-  Email email;
-  FirstName firstName;
-  LastName lastName;
-  Url photoUrl;
+  final Email email;
+  final FirstName firstName;
+  final LastName lastName;
+  final UserAvatar avatar;
 
   User({
     required Id id,
     required this.email,
     required this.firstName,
     required this.lastName,
-    Url? photoUrl,
-  })  : photoUrl = photoUrl ?? Url(_randomAvatarUrl),
+    UserAvatar? avatar,
+  })  : avatar = avatar ?? UserAvatar(),
         super(id: id);
 
   factory User.fromMap(Map<String, dynamic> map) {
@@ -28,17 +26,17 @@ class User extends BaseEntity {
       email: Email(map["email"]),
       firstName: FirstName(map["firstName"]),
       lastName: LastName(map["lastName"]),
-      photoUrl: Url(map["photoUrl"]),
+      avatar: UserAvatar(map["avatar"]),
     );
   }
 
   factory User.guest() {
     return User(
       id: "",
-      email: Email("guest@mail.com"),
+      email: Email("support@sealnext.com"),
       firstName: FirstName("Guest"),
       lastName: LastName("Guest"),
-      photoUrl: Url("https://i.pravatar.cc/300"),
+      avatar: UserAvatar(), // Calea locală către avatarul implicit
     );
   }
 
@@ -48,15 +46,13 @@ class User extends BaseEntity {
   }
 
   @override
-  Map<String, String> toMap() {
+  Map<String, dynamic> toMap() {
     return {
       'id': id,
       'email': email.value,
       'firstName': firstName.value,
       'lastName': lastName.value,
-      'photoUrl': photoUrl.value,
+      'avatar': avatar.image,
     };
   }
-
-
 }
