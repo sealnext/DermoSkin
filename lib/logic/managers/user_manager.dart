@@ -15,7 +15,7 @@ class UserManager {
 
   final AuthDataSource _authDataSource;
   final DbDataSource _dbDataSource;
-  User? _user;
+  User user = User.guest();
 
   UserManager({
     required AuthDataSource authDataSource,
@@ -31,7 +31,7 @@ class UserManager {
     required LastName lastName,
     Url? photoUrl,
   }) {
-    _user = User(
+    user = User(
         id: id,
         email: email,
         firstName: firstName,
@@ -57,7 +57,7 @@ class UserManager {
       email: email,
       password: password,
     );
-    _user = await _dbDataSource.read<User>(
+    user = await _dbDataSource.read<User>(
         collectionPath: _collectionPath, id: userId);
   }
 
@@ -66,9 +66,7 @@ class UserManager {
   }
 
   Future<void> syncUserWithDb() async {
-    assert(
-        _user != null, "User should never be null when syncing with database!");
-    _dbDataSource.write(collectionPath: _collectionPath, entity: _user!);
+    _dbDataSource.write(collectionPath: _collectionPath, entity: user);
   }
 
   bool isUSerSignedIn() {

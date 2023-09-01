@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 @immutable
 class Url {
   // https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
-  static final urlRegex = RegExp(
+  static final _urlRegex = RegExp(
       r"^https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)$");
 
   final String value;
@@ -19,7 +19,7 @@ class Url {
   }
 
   static bool _isValid(String url) {
-    return urlRegex.hasMatch(url);
+    return _urlRegex.hasMatch(url);
   }
 }
 

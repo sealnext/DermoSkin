@@ -1,8 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:dermo/old/utils/constants.dart';
-import 'package:dermo/old/ui/shared/search_doctors.dart';
+import 'package:dermo/core/utility/constants.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {

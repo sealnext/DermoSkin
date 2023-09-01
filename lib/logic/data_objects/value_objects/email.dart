@@ -4,7 +4,7 @@ import 'package:dermo/logic/data_objects/value_objects/common/value_object.dart'
 
 @immutable
 class Email extends ValueObject<String> {
-  static final emailRegex = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+  static final _emailRegex = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
 
   const Email._({required String value}) : super(value: value);
 
@@ -16,7 +16,7 @@ class Email extends ValueObject<String> {
   }
 
   static bool _isValid(String email) {
-    return emailRegex.hasMatch(email);
+    return _emailRegex.hasMatch(email);
   }
 }
 

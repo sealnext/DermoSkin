@@ -1,5 +1,6 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:dermo/old/logic/services/auth.dart';
+import 'package:dermo/ui/routes/app_router.gr.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -178,6 +179,9 @@ class _LoginPageState extends State<LoginPage> {
                         width: 4,
                       ),
                       GestureDetector(
+                        onTap: () {
+                          context.router.push(const RegisterRoute());
+                        },
                         child: const Text(
                           "Register now",
                           style: TextStyle(

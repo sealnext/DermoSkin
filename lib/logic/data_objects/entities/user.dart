@@ -32,6 +32,16 @@ class User extends BaseEntity {
     );
   }
 
+  factory User.guest() {
+    return User(
+      id: "",
+      email: Email("guest@mail.com"),
+      firstName: FirstName("Guest"),
+      lastName: LastName("Guest"),
+      photoUrl: Url("https://i.pravatar.cc/300"),
+    );
+  }
+
   @override
   User fromMap(Map<String, dynamic> map) {
     return User.fromMap(map);
@@ -47,4 +57,6 @@ class User extends BaseEntity {
       'photoUrl': photoUrl.value,
     };
   }
+
+
 }

@@ -5,7 +5,7 @@ import 'package:dermo/logic/data_objects/value_objects/common/value_object.dart'
 
 @immutable
 class FirstName extends ValueObject<String> {
-  static final firstNameRegex = RegExp(r"^[ a-zA-Z\-ăîșțâĂÎȘȚÂ']+$");
+  static final _firstNameRegex = RegExp(r"^[ a-zA-Z\-ăîșțâĂÎȘȚÂ']+$");
 
   const FirstName._({required String value}) : super(value: value);
 
@@ -17,7 +17,7 @@ class FirstName extends ValueObject<String> {
   }
 
   static bool _isValid(String name) {
-    return firstNameRegex.hasMatch(name);
+    return _firstNameRegex.hasMatch(name);
   }
 }
 

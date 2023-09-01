@@ -13,7 +13,7 @@ void main() async {
   );
   await initializeDependencies();
   await injector.allReady();
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatefulWidget {
@@ -25,7 +25,6 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   late final AppRouter _appRouter;
-  late final Future<PageRouteInfo> _initialRoute;
   bool _isInitialized = false;
 
   @override
@@ -36,7 +35,6 @@ class _AppState extends State<App> {
 
   Future<void> initializeRouter() async {
     _appRouter = AppRouter();
-    _initialRoute = _appRouter.getInitialRoute();
     setState(() {
       _isInitialized = true;
     });
@@ -46,7 +44,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     if (_isInitialized) {
       return FutureBuilder<PageRouteInfo>(
-        future: _initialRoute,
+        future: _appRouter.getInitialRoute(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Text('Error');

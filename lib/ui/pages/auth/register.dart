@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
@@ -61,17 +60,19 @@ class _RegisterPageState extends State<RegisterPage> {
     }
     try {
       await _signUp(
-          firstName: firstName!,
-          lastName: lastName!,
-          email: email!,
-          password: password!);
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password);
     } catch (e) {
+      print("$e");
       return;
     }
     if (!context.mounted) {
       return;
     }
-    context.router.replaceAll([const HomeRoute()]);
+    print("hello");
+    context.router.replaceAll([const MainRoute()]);
   }
 
   @override
@@ -210,6 +211,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       width: 4,
                     ),
                     GestureDetector(
+                      onTap: () {
+                        context.router.back();
+                      },
                       child: const Text(
                         "Login now",
                         style: TextStyle(

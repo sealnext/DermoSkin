@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/constants.dart';
+import 'package:dermo/core/utility/constants.dart';
 
 class ToggleSwitch extends StatefulWidget {
   const ToggleSwitch({super.key});

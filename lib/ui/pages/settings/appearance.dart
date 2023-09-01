@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/constants.dart';
+import 'package:dermo/core/utility/constants.dart';
 
 class AppearancePage extends StatefulWidget {
   const AppearancePage({super.key});

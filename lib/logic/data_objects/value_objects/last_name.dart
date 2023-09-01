@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 
 @immutable
 class LastName {
-  static final lastNameRegex = RegExp(r"^[a-zA-Z\-ăîșțâĂÎȘȚÂ']+$");
+  static final _lastNameRegex = RegExp(r"^[a-zA-Z\-ăîșțâĂÎȘȚÂ']+$");
 
   final String value;
 
@@ -18,7 +18,7 @@ class LastName {
   }
 
   static bool _isValid(String name) {
-    return lastNameRegex.hasMatch(name);
+    return _lastNameRegex.hasMatch(name);
   }
 }
 

@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 
 @immutable
 class Password {
-  static final passwordRegex = RegExp(r"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$");
+  static final _passwordRegex = RegExp(r"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$");
 
   final String value;
 
@@ -17,7 +17,7 @@ class Password {
   }
 
   static bool _isValid(String password) {
-    return passwordRegex.hasMatch(password);
+    return _passwordRegex.hasMatch(password);
   }
 }
 
