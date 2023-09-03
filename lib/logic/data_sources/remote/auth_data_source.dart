@@ -68,6 +68,10 @@ class AuthDataSource {
     }
   }
 
+  Stream<bool> get isUserSignedInStream {
+    return FirebaseAuth.instance.authStateChanges().map((user) => user != null);
+  }
+
   bool isUserSignedIn() {
     User? user = FirebaseAuth.instance.currentUser;
 

@@ -3,21 +3,23 @@ import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
 import 'package:dermo/logic/data_objects/value_objects/last_name.dart';
 import 'package:dermo/logic/data_objects/value_objects/password.dart';
-import 'package:dermo/ui/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dermo/logic/use_cases/sign_up_use_case.dart';
 import 'package:dermo/core/utility/injector.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:dermo/ui/state.dart';
 
 @RoutePage()
-class RegisterPage extends StatefulWidget {
+class RegisterPage extends ConsumerStatefulWidget {
   const RegisterPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  ConsumerState<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageState extends ConsumerState<RegisterPage> {
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -65,14 +67,9 @@ class _RegisterPageState extends State<RegisterPage> {
           email: email,
           password: password);
     } catch (e) {
-      print("$e");
+      debugPrint("$e");
       return;
     }
-    if (!context.mounted) {
-      return;
-    }
-    print("hello");
-    context.router.replaceAll([const MainRoute()]);
   }
 
   @override
@@ -212,7 +209,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        context.router.back();
+                        ref.read(registerButtonProvider.notifier).state = false;
                       },
                       child: const Text(
                         "Login now",

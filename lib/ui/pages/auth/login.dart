@@ -1,61 +1,36 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dermo/core/utility/injector.dart';
+import 'package:dermo/logic/data_objects/value_objects/email.dart';
+import 'package:dermo/logic/data_objects/value_objects/password.dart';
+import 'package:dermo/logic/use_cases/sign_in_use_case.dart';
 import 'package:dermo/old/logic/services/auth.dart';
-import 'package:dermo/ui/routes/app_router.gr.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:dermo/ui/state.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 @RoutePage()
-class LoginPage extends StatefulWidget {
+class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  ConsumerState<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends ConsumerState<LoginPage> {
+  final _signIn = injector<SignInUseCase>();
+
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  String? emailErrorText;
-  String? passwordErrorText;
-  bool validate = false;
-
-  void validateInputs(String? value, String? type) {
-    if (type == "email") {
-      setState(() {
-        emailErrorText = value!;
-      });
-    } else if (type == "password") {
-      setState(() {
-        passwordErrorText = value!;
-      });
-    } else {
-      setState(() {
-        emailErrorText = _emailController.text;
-        passwordErrorText = _passwordController.text;
-      });
-    }
-  }
-
-
-  void signUserEmail() async {
-    if (validate) {
-      showDialog(
-          context: context,
-          builder: (context) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          });
-      try {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-            email: _emailController.text, password: _passwordController.text);
-      } on FirebaseAuthException catch (e) {
-        if (e.code == 'user-not-found') {
-          print("User not found");
-        }
-      }
+  Future<void> signIn() async {
+    try {
+      var email = Email(_emailController.text);
+      var pasword = Password(_passwordController.text);
+      await _signIn(email: email, password: pasword);
+    } catch (e) {
+      debugPrint("$e");
     }
   }
 
@@ -104,13 +79,9 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   //email
                   TextField(
-                    onChanged: (value) {
-                      validateInputs(value, "email");
-                    },
                     controller: _emailController,
                     decoration: InputDecoration(
                         hintText: 'Email',
-                        errorText: emailErrorText,
                         enabledBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white)),
                         focusedBorder: const OutlineInputBorder(
@@ -124,14 +95,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   //password
                   TextField(
-                    onChanged: (value) {
-                      validateInputs(value, "password");
-                    },
                     controller: _passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                         hintText: 'Password',
-                        errorText: passwordErrorText,
                         enabledBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white)),
                         focusedBorder: const OutlineInputBorder(
@@ -144,9 +111,8 @@ class _LoginPageState extends State<LoginPage> {
                     height: 30,
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      validateInputs(null, "button");
-                      signUserEmail();
+                    onPressed: () async {
+                      await signIn();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(
@@ -180,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          context.router.push(const RegisterRoute());
+                          ref.read(registerButtonProvider.notifier).state = true;
                         },
                         child: const Text(
                           "Register now",

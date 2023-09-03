@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dermo/core/utility/injector.dart';
+import 'package:dermo/logic/use_cases/sign_out_use_case.dart';
 import 'package:dermo/ui/routes/app_router.gr.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -8,15 +10,17 @@ import 'notification.dart';
 import 'profile.dart';
 import 'appearance.dart';
 
-class Settings extends StatefulWidget {
-  const Settings({super.key});
+@RoutePage()
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
 
   @override
-  State<Settings> createState() => _SettingsState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _SettingsState extends State<Settings> {
+class _SettingsPageState extends State<SettingsPage> {
   final user = FirebaseAuth.instance.currentUser!;
+  final _signOut = injector<SignOutUseCase>();
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +63,7 @@ class _SettingsState extends State<Settings> {
                   const Spacer(),
                   GestureDetector(
                     onTap: () {
-                      signOut();
+                      _signOut();
                     },
                     child: const Icon(Icons.logout),
                   )
@@ -173,11 +177,6 @@ class _SettingsState extends State<Settings> {
             ],
           ),
         )));
-  }
-
-  void signOut() {
-    FirebaseAuth.instance.signOut();
-    context.router.replaceAll([const LoginRoute()]);
   }
 
   // Funcție pentru crearea itemilor cu icons

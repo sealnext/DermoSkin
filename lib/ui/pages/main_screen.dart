@@ -11,8 +11,8 @@ class MainScreen extends StatelessWidget {
     return AutoTabsScaffold(
       routes: const [
         HomeRoute(),
-        HomeRoute(),
-        HomeRoute(),
+        RoomsRoute(),
+        SettingsRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return NavigationBar(
@@ -27,12 +27,12 @@ class MainScreen extends StatelessWidget {
             NavigationDestination(
               selectedIcon: Icon(Icons.chat),
               icon: Icon(Icons.chat_outlined),
-              label: 'Business',
+              label: 'Chat',
             ),
             NavigationDestination(
-              selectedIcon: Icon(Icons.school),
-              icon: Icon(Icons.school_outlined),
-              label: 'School',
+              selectedIcon: Icon(Icons.settings),
+              icon: Icon(Icons.settings_outlined),
+              label: 'Settings',
             ),
           ],
         );

@@ -2,7 +2,6 @@ import 'package:dermo/core/utility/types.dart';
 
 import 'package:dermo/logic/data_objects/entities/user/user.dart';
 import 'package:dermo/logic/data_objects/entities/user/user_avatar.dart';
-import 'package:dermo/logic/data_objects/value_objects/date_of_birth.dart';
 import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
 import 'package:dermo/logic/data_objects/value_objects/last_name.dart';
@@ -71,7 +70,7 @@ class UserManager {
     _dbDataSource.write(collectionPath: _collectionPath, entity: user);
   }
 
-  bool isUSerSignedIn() {
-    return _authDataSource.isUserSignedIn();
+  Stream<bool> get isUSerSignedInStream {
+    return _authDataSource.isUserSignedInStream;
   }
 }

@@ -1,4 +1,6 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:dermo/ui/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -66,7 +68,7 @@ class StartPage extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    /// AICI TREBUIE ROUTER
+                    context.router.push(const RegisterRoute());
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF4757E9),

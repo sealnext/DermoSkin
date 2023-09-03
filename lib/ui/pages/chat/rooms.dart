@@ -1,8 +1,10 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
 import 'widgets/room_tile.dart';
 
+@RoutePage()
 class RoomsPage extends StatelessWidget {
   const RoomsPage({super.key});
 
