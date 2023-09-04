@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dermo/ui/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +70,7 @@ class StartPage extends StatelessWidget {
                     context.router.push(const RegisterRoute());
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF4757E9),
+                    backgroundColor: const Color(0xFF4757E9),
                     minimumSize: const Size(400, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),

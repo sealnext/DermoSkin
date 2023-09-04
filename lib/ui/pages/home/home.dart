@@ -32,103 +32,64 @@ class _HomePageState extends State<HomePage> {
         color: ThemeColors.white,
         borderRadius: BorderRadius.circular(20.0),
       ),
-      child: Column(
+      child: Row(
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CircleAvatar(
-                backgroundColor: ThemeColors.gray,
-                backgroundImage: NetworkImage(imageUrl),
-                radius: 25, // ajustează dimensiunea dacă este necesar
-              ),
-              const SizedBox(width: 15),
-              Expanded(
-                child: Column(
+          // Conținutul existent
+          Expanded(
+            child: Column(
+              children: [
+                Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("DR. $doctorName, $doctorProfession"),
-                    Text(
-                      reason,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: ThemeColors.grey, // sau orice altă culoare
+                        borderRadius:
+                            BorderRadius.circular(15), // Radiusul colțurilor
+                      ),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image.network(
+                            imageUrl,
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          )),
                     ),
-                    const SizedBox(height: 10),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 15),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildAppointmentDetail(Icons.calendar_today, date),
-              _buildAppointmentDetail(Icons.access_time, duration),
-              _buildAppointmentDetail(Icons.local_hospital, clinicLocation),
-            ],
-          ),
-          const SizedBox(height: 10),
-          Row(
-            children: [
-              Expanded(
-                flex: 6,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: ThemeColors.primary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                          10.0), // Acesta setează un borderRadius de 10.0
-                    ),
-                    // alte stiluri pe care doriți să le setați
-                  ),
-                  child: const Text("See details"),
-                ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                flex: 1,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: ThemeColors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                          10.0), // Acesta setează un borderRadius de 10.0
-                    ),
-                    // alte stiluri pe care doriți să le setați
-                  ),
-                  child: const AspectRatio(
-                    aspectRatio: 1, // acesta este raportul 1:1
-                    child: AspectRatio(
-                      aspectRatio: 1, // acesta este raportul 1:1
-                      child: Center(
-                        child: Text(
-                          '...',
-                          style: TextStyle(
-                            color: ThemeColors
-                                .black, // Acesta setează culoarea textului la negru
+                    const SizedBox(width: 15),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("DR. $doctorName, $doctorProfession"),
+                          Text(
+                            reason,
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
-                        ),
+                          const SizedBox(height: 10),
+                        ],
                       ),
                     ),
-                  ),
+                  ],
                 ),
+              ],
+            ),
+          ),
+          // Noua coloană cu steaua și scorul
+          const Row(
+            children: [
+              Icon(
+                Icons.star,
+                color: Color.fromARGB(255, 252, 201, 33),
+              ),
+              Text(
+                '4.9',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ],
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildAppointmentDetail(IconData icon, String info) {
-    return Column(
-      children: [
-        Icon(icon),
-        const SizedBox(height: 4),
-        Text(info),
-      ],
     );
   }
 
@@ -236,13 +197,13 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   children: [
                     _buildSmallItem(icon: Icons.person, label: 'Doctor'),
-                    const SizedBox(width: 16.0), // Ajustează lățimea după nevoi
+                    const SizedBox(width: 16.0),
                     _buildSmallItem(
                         icon: Icons.local_hospital, label: 'Hospital'),
-                    const SizedBox(width: 16.0), // Ajustează lățimea după nevoi
+                    const SizedBox(width: 16.0),
                     _buildSmallItem(
                         icon: Icons.headset_mic, label: 'Consultant'),
-                    const SizedBox(width: 16.0), // Ajustează lățimea după nevoi
+                    const SizedBox(width: 16.0),
                     _buildSmallItem(icon: Icons.book_online, label: 'Recipe'),
                   ],
                 ),
@@ -250,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Your appointments",
+                      "Top doctors",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
@@ -273,8 +234,8 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       _buildAppointment(
                         doctorName: "John Doe",
-                        doctorProfession: "Cardiologist",
-                        reason: "Monthly check-up",
+                        doctorProfession: "",
+                        reason: "Cardiologist",
                         date: "15/05/23",
                         duration: "09:15-10:10",
                         clinicLocation: "RS. Sardjito",
@@ -282,16 +243,35 @@ class _HomePageState extends State<HomePage> {
                             "https://www.jeanlouismedical.com/img/doctor-profile-small.png",
                       ),
                       _buildAppointment(
-                        doctorName: "John Doe",
-                        doctorProfession: "Cardiologist",
-                        reason: "Monthly check-up",
-                        date: "15/05/23",
-                        duration: "09:15-10:10",
+                        doctorName: "Jane Smith",
+                        doctorProfession: "",
+                        reason: "Neurologist",
+                        date: "20/05/23",
+                        duration: "11:00-11:45",
                         clinicLocation: "RS. Sardjito",
                         imageUrl:
                             "https://www.henrymayo.com/app/files/public/dhanda.l--0002.jpg",
                       ),
-                      // Adaugă mai multe programări aici
+                      _buildAppointment(
+                        doctorName: "Jinsa Brown",
+                        doctorProfession: "",
+                        reason: "Orthopedic Surgeon",
+                        date: "25/05/23",
+                        duration: "14:30-15:00",
+                        clinicLocation: "RS. Sardjito",
+                        imageUrl:
+                            "https://www.kauveryhospital.com/doctorimage/recent/Arju_Ashok2021-12-24-12:54:06pm.jpg",
+                      ),
+                      _buildAppointment(
+                        doctorName: "Robert Johnson",
+                        doctorProfession: "",
+                        reason: "Dermatologist",
+                        date: "28/05/23",
+                        duration: "09:45-10:30",
+                        clinicLocation: "RS. Sardjito",
+                        imageUrl:
+                            "https://www.kauveryhospital.com/doctorimage/recent/Dr-Rajaram2021-09-09-01:46:06pm.jpg",
+                      ),
                     ],
                   ),
                 )
@@ -307,46 +287,22 @@ class _HomePageState extends State<HomePage> {
     return StatefulBuilder(
       builder: (BuildContext context, StateSetter setState) {
         return GestureDetector(
-          onTapDown: (_) {
-            setState(() {
-              containerColor = ThemeColors.primary.withOpacity(0.7);
-            });
-          },
-          onTapUp: (_) {
-            setState(() {
-              containerColor = ThemeColors.primary;
-            });
-            // Aici poți adăuga orice acțiune vrei să se întâmple la tap
-          },
-          onTapCancel: () {
-            setState(() {
-              containerColor = ThemeColors.primary;
-            });
-          },
           child: Stack(children: [
             AnimatedContainer(
+              width: double.infinity,
               duration: const Duration(milliseconds: 200),
               curve: Curves.easeOut,
               padding: const EdgeInsets.fromLTRB(15, 30, 15, 30),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(15),
                 color: containerColor,
               ),
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Tips for fighting \nacne",
-                    style: TextStyle(color: ThemeColors.white, fontSize: 30),
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Icon(Icons.visibility, color: ThemeColors.white),
-                      SizedBox(width: 5),
-                      Text("3.4k views",
-                          style: TextStyle(color: ThemeColors.white)),
-                    ],
+                    "Scan your skin now \nto detect potential \ndiseases.",
+                    style: TextStyle(color: Colors.white, fontSize: 28),
                   ),
                 ],
               ),

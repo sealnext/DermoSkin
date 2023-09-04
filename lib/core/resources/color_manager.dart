@@ -10,7 +10,7 @@ class ThemeColors {
   static const backgroundSecondary = Colors.white;
   static const accent1 = Color.fromARGB(255, 255, 242, 0);
   static const accent2 = Color.fromARGB(255, 255, 67, 67);
-  static const gray = Color.fromARGB(255, 233, 233, 233);
+  static const gray = Color.fromARGB(255, 158, 158, 158);
   static const grey = Color.fromARGB(255, 233, 233, 233);
   static const black = Colors.black;
 }

@@ -23,6 +23,8 @@ class AppRouter extends $AppRouter {
           page: MainRoute.page,
           children: [
             AutoRoute(page: HomeRoute.page),
+            AutoRoute(page: AppointmentRoute.page),
+            AutoRoute(page: CameraRoute.page),
             AutoRoute(page: RoomsRoute.page),
             AutoRoute(page: SettingsRoute.page),
           ],

@@ -14,6 +14,8 @@ class MainScreen extends StatelessWidget {
     return AutoTabsScaffold(
       routes: const [
         HomeRoute(),
+        AppointmentRoute(),
+        CameraRoute(),
         RoomsRoute(),
         SettingsRoute(),
       ],
@@ -27,17 +29,38 @@ class MainScreen extends StatelessWidget {
           destinations: const [
             NavigationDestination(
               selectedIcon: Icon(Icons.home, color: ThemeColors.primary),
-              icon: Icon(Icons.home_outlined, color: ThemeColors.primary),
+              icon: Icon(Icons.home_outlined,
+                  color: Color.fromARGB(255, 94, 109, 245)),
               label: 'Home',
             ),
             NavigationDestination(
-              selectedIcon: Icon(Icons.chat, color: ThemeColors.primary),
-              icon: Icon(Icons.chat_outlined, color: ThemeColors.primary),
+              selectedIcon: Badge(
+                  label: Text("2"),
+                  child: Icon(Icons.access_time_filled,
+                      color: ThemeColors.primary)),
+              icon: Badge(
+                  label: Text("2"),
+                  child: Icon(Icons.access_time, color: ThemeColors.primary)),
+              label: 'Appointments',
+            ),
+            NavigationDestination(
+              selectedIcon: Icon(Icons.camera_alt, color: ThemeColors.primary),
+              icon: Icon(Icons.camera_alt_outlined, color: ThemeColors.primary),
+              label: 'Scan',
+            ),
+            NavigationDestination(
+              selectedIcon: Badge(
+                  label: Text("1"),
+                  child: Icon(Icons.chat, color: ThemeColors.primary)),
+              icon: Badge(
+                  label: Text("1"),
+                  child: Icon(Icons.chat_outlined, color: ThemeColors.primary)),
               label: 'Chat',
             ),
             NavigationDestination(
               selectedIcon: Icon(Icons.settings, color: ThemeColors.primary),
-              icon: Icon(Icons.settings_outlined, color: ThemeColors.primary),
+              icon: Icon(Icons.settings_outlined,
+                  color: Color.fromARGB(255, 94, 109, 245)),
               label: 'Settings',
             ),
           ],

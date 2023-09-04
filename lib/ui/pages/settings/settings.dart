@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/logic/managers/user_manager.dart';
 import 'package:dermo/logic/use_cases/sign_out_use_case.dart';
+import 'package:dermo/ui/pages/appointments/doctor_page.dart';
 import 'package:dermo/ui/shared_widgets/user_avatar_view_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dermo/core/resources/color_manager.dart';
@@ -106,7 +106,8 @@ class _SettingsPageState extends State<SettingsPage> {
                         const SizedBox(height: 10),
                         const Divider(),
                         const SizedBox(height: 10),
-                        buildListItem(Icons.feedback, 'Feedback'),
+                        buildListItem(
+                            Icons.feedback, 'Feedback', const DoctorPage()),
                         const SizedBox(height: 10),
                         const Divider(),
                         const SizedBox(height: 10),

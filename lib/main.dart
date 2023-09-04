@@ -54,6 +54,7 @@ class _AppState extends ConsumerState<App> {
           if (snapshot.hasData) {
             bool isFirstTime = snapshot.data!;
             return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
                 routerDelegate: AutoRouterDelegate.declarative(
                   _appRouter,
                   routes: (_) => [
