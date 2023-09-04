@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:dermo/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:image_picker/image_picker.dart';
@@ -44,7 +45,7 @@ class _CameraPageState extends State<CameraPage> {
               onPressed: _getImage,
               style: ElevatedButton.styleFrom(
                 backgroundColor:
-                    const Color(0xFF4757E9), // Set the background color here
+                    ThemeColors.primary, // Set the background color here
                 minimumSize: const Size(200, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius:

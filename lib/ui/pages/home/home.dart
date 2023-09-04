@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/logic/managers/user_manager.dart';
+import 'package:dermo/ui/shared_widgets/search_doctors.dart';
 import 'package:dermo/ui/shared_widgets/user_avatar_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:dermo/core/resources/color_manager.dart';
@@ -191,7 +192,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 const SizedBox(height: 20),
-                // const SearchDoctor(),
+                const SearchDoctor(),
                 const SizedBox(height: 20),
                 _buildTipContainer(),
                 Row(
