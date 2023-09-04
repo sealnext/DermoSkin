@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dermo/core/utility/global_functions.dart';
 import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/logic/managers/user_manager.dart';
-import 'package:dermo/ui/pages/home/home.dart';
 
 import 'app_router.gr.dart';
 

@@ -1,5 +1,4 @@
 import 'package:dermo/core/utility/types.dart';
-import 'package:dermo/logic/data_objects/value_objects/date_of_birth.dart';
 import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
 import 'package:dermo/logic/data_objects/value_objects/last_name.dart';

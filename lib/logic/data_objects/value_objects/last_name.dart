@@ -1,4 +1,3 @@
-import 'package:dermo/logic/data_objects/value_objects/common/value_object.dart';
 import 'package:dermo/logic/data_objects/value_objects/common/value_object_exception.dart';
 import 'package:meta/meta.dart';
 

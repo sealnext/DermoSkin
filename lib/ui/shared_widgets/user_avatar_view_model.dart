@@ -2,9 +2,9 @@ import 'package:dermo/logic/data_objects/entities/user/user_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class UserAvatarViewModel extends StatelessWidget{
+class UserAvatarViewModel extends StatelessWidget {
   final UserAvatar avatar;
-  static const String _defaultAvatar = "assets/images/your_local_image.svg";
+  static const String _defaultAvatar = "assets/images/guest.svg";
 
   const UserAvatarViewModel({super.key, required this.avatar});
 
