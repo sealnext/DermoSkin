@@ -39,16 +39,7 @@ dependencies:
   firebase_auth: ^4.7.2
   google_sign_in: ^6.1.4
   sign_in_with_apple: ^5.0.0
-  cloud_firestore: ^4.8.4
-  firebase_storage: ^11.2.5
-  flutter_chat_ui: ^1.6.9
-  flutter_firebase_chat_core: ^1.6.7
-  table_calendar: ^3.0.9
-  url_launcher: ^6.1.12
-  flutter_map: ^5.0.0
-  latlong2: ^0.9.0
-  geolocator: ^9.0.2
-  flutter_typeahead: ^4.6.2
+
 
 dev_dependencies:
   flutter_test:
@@ -76,7 +67,6 @@ flutter:
   assets:
     - assets/images/google.png
     - assets/images/start.png
-    - assets/images/doctor_ex.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
