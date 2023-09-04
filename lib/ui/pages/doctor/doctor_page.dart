@@ -1,6 +1,6 @@
-import 'package:dermo/ui/pages/about_doctor_page.dart';
-import 'package:dermo/ui/pages/address_doctor_page.dart';
-import 'package:dermo/ui/pages/appointment_page.dart';
+import 'package:dermo/ui/pages/doctor/about_doctor_page.dart';
+import 'package:dermo/ui/pages/doctor/address_doctor_page.dart';
+import 'package:dermo/ui/pages/doctor/appointment_page.dart';
 import 'package:dermo/utils/constants.dart';
 import 'package:flutter/material.dart';
 
