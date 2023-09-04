@@ -196,7 +196,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: ThemeColors.backgroundPrimary,
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.fromLTRB(25, 25, 25, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

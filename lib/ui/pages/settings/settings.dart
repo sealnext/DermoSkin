@@ -181,7 +181,6 @@ class _SettingsPageState extends State<SettingsPage> {
         )));
   }
 
-  // Funcție pentru crearea itemilor cu icons
   Widget buildListItem(IconData icon, String text, [Widget? page]) {
     return GestureDetector(
       onTap: page != null
