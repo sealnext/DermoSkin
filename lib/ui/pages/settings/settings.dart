@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dermo/core/utility/injector.dart';
+import 'package:dermo/logic/managers/user_manager.dart';
 import 'package:dermo/logic/use_cases/sign_out_use_case.dart';
-import 'package:dermo/ui/routes/app_router.gr.dart';
+import 'package:dermo/ui/shared_widgets/user_avatar_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  final user = FirebaseAuth.instance.currentUser!;
+  final _userManager = injector<UserManager>();
   final _signOut = injector<SignOutUseCase>();
 
   @override
@@ -39,11 +40,12 @@ class _SettingsPageState extends State<SettingsPage> {
               // Avatar cu Text
               Row(
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 30,
                     // Replace with actual image
-                    backgroundImage: NetworkImage(
-                        'https://i.pinimg.com/564x/74/d7/b0/74d7b05c3476e062ca7c26452ffb22cb.jpg'),
+                    backgroundImage:
+                        UserAvatarViewModel(avatar: _userManager.user.avatar)
+                            .avatarImageProvider(),
                   ),
                   const SizedBox(width: 16.0),
                   Column(
@@ -54,7 +56,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: TextStyle(color: Colors.grey, fontSize: 20.0),
                       ),
                       Text(
-                        user.displayName ?? 'User',
+                        "${_userManager.user.firstName.value} ${_userManager.user.lastName.value}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20.0),
                       ),

@@ -1,5 +1,6 @@
 import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
+import 'package:dermo/ui/shared_widgets/user_avatar_view_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dermo/core/resources/color_manager.dart';
@@ -45,7 +46,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
   _fetchUserData() async {
     setState(() {
       name = _userManager.user.firstName.value;
-      address = _userManager.user.firstName.value;
       gender = _userManager.user.firstName.value;
       email = _userManager.user.email.value;
 
@@ -80,15 +80,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
           child: Column(
             children: [
               // profile picture
-              const Stack(
+              Stack(
                 alignment: Alignment.topRight,
                 children: [
                   CircleAvatar(
                     radius: 80.0,
-                    backgroundImage: NetworkImage(
-                        'https://via.placeholder.com/150'), // Placeholder image
+                    backgroundImage:
+                        UserAvatarViewModel(avatar: _userManager.user.avatar)
+                            .avatarImageProvider(), // Placeholder image
                   ),
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius:
                         25.0, // 3.0 pixeli mai mare decât CircleAvatar-ul interior
                     backgroundColor: ThemeColors.white,

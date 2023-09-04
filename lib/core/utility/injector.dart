@@ -36,6 +36,7 @@ Future<void> initializeDependencies() async {
 
   injector.registerLazySingleton<SignOutUseCase>(
       () => SignOutUseCase(userManager: injector()));
+      
 
   // injector.registerLazySingleton<FireStorePostRepository>(
   //       () => FireStorePostRepositoryImpl(),

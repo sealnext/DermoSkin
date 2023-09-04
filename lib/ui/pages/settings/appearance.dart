@@ -67,7 +67,8 @@ class _AppearancePageState extends State<AppearancePage> {
         ),
         title: const Text(
           "Appearance",
-          style: TextStyle(fontWeight: FontWeight.bold, color: ThemeColors.black),
+          style:
+              TextStyle(fontWeight: FontWeight.bold, color: ThemeColors.black),
         ),
         centerTitle: true,
       ),
@@ -97,7 +98,7 @@ class _AppearancePageState extends State<AppearancePage> {
             ),
             const Text(
               "Selecting a particular option will change the appearance (coloring) of the application according to your preferences.",
-              style: TextStyle(color: ThemeColors.grey),
+              style: TextStyle(color: Colors.grey),
             ),
             const SizedBox(
               height: 40,

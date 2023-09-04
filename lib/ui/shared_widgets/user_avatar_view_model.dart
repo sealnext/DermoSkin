@@ -1,22 +1,20 @@
 import 'package:dermo/logic/data_objects/entities/user/user_avatar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-class UserAvatarViewModel extends StatelessWidget {
+class UserAvatarViewModel {
   final UserAvatar avatar;
-  static const String _defaultAvatar = "assets/images/guest.svg";
+  static const String _defaultAvatar = "assets/images/guest.png";
 
-  const UserAvatarViewModel({super.key, required this.avatar});
+  const UserAvatarViewModel({required this.avatar});
 
-  @override
-  Widget build(BuildContext context) {
+  ImageProvider avatarImageProvider() {
     switch (avatar.type) {
       case AvatarType.url:
-        return Image.network(avatar.image!);
+        return NetworkImage(avatar.image!);
       case AvatarType.localImage:
-        return SvgPicture.asset(avatar.image!);
+        return AssetImage(avatar.image!);
       default:
-        return SvgPicture.asset(_defaultAvatar);
+        return const AssetImage(_defaultAvatar);
     }
   }
 }

@@ -1,5 +1,7 @@
 import 'package:auto_route/annotations.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:dermo/core/utility/injector.dart';
+import 'package:dermo/logic/managers/user_manager.dart';
+import 'package:dermo/ui/shared_widgets/user_avatar_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:dermo/core/resources/color_manager.dart';
 
@@ -12,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final user = FirebaseAuth.instance.currentUser!;
+  final _userManager = injector<UserManager>();
 
   Widget _buildAppointment({
     required String doctorName,
@@ -205,7 +207,8 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(user.displayName ?? 'User',
+                          Text(
+                              "${_userManager.user.firstName.value} ${_userManager.user.lastName.value}",
                               style: const TextStyle(fontSize: 24)),
                           const Text(
                             "Keep healthy!",
@@ -217,11 +220,12 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    const CircleAvatar(
+                    CircleAvatar(
                       radius: 30,
                       // Replace with actual image
-                      backgroundImage: NetworkImage(
-                          'https://i.pinimg.com/564x/74/d7/b0/74d7b05c3476e062ca7c26452ffb22cb.jpg'),
+                      backgroundImage:
+                          UserAvatarViewModel(avatar: _userManager.user.avatar)
+                              .avatarImageProvider(),
                     ),
                   ],
                 ),

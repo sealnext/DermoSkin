@@ -1,6 +1,7 @@
 import 'package:dermo/logic/managers/user_manager.dart';
 
 class SignOutUseCase {
+  // injected
   final UserManager userManager;
 
   SignOutUseCase({required this.userManager});

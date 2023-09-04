@@ -39,6 +39,14 @@ class AuthDataSource {
     }
   }
 
+  Id getCurrentUserId() {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      throw Exception("No user is currently signed in.");
+    }
+    return user.uid;
+  }
+
   Future<Id> signInWithEmailAndPassword({
     required Email email,
     required Password password,
@@ -73,10 +81,6 @@ class AuthDataSource {
 
   bool isUserSignedIn() {
     User? user = FirebaseAuth.instance.currentUser;
-
-    if (user == null) {
-      return false;
-    }
-    return true;
+    return user != null;
   }
 }

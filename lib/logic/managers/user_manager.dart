@@ -13,7 +13,7 @@ class UserManager {
   static const _collectionPath = "users";
 
   User user = User.guest();
-
+  // injected
   final AuthDataSource _authDataSource;
   final DbDataSource _dbDataSource;
 
@@ -21,7 +21,21 @@ class UserManager {
     required AuthDataSource authDataSource,
     required DbDataSource dbDataSource,
   })  : _authDataSource = authDataSource,
-        _dbDataSource = dbDataSource;
+        _dbDataSource = dbDataSource {
+    isUSerSignedInStream.listen((isSignedIn) {
+      if (isSignedIn) {
+        _loadUserFromDb();
+      } else {
+        user = User.guest();
+      }
+    });
+  }
+
+  Future<void> _loadUserFromDb() async {
+    Id? userId = _authDataSource.getCurrentUserId();
+    user = await _dbDataSource.read<User>(
+        collectionPath: _collectionPath, id: userId);
+  }
 
   /// Used when signing up
   void initializeUser({

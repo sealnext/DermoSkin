@@ -58,7 +58,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  auto_route_generator: ^7.3.1
   
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -85,6 +84,7 @@ flutter:
     - assets/images/screen1.png
     - assets/images/screen2.png
     - assets/images/screen3.png
+    - assets/images/guest.png
     - assets/images/face.png
     - assets/images/google.png
     - assets/images/start.png
