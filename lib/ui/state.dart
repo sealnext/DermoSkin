@@ -1,10 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final registerButtonProvider = StateProvider<bool>((ref) {
-  return false;
-});
+enum AppStatus { loading, firstTime, goToLogin, goToRegister, loggedIn }
 
-final isUserSignedInStateProvider = StateProvider<bool>((ref) {
-  return false;
+final appStatusProvider = StateProvider<AppStatus>((ref) {
+  return AppStatus.loading;
 });
-

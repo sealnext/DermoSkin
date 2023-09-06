@@ -28,17 +28,23 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     try {
       var email = Email(_emailController.text);
       var pasword = Password(_passwordController.text);
+      ref.read(appStatusProvider.notifier).state = AppStatus.loading;
       await _signIn(email: email, password: pasword);
+      // TODO
+      // problema aici, daca am eroare tot se invarte fraieru
+      ref.read(appStatusProvider.notifier).state = AppStatus.loggedIn;
     } catch (e) {
       debugPrint("$e");
     }
   }
 
   void signWithGoogle() async {
+    ref.read(appStatusProvider.notifier).state = AppStatus.loading;
     await AuthService.signInWithGoogle();
   }
 
   void signInWithApple() async {
+    ref.read(appStatusProvider.notifier).state = AppStatus.loading;
     await AuthService.signInWhithApple();
   }
 
@@ -146,7 +152,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          ref.read(registerButtonProvider.notifier).state = true;
+                          ref.read(appStatusProvider.notifier).state =
+                              AppStatus.goToRegister;
                         },
                         child: const Text(
                           "Register now",

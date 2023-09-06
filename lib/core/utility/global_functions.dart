@@ -13,5 +13,4 @@ class Functions {
     return isFirstTime;
   }
 
-
 }

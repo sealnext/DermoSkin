@@ -1,13 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dermo/ui/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:dermo/ui/state.dart';
 
 @RoutePage()
-class StartPage extends StatelessWidget {
+class StartPage extends ConsumerWidget {
   const StartPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFF4757E9),
@@ -67,7 +69,8 @@ class StartPage extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    context.router.push(const RegisterRoute());
+                    ref.read(appStatusProvider.notifier).state =
+                        AppStatus.goToLogin;
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF4757E9),

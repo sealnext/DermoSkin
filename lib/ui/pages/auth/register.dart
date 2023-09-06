@@ -209,7 +209,8 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        ref.read(registerButtonProvider.notifier).state = false;
+                        ref.read(appStatusProvider.notifier).state =
+                            AppStatus.goToLogin;
                       },
                       child: const Text(
                         "Login now",

@@ -34,45 +34,47 @@ class _AppState extends ConsumerState<App> {
 
   @override
   void initState() {
+    Functions.isFirstTime().then((isFirstTime) {
+      if (isFirstTime) {
+        ref.read(appStatusProvider.notifier).state = AppStatus.firstTime;
+        return;
+      }
+    });
+
     _userManager.isUSerSignedInStream.listen((isSignedIn) {
-      ref.read(isUserSignedInStateProvider.notifier).state = isSignedIn;
+      if (isSignedIn) {
+        ref.read(appStatusProvider.notifier).state = AppStatus.loggedIn;
+      } else {
+        ref.read(appStatusProvider.notifier).state = AppStatus.goToLogin;
+      }
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    bool hasPressedRegisterBtn = ref.watch(registerButtonProvider);
-    bool isUserSignedIn = ref.watch(isUserSignedInStateProvider);
-    return FutureBuilder<bool>(
-      future: Functions.isFirstTime(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Text('Error');
-        }
-        if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasData) {
-            bool isFirstTime = snapshot.data!;
-            return MaterialApp.router(
-                debugShowCheckedModeBanner: false,
-                routerDelegate: AutoRouterDelegate.declarative(
-                  _appRouter,
-                  routes: (_) => [
-                    if (isFirstTime)
-                      const StartRoute()
-                    else if (isUserSignedIn)
-                      const MainRoute()
-                    else if (hasPressedRegisterBtn)
-                      const RegisterRoute()
-                    else
-                      const LoginRoute()
-                  ],
-                ),
-                routeInformationParser: _appRouter.defaultRouteParser());
-          }
-        }
-        return const CircularProgressIndicator();
-      },
+    AppStatus appStatus = ref.watch(appStatusProvider);
+
+    if (appStatus == AppStatus.loading) {
+      return const CircularProgressIndicator();
+    }
+
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerDelegate: AutoRouterDelegate.declarative(
+        _appRouter,
+        routes: (_) => [
+          if (appStatus == AppStatus.firstTime)
+            const StartRoute()
+          else if (appStatus == AppStatus.loggedIn)
+            const MainRoute()
+          else if (appStatus == AppStatus.goToLogin)
+            const LoginRoute()
+          else if (appStatus == AppStatus.goToRegister)
+            const RegisterRoute()
+        ],
+      ),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }
