@@ -8,8 +8,6 @@ import 'package:dermo/logic/data_objects/value_objects/last_name.dart';
 import 'package:dermo/logic/data_objects/value_objects/password.dart';
 import 'package:dermo/logic/data_sources/remote/auth_data_source.dart';
 import 'package:dermo/logic/data_sources/remote/db_data_source.dart';
-import 'package:dermo/ui/state.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class UserManager {
   static const _collectionPath = "users";
@@ -66,29 +64,22 @@ class UserManager {
     );
   }
 
-Future<void> signIn({
-  required Email email,
-  required Password password,
-}) async {
-  try {
-    Id userId = await _authDataSource.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-    user = await _dbDataSource.read<User>(
-      collectionPath: _collectionPath, 
-      id: userId
-    );
+  Future<void> signIn({
+    required Email email,
+    required Password password,
+  }) async {
+    try {
+      Id userId = await _authDataSource.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-    // if (user != null) { 
-    //   ref.read(appStatusProvider.notifier).state = AppStatus.loggedIn;
-    // }
-    
-  } catch (e) {
-    print("Eroare la autentificare: $e");
+      user = await _dbDataSource.read<User>(
+          collectionPath: _collectionPath, id: userId);
+    } catch (e) {
+      print("Eroare la autentificare: $e");
+    }
   }
-}
-
 
   Future<void> signOut() async {
     await _authDataSource.signOut();

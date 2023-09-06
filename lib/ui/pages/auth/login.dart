@@ -28,11 +28,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     try {
       var email = Email(_emailController.text);
       var pasword = Password(_passwordController.text);
-      ref.read(appStatusProvider.notifier).state = AppStatus.loading;
       await _signIn(email: email, password: pasword);
       // TODO
-      // problema aici, daca am eroare tot se invarte fraieru
-      ref.read(appStatusProvider.notifier).state = AppStatus.loggedIn;
+      // problema aici
+      // ref.read(appStatusProvider.notifier).state = AppStatus.loggedIn;
     } catch (e) {
       debugPrint("$e");
     }
