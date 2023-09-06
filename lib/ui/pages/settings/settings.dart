@@ -33,7 +33,7 @@ class _SettingsPageState extends State<SettingsPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Divider(),
+              const Divider(color: Color.fromARGB(255, 229, 229, 229)),
               const SizedBox(
                 height: 20,
               ),
@@ -74,7 +74,7 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(
                 height: 20,
               ),
-              const Divider(),
+              const Divider(color: Color.fromARGB(255, 229, 229, 229)),
 
               const SizedBox(height: 40),
 
@@ -94,22 +94,22 @@ class _SettingsPageState extends State<SettingsPage> {
                         buildListItem(Icons.account_circle, 'Profile',
                             const EditProfilePage()),
                         const SizedBox(height: 10),
-                        const Divider(),
+                        const Divider(color: Color.fromARGB(255, 229, 229, 229)),
                         const SizedBox(height: 10),
                         buildListItem(Icons.notifications, 'Notifications',
                             const NotificationPage()),
                         const SizedBox(height: 10),
-                        const Divider(),
+                        const Divider(color: Color.fromARGB(255, 229, 229, 229)),
                         const SizedBox(height: 10),
                         buildListItem(Icons.dark_mode, 'Appearance',
                             const AppearancePage()),
                         const SizedBox(height: 10),
-                        const Divider(),
+                        const Divider(color: Color.fromARGB(255, 229, 229, 229)),
                         const SizedBox(height: 10),
                         buildListItem(
                             Icons.feedback, 'Feedback', const DoctorPage()),
                         const SizedBox(height: 10),
-                        const Divider(),
+                        const Divider(color: Color.fromARGB(255, 229, 229, 229)),
                         const SizedBox(height: 10),
                         buildListItem(
                             Icons.article_outlined, 'Terms of Service'),
@@ -135,7 +135,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     Text(
                       ' How can we help you?',
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 18.0),
+                          fontWeight: FontWeight.bold, fontSize: 16.0),
                     ),
                   ],
                 ),
@@ -199,7 +199,7 @@ class _SettingsPageState extends State<SettingsPage> {
             children: [
               Icon(icon, size: 25.0),
               const SizedBox(width: 16.0),
-              Text(text, style: const TextStyle(fontSize: 18.0)),
+              Text(text, style: const TextStyle(fontSize: 16.0)),
               const Spacer(),
               const Icon(Icons.chevron_right),
             ],

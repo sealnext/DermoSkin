@@ -14,7 +14,6 @@ class _ToggleSwitchState extends State<ToggleSwitch> {
   @override
   Widget build(BuildContext context) {
     return Switch(
-      // This bool value toggles the switch.
       value: light,
       activeColor: ThemeColors.primary,
       onChanged: (bool value) {

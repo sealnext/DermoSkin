@@ -112,7 +112,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               const SizedBox(height: 5),
               TextFormField(
-                style: const TextStyle(fontSize: 17),
+                style: const TextStyle(fontSize: 16),
                 controller: nameController,
                 onChanged: (text) => setState(() {
                   try {
@@ -186,7 +186,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   child: Text(
                     dateOfBirth.toLocal().toString().split(' ')[0],
                     style: const TextStyle(
-                        fontSize: 17, fontWeight: FontWeight.normal),
+                        fontSize: 16, fontWeight: FontWeight.normal),
                   ),
                 ),
               ),
@@ -229,7 +229,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           ),
                           const Text("Male",
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 17)),
+                                  TextStyle(color: Colors.black, fontSize: 16)),
                         ],
                       ),
                     ),
@@ -259,7 +259,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           ),
                           const Text("Female",
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 17)),
+                                  TextStyle(color: Colors.black, fontSize: 16)),
                         ],
                       ),
                     ),
@@ -276,7 +276,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               const SizedBox(height: 5),
               TextFormField(
-                style: const TextStyle(fontSize: 17),
+                style: const TextStyle(fontSize: 16),
                 controller: addressController,
                 onChanged: (text) => setState(() {
                   address = text;
@@ -316,7 +316,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               const SizedBox(height: 5),
               TextFormField(
                 enabled: false,
-                style: const TextStyle(fontSize: 17),
+                style: const TextStyle(fontSize: 16),
                 controller: emailController,
                 onChanged: (text) => setState(() {
                   try {
@@ -375,7 +375,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       },
                       child: const Text(
                         "Save",
-                        style: TextStyle(fontSize: 17),
+                        style: TextStyle(fontSize: 16),
                       ),
                     ),
                   ),
