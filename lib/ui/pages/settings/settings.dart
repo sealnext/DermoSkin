@@ -149,7 +149,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text('Privacy Policy'),
-                      // Textul tău
                       SizedBox(width: 3.0),
                       Icon(Icons.arrow_forward_ios, size: 10.0),
                       // Icon-ul tău
@@ -159,7 +158,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text('Imprint'),
-                      // Textul tău
                       SizedBox(width: 3.0),
                       Icon(Icons.arrow_forward_ios, size: 10.0),
                       // Icon-ul tău

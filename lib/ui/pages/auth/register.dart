@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
 import 'package:dermo/logic/data_objects/value_objects/last_name.dart';
@@ -9,11 +8,10 @@ import 'package:dermo/logic/use_cases/sign_up_use_case.dart';
 import 'package:dermo/core/utility/injector.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:dermo/ui/state.dart';
-
-@RoutePage()
 class RegisterPage extends ConsumerStatefulWidget {
-  const RegisterPage({super.key});
+  final void Function() toggleLoginPage;
+
+  const RegisterPage({super.key, required this.toggleLoginPage});
 
   @override
   ConsumerState<RegisterPage> createState() => _RegisterPageState();
@@ -208,9 +206,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                       width: 4,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        ref.read(registerButtonProvider.notifier).state = false;
-                      },
+                      onTap: widget.toggleLoginPage,
                       child: const Text(
                         "Login now",
                         style: TextStyle(

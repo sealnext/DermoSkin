@@ -9,7 +9,7 @@ class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
 
   @override
-  _CameraPageState createState() => _CameraPageState();
+  State<CameraPage> createState() => _CameraPageState();
 }
 
 class _CameraPageState extends State<CameraPage> {
@@ -54,7 +54,6 @@ class _CameraPageState extends State<CameraPage> {
               ),
               child: const Text("Open camera"),
             ),
-            // Adăugați aici butonul de upload sau orice altă logică pe care o doriți
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dermo/core/utility/constants.dart';
 import 'package:dermo/ui/state.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:dermo/core/config/firebase_options.dart';
 import 'package:dermo/core/utility/injector.dart';
-import 'package:dermo/core/utility/global_functions.dart';
-import 'package:dermo/logic/managers/user_manager.dart';
 import 'package:dermo/ui/routes/app_router.dart';
 import 'package:dermo/ui/routes/app_router.gr.dart';
 
@@ -18,61 +17,33 @@ void main() async {
   );
   await initializeDependencies();
   await injector.allReady();
-  runApp(const ProviderScope(child: App()));
+  runApp(ProviderScope(child: App()));
 }
 
-class App extends ConsumerStatefulWidget {
-  const App({super.key});
+class App extends ConsumerWidget {
+  final _appRouter = AppRouter();
+
+  App({super.key});
 
   @override
-  ConsumerState<App> createState() => _AppState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    AppState appState = ref.watch(appStateProvider);
 
-class _AppState extends ConsumerState<App> {
-  final AppRouter _appRouter = AppRouter();
-  final UserManager _userManager = injector<UserManager>();
-
-  @override
-  void initState() {
-    _userManager.isUSerSignedInStream.listen((isSignedIn) {
-      ref.read(isUserSignedInStateProvider.notifier).state = isSignedIn;
-    });
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    bool hasPressedRegisterBtn = ref.watch(registerButtonProvider);
-    bool isUserSignedIn = ref.watch(isUserSignedInStateProvider);
-    return FutureBuilder<bool>(
-      future: Functions.isFirstTime(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Text('Error');
-        }
-        if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasData) {
-            bool isFirstTime = snapshot.data!;
-            return MaterialApp.router(
-                debugShowCheckedModeBanner: false,
-                routerDelegate: AutoRouterDelegate.declarative(
-                  _appRouter,
-                  routes: (_) => [
-                    if (isFirstTime)
-                      const StartRoute()
-                    else if (isUserSignedIn)
-                      const MainRoute()
-                    else if (hasPressedRegisterBtn)
-                      const RegisterRoute()
-                    else
-                      const LoginRoute()
-                  ],
-                ),
-                routeInformationParser: _appRouter.defaultRouteParser());
-          }
-        }
-        return const CircularProgressIndicator();
-      },
-    );
+    return MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        routerDelegate: AutoRouterDelegate.declarative(
+          _appRouter,
+          routes: (_) =>
+          [
+            if (appState == AppState.firstTime)
+              const StartRoute()
+            else if (appState == AppState.authentication)
+              const AuthRoute()
+            else
+              const MainRoute()
+          ],
+        ),
+        routeInformationParser: _appRouter.defaultRouteParser());
   }
 }
+

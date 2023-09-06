@@ -1,18 +1,17 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/password.dart';
 import 'package:dermo/logic/use_cases/sign_in_use_case.dart';
 import 'package:dermo/old/logic/services/auth.dart';
-import 'package:dermo/ui/state.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-@RoutePage()
 class LoginPage extends ConsumerStatefulWidget {
-  const LoginPage({super.key});
+  final void Function() toggleRegisterPage;
+
+  const LoginPage({super.key, required this.toggleRegisterPage});
 
   @override
   ConsumerState<LoginPage> createState() => _LoginPageState();
@@ -27,8 +26,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   Future<void> signIn() async {
     try {
       var email = Email(_emailController.text);
-      var pasword = Password(_passwordController.text);
-      await _signIn(email: email, password: pasword);
+      var password = Password(_passwordController.text);
+      await _signIn(email: email, password: password);
     } catch (e) {
       debugPrint("$e");
     }
@@ -145,9 +144,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         width: 4,
                       ),
                       GestureDetector(
-                        onTap: () {
-                          ref.read(registerButtonProvider.notifier).state = true;
-                        },
+                        onTap: widget.toggleRegisterPage,
                         child: const Text(
                           "Register now",
                           style: TextStyle(

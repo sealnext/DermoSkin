@@ -52,12 +52,13 @@ dependencies:
   meta: ^1.9.1
   auto_route: ^7.8.2
   flutter_svg: ^2.0.7
-  flutter_riverpod: ^2.3.10
   table_calendar: ^3.0.9
   latlong2: ^0.9.0
   flutter_map: ^5.0.0
   url_launcher: ^6.1.12
   geolocator: ^9.0.2
+  flutter_riverpod: ^2.3.10
+  riverpod_annotation: ^2.1.5
 
 
 dev_dependencies:
@@ -71,6 +72,14 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   auto_route_generator: ^7.3.1
+  build_runner: ^2.4.6
+  # the code generator
+  riverpod_generator: ^2.3.2
+  # riverpod_lint makes it easier to work with Riverpod
+  riverpod_lint: ^2.0.4
+  # import custom_lint too as riverpod_lint depends on it
+  custom_lint: ^0.5.3
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

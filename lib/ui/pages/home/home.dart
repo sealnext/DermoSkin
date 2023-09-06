@@ -35,7 +35,6 @@ class _HomePageState extends State<HomePage> {
       ),
       child: Row(
         children: [
-          // Conținutul existent
           Expanded(
             child: Column(
               children: [
@@ -44,9 +43,9 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        color: ThemeColors.grey, // sau orice altă culoare
+                        color: ThemeColors.grey,
                         borderRadius:
-                            BorderRadius.circular(15), // Radiusul colțurilor
+                            BorderRadius.circular(15),
                       ),
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
@@ -76,7 +75,6 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          // Noua coloană cu steaua și scorul
           const Row(
             children: [
               Icon(
@@ -114,7 +112,6 @@ class _HomePageState extends State<HomePage> {
                   setState(() {
                     containerColor = ThemeColors.white;
                   });
-                  // Aici poți adăuga acțiunea care se întâmplă la apăsare
                 },
                 onTapCancel: () {
                   setState(() {
@@ -123,8 +120,8 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: AnimatedContainer(
                   duration:
-                      const Duration(milliseconds: 200), // Durata animației
-                  curve: Curves.easeOut, // Tipul de curba pentru animatie
+                      const Duration(milliseconds: 200),
+                  curve: Curves.easeOut,
                   decoration: BoxDecoration(
                     color: containerColor,
                     borderRadius: BorderRadius.circular(20.0),
@@ -239,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                         reason: "Cardiologist",
                         date: "15/05/23",
                         duration: "09:15-10:10",
-                        clinicLocation: "RS. Sardjito",
+                        clinicLocation: "Regina Maria",
                         imageUrl:
                             "https://www.jeanlouismedical.com/img/doctor-profile-small.png",
                       ),
@@ -249,17 +246,17 @@ class _HomePageState extends State<HomePage> {
                         reason: "Neurologist",
                         date: "20/05/23",
                         duration: "11:00-11:45",
-                        clinicLocation: "RS. Sardjito",
+                        clinicLocation: "Premiere Hospital",
                         imageUrl:
                             "https://www.henrymayo.com/app/files/public/dhanda.l--0002.jpg",
                       ),
                       _buildAppointment(
-                        doctorName: "Jinsa Brown",
+                        doctorName: "Mark Brown",
                         doctorProfession: "",
                         reason: "Orthopedic Surgeon",
                         date: "25/05/23",
                         duration: "14:30-15:00",
-                        clinicLocation: "RS. Sardjito",
+                        clinicLocation: "Regina Maria",
                         imageUrl:
                             "https://www.kauveryhospital.com/doctorimage/recent/Arju_Ashok2021-12-24-12:54:06pm.jpg",
                       ),
@@ -269,7 +266,7 @@ class _HomePageState extends State<HomePage> {
                         reason: "Dermatologist",
                         date: "28/05/23",
                         duration: "09:45-10:30",
-                        clinicLocation: "RS. Sardjito",
+                        clinicLocation: "Regina Maria",
                         imageUrl:
                             "https://www.kauveryhospital.com/doctorimage/recent/Dr-Rajaram2021-09-09-01:46:06pm.jpg",
                       ),
@@ -313,8 +310,8 @@ class _HomePageState extends State<HomePage> {
               bottom: -1,
               child: Image.asset(
                 'assets/images/face.png',
-                width: 170, // Poți ajusta dimensiunea aici
-                height: 170, // și aici
+                width: 170,
+                height: 170,
               ),
             )
           ]),

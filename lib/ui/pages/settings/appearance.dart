@@ -30,18 +30,18 @@ class _AppearancePageState extends State<AppearancePage> {
             },
             child: Stack(
               alignment:
-                  Alignment.center, // Acesta va alinia iconița mică în mijloc
+                  Alignment.center,
               children: [
                 const Icon(
                   Icons.circle_outlined,
                   color: ThemeColors.grey,
                   size: 30,
                 ),
-                if (isSelected) // Afișează doar dacă este selectat
+                if (isSelected)
                   const Icon(
                     Icons.circle_rounded,
                     color: ThemeColors.primary,
-                    size: 15, // Aceasta este dimensiunea iconiței mici albastre
+                    size: 15,
                   ),
               ],
             ),
@@ -61,7 +61,7 @@ class _AppearancePageState extends State<AppearancePage> {
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: ThemeColors.black, // Setează culoarea iconiței aici
+            color: ThemeColors.black,
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -77,12 +77,12 @@ class _AppearancePageState extends State<AppearancePage> {
         child: Column(
           children: [
             const SizedBox(
-              width: double.infinity, // Ocupează întreaga lățime
+              width: double.infinity,
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 5.0),
                 child: Column(
                   crossAxisAlignment:
-                      CrossAxisAlignment.start, // Aliniaza la stanga
+                      CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 5.0),
@@ -121,18 +121,16 @@ class _AppearancePageState extends State<AppearancePage> {
               ],
             ),
             const Spacer(),
-            // Butonul
             SizedBox(
-              width: double.infinity, // Latimea maximă disponibilă
+              width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   foregroundColor: ThemeColors.white,
-                  backgroundColor: ThemeColors.primary, // Culoarea textului
+                  backgroundColor: ThemeColors.primary,
                   padding: const EdgeInsets.symmetric(
-                      vertical: 15.0), // Mărește înălțimea butonului
+                      vertical: 15.0),
                   shape: RoundedRectangleBorder(
-                    // Formează forma butonului
-                    borderRadius: BorderRadius.circular(20), // Bordură rotundă
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
                 onPressed: () async {

@@ -65,7 +65,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back,
-              color: Colors.black, // Setează culoarea iconiței aici
+              color: Colors.black,
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
@@ -91,7 +91,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                   const CircleAvatar(
                     radius:
-                        25.0, // 3.0 pixeli mai mare decât CircleAvatar-ul interior
+                        25.0,
                     backgroundColor: ThemeColors.white,
                     child: CircleAvatar(
                       backgroundColor: ThemeColors.primary,
@@ -104,7 +104,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               const SizedBox(height: 20),
               // name
               Container(
-                alignment: Alignment.topLeft, // Aici
+                alignment: Alignment.topLeft,
                 child: const Text(
                   "Name",
                   textAlign: TextAlign.left,
@@ -125,32 +125,29 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
-                    // Aceasta adaugă bordura rotundă
                     borderRadius: BorderRadius.circular(7.0),
                     borderSide: const BorderSide(
                         color: Color.fromARGB(
-                            255, 182, 182, 182)), // Aceasta face bordura neagră
+                            255, 182, 182, 182)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    // Aceasta este bordura când câmpul este activ (focused)
                     borderRadius: BorderRadius.circular(7.0),
                     borderSide: const BorderSide(
                         color: Color.fromARGB(255, 182, 182, 182)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    // Aceasta este bordura când câmpul este activat dar nu focused
                     borderRadius: BorderRadius.circular(7.0),
                     borderSide: const BorderSide(
                         color: Color.fromARGB(255, 182, 182, 182)),
                   ),
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 10.0,
-                      horizontal: 15.0), // Padding în interiorul câmpului
+                      horizontal: 15.0),
                 ),
               ),
               const SizedBox(height: 20),
               Container(
-                alignment: Alignment.topLeft, // Aici
+                alignment: Alignment.topLeft,
                 child: const Text(
                   "Date of birth",
                   textAlign: TextAlign.left,
@@ -177,12 +174,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   foregroundColor: Colors.black,
                   padding: const EdgeInsets.symmetric(
                       vertical: 15.0,
-                      horizontal: 15.0), // A mărit padding-ul vertical
+                      horizontal: 15.0),
                   side: const BorderSide(
                       color: Color.fromARGB(255, 182, 182, 182)),
                   shape: RoundedRectangleBorder(
                       borderRadius:
-                          BorderRadius.circular(7.0)), // Culoarea textului
+                          BorderRadius.circular(7.0)),
                 ),
                 child: Align(
                   alignment: Alignment.centerLeft,
@@ -195,7 +192,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               const SizedBox(height: 25),
               Container(
-                alignment: Alignment.topLeft, // Aici
+                alignment: Alignment.topLeft,
                 child: const Text(
                   "Gender",
                   textAlign: TextAlign.left,
@@ -210,11 +207,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(7.0),
                         border:
-                            Border.all(color: Colors.grey), // Culoarea bordurii
+                            Border.all(color: Colors.grey),
                       ),
                       margin: const EdgeInsets.only(
                           right:
-                              8.0), // margin pentru a lăsa spațiu între cele două container-e
+                              8.0),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 5.0),
                       child: Row(
@@ -243,7 +240,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(7.0),
                         border:
-                            Border.all(color: Colors.grey), // Culoarea bordurii
+                            Border.all(color: Colors.grey),
                       ),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 5.0),
@@ -271,7 +268,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               const SizedBox(height: 25),
               Container(
-                alignment: Alignment.topLeft, // Aici
+                alignment: Alignment.topLeft,
                 child: const Text(
                   "Address",
                   textAlign: TextAlign.left,
@@ -288,32 +285,29 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
-                    // Aceasta adaugă bordura rotundă
                     borderRadius: BorderRadius.circular(7.0),
                     borderSide: const BorderSide(
                         color: Color.fromARGB(
-                            255, 182, 182, 182)), // Aceasta face bordura neagră
+                            255, 182, 182, 182)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    // Aceasta este bordura când câmpul este activ (focused)
                     borderRadius: BorderRadius.circular(7.0),
                     borderSide: const BorderSide(
                         color: Color.fromARGB(255, 182, 182, 182)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    // Aceasta este bordura când câmpul este activat dar nu focused
                     borderRadius: BorderRadius.circular(7.0),
                     borderSide: const BorderSide(
                         color: Color.fromARGB(255, 182, 182, 182)),
                   ),
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 10.0,
-                      horizontal: 15.0), // Padding în interiorul câmpului
+                      horizontal: 15.0),
                 ),
               ),
               const SizedBox(height: 25),
               Container(
-                alignment: Alignment.topLeft, // Aici
+                alignment: Alignment.topLeft,
                 child: const Text(
                   "Email",
                   textAlign: TextAlign.left,
@@ -335,51 +329,44 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
-                    // Aceasta adaugă bordura rotundă
                     borderRadius: BorderRadius.circular(7.0),
                     borderSide: const BorderSide(
                         color: Color.fromARGB(
-                            255, 182, 182, 182)), // Aceasta face bordura neagră
+                            255, 182, 182, 182)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    // Aceasta este bordura când câmpul este activ (focused)
                     borderRadius: BorderRadius.circular(7.0),
                     borderSide: const BorderSide(
                         color: Color.fromARGB(255, 182, 182, 182)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    // Aceasta este bordura când câmpul este activat dar nu focused
                     borderRadius: BorderRadius.circular(7.0),
                     borderSide: const BorderSide(
                         color: Color.fromARGB(255, 182, 182, 182)),
                   ),
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 10.0,
-                      horizontal: 15.0), // Padding în interiorul câmpului
+                      horizontal: 15.0),
                 ),
               ),
               const Spacer(),
               Column(
                 children: <Widget>[
-                  // Linie orizontală deasupra butonului
                   const SizedBox(
                     height: 15,
                   ),
-                  // Butonul
-// Butonul
                   SizedBox(
-                    width: double.infinity, // Latimea maximă disponibilă
+                    width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor:
-                            ThemeColors.primary, // Culoarea textului
+                            ThemeColors.primary,
                         padding: const EdgeInsets.symmetric(
-                            vertical: 15.0), // Mărește înălțimea butonului
+                            vertical: 15.0),
                         shape: RoundedRectangleBorder(
-                          // Formează forma butonului
                           borderRadius:
-                              BorderRadius.circular(20), // Bordură rotundă
+                              BorderRadius.circular(20),
                         ),
                       ),
                       onPressed: () async {

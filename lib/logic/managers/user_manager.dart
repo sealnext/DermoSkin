@@ -21,15 +21,7 @@ class UserManager {
     required AuthDataSource authDataSource,
     required DbDataSource dbDataSource,
   })  : _authDataSource = authDataSource,
-        _dbDataSource = dbDataSource {
-    isUSerSignedInStream.listen((isSignedIn) {
-      if (isSignedIn) {
-        _loadUserFromDb();
-      } else {
-        user = User.guest();
-      }
-    });
-  }
+        _dbDataSource = dbDataSource;
 
   Future<void> _loadUserFromDb() async {
     Id? userId = _authDataSource.getCurrentUserId();
@@ -82,9 +74,5 @@ class UserManager {
 
   Future<void> syncUserWithDb() async {
     _dbDataSource.write(collectionPath: _collectionPath, entity: user);
-  }
-
-  Stream<bool> get isUSerSignedInStream {
-    return _authDataSource.isUserSignedInStream;
   }
 }
