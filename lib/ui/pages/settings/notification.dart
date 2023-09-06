@@ -87,9 +87,9 @@ class _NotificationPageState extends State<NotificationPage> {
         child: Column(
           children: [
             buildNotificationToggle("Push"),
-            const Divider(),
+            const Divider(color: Color.fromARGB(255, 229, 229, 229)),
             buildNotificationToggle("Email"),
-            const Divider(),
+            const Divider(color: Color.fromARGB(255, 229, 229, 229)),
             buildNotificationToggle("SMS"),
           ],
         ),
