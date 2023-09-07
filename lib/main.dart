@@ -27,7 +27,7 @@ class App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AppState appState = ref.watch(appStateProvider);
+    AppStatus appState = ref.watch(appStateProvider);
 
     return MaterialApp.router(
         debugShowCheckedModeBanner: false,
@@ -35,9 +35,9 @@ class App extends ConsumerWidget {
           _appRouter,
           routes: (_) =>
           [
-            if (appState == AppState.firstTime)
+            if (appState == AppStatus.firstTime)
               const StartRoute()
-            else if (appState == AppState.authentication)
+            else if (appState == AppStatus.authentication)
               const AuthRoute()
             else
               const MainRoute()

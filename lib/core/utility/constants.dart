@@ -1,4 +1,4 @@
-enum AppState {
+enum AppStatus {
   firstTime,
   authentication,
   running

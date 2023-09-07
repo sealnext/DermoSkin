@@ -70,7 +70,6 @@ class StartPage extends ConsumerWidget {
                 ElevatedButton(
                   onPressed: () {
                     ref.invalidate(isFirstTimeProvider);
-                    ref.read(registerButtonProvider.notifier).state = true;
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF4757E9),
