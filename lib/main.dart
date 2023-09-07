@@ -10,7 +10,6 @@ import 'package:dermo/core/config/firebase_options.dart';
 import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/ui/routes/app_router.dart';
 import 'package:dermo/ui/routes/app_router.gr.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/logic/managers/user_manager.dart';
 import 'package:dermo/ui/pages/appointments/doctor_page.dart';
+import 'package:dermo/ui/pages/appointments/schedule_selector.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dermo/core/resources/color_manager.dart';
@@ -24,25 +25,20 @@ class _AppointmentPage extends State<AppointmentPage> {
           padding: const EdgeInsets.all(25.0),
           child: Column(
             children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Upcoming",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
+              const SizedBox(
+                width: double.infinity,
+                child: Text(
+                  "Appointments",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
                   ),
-                  Text(
-                    "View History",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                    ),
-                  ),
-                ],
+                ),
               ),
+              const SizedBox(
+                height: 10,
+              ),
+              const ScheduleSelector(),
               const SizedBox(
                 height: 10,
               ),
@@ -179,14 +175,11 @@ class _AppointmentPage extends State<AppointmentPage> {
                   ),
                   child: const AspectRatio(
                     aspectRatio: 1, // acesta este raportul 1:1
-                    child: AspectRatio(
-                      aspectRatio: 1, // acesta este raportul 1:1
-                      child: Center(
-                        child: Text(
-                          // todo error UI
-                          "...",
-                          style: TextStyle(color: Colors.red),
-                        ),
+                    child: Center(
+                      child: Text(
+                        // todo error UI
+                        "...",
+                        style: TextStyle(color: Colors.red),
                       ),
                     ),
                   ),
