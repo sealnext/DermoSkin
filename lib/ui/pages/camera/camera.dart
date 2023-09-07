@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:dermo/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,6 +13,8 @@ class CameraPage extends StatefulWidget {
 
 class _CameraPageState extends State<CameraPage> {
   File? _image;
+  bool _isLoading = false;
+  String? _diagnosis;
 
   Future<void> _getImage() async {
     final picker = ImagePicker();
@@ -22,6 +23,17 @@ class _CameraPageState extends State<CameraPage> {
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
+        _isLoading = true; // set loading to true
+        _diagnosis = null; // reset the diagnosis
+
+        // Call your API here and set _isLoading to false and _diagnosis
+        // For demo, let's set diagnosis to "Test" after 2 seconds
+        Future.delayed(const Duration(seconds: 2), () {
+          setState(() {
+            _isLoading = false;
+            _diagnosis = "Test Disease"; // Replace with API response
+          });
+        });
       } else {
         print('Please select an image');
       }
@@ -32,32 +44,26 @@ class _CameraPageState extends State<CameraPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _image == null
-                ? const Text('Please select an image.')
-                : Image.file(_image!),
-            const SizedBox(
-              height: 40,
-            ),
-            ElevatedButton(
-              onPressed: _getImage,
-              style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    ThemeColors.primary, // Set the background color here
-                minimumSize: const Size(200, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.circular(20), // Set the border radius
-                ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              _image == null
+                  ? const Text('No image selected.')
+                  : Image.file(_image!),
+              const SizedBox(height: 20),
+              _isLoading
+                  ? const CircularProgressIndicator()
+                  : _diagnosis != null
+                      ? Text("Diagnosis: $_diagnosis")
+                      : Container(),
+              const SizedBox(height: 40),
+              ElevatedButton(
+                onPressed: _getImage,
+                child: const Text("Open Camera"),
               ),
-              child: const Text(
-                "Open camera",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

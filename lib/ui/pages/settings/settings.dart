@@ -37,12 +37,12 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(
                 height: 20,
               ),
-              // Avatar cu Text
+
               Row(
                 children: [
                   CircleAvatar(
                     radius: 30,
-                    // Replace with actual image
+
                     backgroundImage:
                         UserAvatarViewModel(avatar: _userManager.user.avatar)
                             .avatarImageProvider(),
@@ -77,8 +77,6 @@ class _SettingsPageState extends State<SettingsPage> {
               const Divider(color: Color.fromARGB(255, 229, 229, 229)),
 
               const SizedBox(height: 40),
-
-              // Item-uri cu icons
 
               Expanded(
                 child: Container(
@@ -141,7 +139,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
 
-              // Row de jos
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -151,7 +148,6 @@ class _SettingsPageState extends State<SettingsPage> {
                       Text('Privacy Policy'),
                       SizedBox(width: 3.0),
                       Icon(Icons.arrow_forward_ios, size: 10.0),
-                      // Icon-ul tău
                     ],
                   ),
                   const Row(
@@ -160,7 +156,6 @@ class _SettingsPageState extends State<SettingsPage> {
                       Text('Imprint'),
                       SizedBox(width: 3.0),
                       Icon(Icons.arrow_forward_ios, size: 10.0),
-                      // Icon-ul tău
                     ],
                   ),
                   DropdownButton<String>(

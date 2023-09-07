@@ -10,7 +10,7 @@ class ScheduleSelector extends StatefulWidget {
 class _ScheduleSelectorState extends State<ScheduleSelector> {
   double _dragPosition = 0.0;
   bool _isFutureSelected =
-      false; // Setează la false pentru a începe cu "Past Schedules"
+      false;
 
   @override
   Widget build(BuildContext context) {

@@ -15,7 +15,6 @@ class _SearchDoctorState extends State<SearchDoctor> {
     'John Doe',
     'Jane Doe',
     'Emily Smith',
-    // Adăugați mai multe nume aici
   ];
 
   @override
@@ -51,7 +50,6 @@ class _SearchDoctorState extends State<SearchDoctor> {
       itemBuilder: (context, String doctorName) {
         return ListTile(
           title: Text(doctorName),
-          // Adăugați orice doriți să apară alături de nume
         );
       },
       onSuggestionSelected: (String doctorName) {

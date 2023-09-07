@@ -17,7 +17,6 @@ class _ToggleSwitchState extends State<ToggleSwitch> {
       value: light,
       activeColor: ThemeColors.primary,
       onChanged: (bool value) {
-        // This is called when the user toggles the switch.
         setState(() {
           light = value;
         });
