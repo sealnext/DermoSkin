@@ -15,7 +15,6 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPage extends State<AppointmentPage> {
-  final _userManager = injector<UserManager>();
 
   @override
   Widget build(BuildContext context) {

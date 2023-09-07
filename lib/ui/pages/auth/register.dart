@@ -6,18 +6,17 @@ import 'package:flutter/material.dart';
 
 import 'package:dermo/logic/use_cases/sign_up_use_case.dart';
 import 'package:dermo/core/utility/injector.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RegisterPage extends ConsumerStatefulWidget {
+class RegisterPage extends StatefulWidget {
   final void Function() toggleLoginPage;
 
   const RegisterPage({super.key, required this.toggleLoginPage});
 
   @override
-  ConsumerState<RegisterPage> createState() => _RegisterPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends ConsumerState<RegisterPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _emailController = TextEditingController();
