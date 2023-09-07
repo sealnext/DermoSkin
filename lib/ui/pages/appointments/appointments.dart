@@ -15,7 +15,6 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPage extends State<AppointmentPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,7 +160,8 @@ class _AppointmentPage extends State<AppointmentPage> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
-                  child: const Text("See details"),
+                  child: const Text("See details",
+                      style: TextStyle(color: Colors.white)),
                 ),
               ),
               const SizedBox(width: 10),
@@ -183,11 +183,9 @@ class _AppointmentPage extends State<AppointmentPage> {
                       aspectRatio: 1, // acesta este raportul 1:1
                       child: Center(
                         child: Text(
-                          '...',
-                          style: TextStyle(
-                            color: ThemeColors
-                                .black, // Acesta setează culoarea textului la negru
-                          ),
+                          // todo error UI
+                          "...",
+                          style: TextStyle(color: Colors.red),
                         ),
                       ),
                     ),

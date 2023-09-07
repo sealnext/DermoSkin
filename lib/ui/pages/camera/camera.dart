@@ -52,7 +52,10 @@ class _CameraPageState extends State<CameraPage> {
                       BorderRadius.circular(20), // Set the border radius
                 ),
               ),
-              child: const Text("Open camera"),
+              child: const Text(
+                "Open camera",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),

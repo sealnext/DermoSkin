@@ -12,7 +12,7 @@ class StartPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xFF4757E9),
+          backgroundColor: Colors.white,
           title: const Text(
             'DermoSkin',
             style: TextStyle(

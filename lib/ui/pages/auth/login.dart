@@ -44,9 +44,9 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF4757E9),
+        backgroundColor: Colors.white,
         title: const Text(
-          'DermoSkin',
+          '',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,

@@ -22,6 +22,7 @@ class MainScreen extends StatelessWidget {
           selectedIndex: tabsRouter.activeIndex,
           onDestinationSelected: tabsRouter.setActiveIndex,
           animationDuration: const Duration(milliseconds: 300),
+          surfaceTintColor: ThemeColors.backgroundPrimary,
           labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
           backgroundColor: ThemeColors.backgroundPrimary,
           destinations: const [
@@ -29,7 +30,7 @@ class MainScreen extends StatelessWidget {
               selectedIcon: Icon(Icons.home, color: ThemeColors.primary),
               icon: Icon(Icons.home_outlined,
                   color: Color.fromARGB(255, 94, 109, 245)),
-              label: 'Home',
+              label: '',
             ),
             NavigationDestination(
               selectedIcon: Badge(
@@ -39,12 +40,12 @@ class MainScreen extends StatelessWidget {
               icon: Badge(
                   label: Text("2"),
                   child: Icon(Icons.access_time, color: ThemeColors.primary)),
-              label: 'Appointments',
+              label: '',
             ),
             NavigationDestination(
               selectedIcon: Icon(Icons.camera_alt, color: ThemeColors.primary),
               icon: Icon(Icons.camera_alt_outlined, color: ThemeColors.primary),
-              label: 'Scan',
+              label: '',
             ),
             NavigationDestination(
               selectedIcon: Badge(
@@ -53,13 +54,13 @@ class MainScreen extends StatelessWidget {
               icon: Badge(
                   label: Text("1"),
                   child: Icon(Icons.chat_outlined, color: ThemeColors.primary)),
-              label: 'Chat',
+              label: '',
             ),
             NavigationDestination(
               selectedIcon: Icon(Icons.settings, color: ThemeColors.primary),
               icon: Icon(Icons.settings_outlined,
                   color: Color.fromARGB(255, 94, 109, 245)),
-              label: 'Settings',
+              label: '',
             ),
           ],
         );

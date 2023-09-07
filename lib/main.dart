@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dermo/core/resources/color_manager.dart';
 import 'package:dermo/core/utility/constants.dart';
 import 'package:dermo/ui/state.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,6 +10,7 @@ import 'package:dermo/core/config/firebase_options.dart';
 import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/ui/routes/app_router.dart';
 import 'package:dermo/ui/routes/app_router.gr.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,11 +32,26 @@ class App extends ConsumerWidget {
     AppStatus appState = ref.watch(appStateProvider);
 
     return MaterialApp.router(
+        theme: ThemeData(
+          colorScheme: const ColorScheme(
+            surface: Colors.white,
+            onSurface: Colors.black,
+            error: Colors.red,
+            onError: Colors.white,
+            onBackground: Colors.black,
+            background: ThemeColors.backgroundPrimary,
+            primary: ThemeColors.primary,
+            secondary: ThemeColors.secondary,
+            onPrimary: ThemeColors.white,
+            onSecondary: ThemeColors.white,
+            brightness: Brightness.light,
+          ),
+          useMaterial3: true,
+        ),
         debugShowCheckedModeBanner: false,
         routerDelegate: AutoRouterDelegate.declarative(
           _appRouter,
-          routes: (_) =>
-          [
+          routes: (_) => [
             if (appState == AppStatus.firstTime)
               const StartRoute()
             else if (appState == AppStatus.authentication)
@@ -46,4 +63,3 @@ class App extends ConsumerWidget {
         routeInformationParser: _appRouter.defaultRouteParser());
   }
 }
-
