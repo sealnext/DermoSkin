@@ -44,8 +44,7 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       decoration: BoxDecoration(
                         color: ThemeColors.grey,
-                        borderRadius:
-                            BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(15),
                       ),
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
@@ -119,8 +118,7 @@ class _HomePageState extends State<HomePage> {
                   });
                 },
                 child: AnimatedContainer(
-                  duration:
-                      const Duration(milliseconds: 200),
+                  duration: const Duration(milliseconds: 200),
                   curve: Curves.easeOut,
                   decoration: BoxDecoration(
                     color: containerColor,
@@ -168,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Text(
                               "${_userManager.user.firstName.value} ${_userManager.user.lastName.value}",
-                              style: const TextStyle(fontSize: 24)),
+                              style: const TextStyle(fontSize: 20)),
                           const Text(
                             "Keep healthy!",
                             style: TextStyle(

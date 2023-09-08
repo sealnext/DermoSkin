@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/core/utility/types.dart';
 import 'package:dermo/logic/data_objects/entities/common/entity.dart';
 import 'package:dermo/logic/data_objects/entities/common/entity_factory.dart';
+import 'package:dermo/logic/use_cases/sign_out_use_case.dart';
 
 class DbDataSource {
   final FirebaseFirestore _db = FirebaseFirestore.instance;

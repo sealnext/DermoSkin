@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/logic/managers/user_manager.dart';
 import 'package:dermo/logic/use_cases/sign_out_use_case.dart';
-import 'package:dermo/features/pages/appointments/doctor_page.dart';
 import 'package:dermo/features/shared_widgets/user_avatar_view_model.dart';
 import 'package:flutter/material.dart';
 

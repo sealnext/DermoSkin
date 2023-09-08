@@ -1,7 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'dart:convert';
 import 'package:auto_route/auto_route.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
+import 'package:image/image.dart' as img;
 
 @RoutePage()
 class CameraPage extends StatefulWidget {
@@ -15,6 +18,21 @@ class _CameraPageState extends State<CameraPage> {
   File? _image;
   bool _isLoading = false;
   String? _diagnosis;
+  double? _confidence;
+
+  File resizeImage(File imageFile) {
+    // Citim imaginea din fișier
+    img.Image? image = img.decodeImage(imageFile.readAsBytesSync());
+
+    // Redimensionăm imaginea la 456x456 pixeli
+    img.Image resizedImage = img.copyResize(image!, width: 456, height: 456);
+
+    // Salvăm imaginea redimensionată într-un nou fișier
+    File resizedFile = File('${imageFile.path}_resized.jpg')
+      ..writeAsBytesSync(img.encodeJpg(resizedImage));
+
+    return resizedFile;
+  }
 
   Future<void> _getImage() async {
     final picker = ImagePicker();
@@ -25,19 +43,44 @@ class _CameraPageState extends State<CameraPage> {
         _image = File(pickedFile.path);
         _isLoading = true; // set loading to true
         _diagnosis = null; // reset the diagnosis
-
-        // Call your API here and set _isLoading to false and _diagnosis
-        // For demo, let's set diagnosis to "Test" after 2 seconds
-        Future.delayed(const Duration(seconds: 2), () {
+        _uploadImage(_image!).then((result) {
           setState(() {
             _isLoading = false;
-            _diagnosis = "Test Disease"; // Replace with API response
+            _diagnosis = result['prediction'];
+            _confidence = result['confidence'];
           });
         });
       } else {
         print('Please select an image');
       }
     });
+  }
+
+  Future<Map<String, dynamic>> _uploadImage(File image) async {
+    const url = 'https://abadescu-dermoskin-app.loca.lt/api/upload-image';
+    final request = http.MultipartRequest('PUT', Uri.parse(url));
+    var _myimage = resizeImage(image);
+    request.files.add(http.MultipartFile(
+      'image',
+      _myimage.readAsBytes().asStream(),
+      _myimage.lengthSync(),
+      filename: _myimage.path.split('/').last,
+    ));
+
+    try {
+      final response = await request.send();
+      print(response);
+      if (response.statusCode == 200) {
+        final responseData = await response.stream.bytesToString();
+        final Map<String, dynamic> data = json.decode(responseData);
+        return data;
+      } else {
+        print('Failed to upload image: ${response.reasonPhrase}');
+      }
+    } catch (e) {
+      print('Error uploading image: $e');
+    }
+    return <String, dynamic>{};
   }
 
   @override
@@ -55,7 +98,7 @@ class _CameraPageState extends State<CameraPage> {
               _isLoading
                   ? const CircularProgressIndicator()
                   : _diagnosis != null
-                      ? Text("Diagnosis: $_diagnosis")
+                      ? Text("Diagnosis: $_diagnosis \nConfidence $_confidence")
                       : Container(),
               const SizedBox(height: 40),
               ElevatedButton(
