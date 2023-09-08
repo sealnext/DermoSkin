@@ -75,7 +75,7 @@ class AuthDataSource {
     }
   }
 
-  /// moved to ui/state.dart
+  /// moved to ui/main_logic.dart
   // Stream<bool> get isUserSignedInStream {
   //   return FirebaseAuth.instance.authStateChanges().map((user) => user != null);
   // }

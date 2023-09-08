@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dermo/core/utility/injector.dart';
-import 'package:dermo/logic/managers/user_manager.dart';
-import 'package:dermo/ui/pages/appointments/doctor_page.dart';
-import 'package:dermo/ui/pages/appointments/schedule_selector.dart';
+import 'package:dermo/features/pages/appointments/doctor_page.dart';
+import 'package:dermo/features/pages/appointments/schedule_selector.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dermo/core/resources/color_manager.dart';

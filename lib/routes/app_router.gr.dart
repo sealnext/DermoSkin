@@ -9,14 +9,14 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i9;
-import 'package:dermo/ui/pages/appointments/appointments.dart' as _i1;
-import 'package:dermo/ui/pages/auth/auth_wrapper.dart' as _i2;
-import 'package:dermo/ui/pages/auth/start.dart' as _i8;
-import 'package:dermo/ui/pages/camera/camera.dart' as _i3;
-import 'package:dermo/ui/pages/chat/rooms.dart' as _i6;
-import 'package:dermo/ui/pages/home/home.dart' as _i4;
-import 'package:dermo/ui/pages/main_screen.dart' as _i5;
-import 'package:dermo/ui/pages/settings/settings.dart' as _i7;
+import 'package:dermo/features/pages/appointments/appointments.dart' as _i1;
+import 'package:dermo/features/pages/auth/auth_wrapper.dart' as _i2;
+import 'package:dermo/features/pages/auth/start.dart' as _i8;
+import 'package:dermo/features/pages/camera/camera.dart' as _i3;
+import 'package:dermo/features/pages/chat/rooms.dart' as _i6;
+import 'package:dermo/features/pages/home/home.dart' as _i4;
+import 'package:dermo/features/pages/main_screen.dart' as _i5;
+import 'package:dermo/features/pages/settings/settings.dart' as _i7;
 
 abstract class $AppRouter extends _i9.RootStackRouter {
   $AppRouter({super.navigatorKey});

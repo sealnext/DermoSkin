@@ -1,6 +1,6 @@
 import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
-import 'package:dermo/ui/shared_widgets/user_avatar_view_model.dart';
+import 'package:dermo/features/shared_widgets/user_avatar_view_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dermo/core/resources/color_manager.dart';

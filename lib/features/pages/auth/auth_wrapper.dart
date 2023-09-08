@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:dermo/ui/pages/auth/login.dart';
-import 'package:dermo/ui/pages/auth/register.dart';
+import 'package:dermo/features/pages/auth/login.dart';
+import 'package:dermo/features/pages/auth/register.dart';
 
 @RoutePage(name: "AuthRoute")
 class AuthWrapper extends StatefulWidget {

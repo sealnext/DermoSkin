@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dermo/core/resources/color_manager.dart';
-import 'package:dermo/ui/routes/app_router.gr.dart';
+import 'package:dermo/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()

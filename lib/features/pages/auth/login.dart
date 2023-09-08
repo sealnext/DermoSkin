@@ -2,8 +2,9 @@ import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/password.dart';
 import 'package:dermo/logic/use_cases/sign_in_use_case.dart';
-import 'package:dermo/old/logic/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:io';
 
 class LoginPage extends StatefulWidget {
@@ -32,11 +33,21 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void signWithGoogle() async {
-    await AuthService.signInWithGoogle();
+    final GoogleSignInAccount? googleSignInAccount =
+    await GoogleSignIn().signIn();
+
+    final GoogleSignInAuthentication googleSignInAuthentication =
+    await googleSignInAccount!.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleSignInAuthentication.accessToken,
+      idToken: googleSignInAuthentication.idToken,
+    );
+
+    await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
   void signInWithApple() async {
-    await AuthService.signInWhithApple();
   }
 
   @override

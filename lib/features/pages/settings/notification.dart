@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:dermo/core/resources/color_manager.dart';
-import 'package:dermo/ui/shared_widgets/toggle_switch.dart';
+import 'package:dermo/features/shared_widgets/toggle_switch.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
