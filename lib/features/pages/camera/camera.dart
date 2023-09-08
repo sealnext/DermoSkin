@@ -60,7 +60,17 @@ class _CameraPageState extends State<CameraPage> {
               const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: _getImage,
-                child: const Text("Open Camera"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF4757E9),
+                  minimumSize: const Size(200, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: const Text(
+                  "Open Camera",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),

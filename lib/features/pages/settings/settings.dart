@@ -37,12 +37,10 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(
                 height: 20,
               ),
-
               Row(
                 children: [
                   CircleAvatar(
                     radius: 30,
-
                     backgroundImage:
                         UserAvatarViewModel(avatar: _userManager.user.avatar)
                             .avatarImageProvider(),
@@ -75,9 +73,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 height: 20,
               ),
               const Divider(color: Color.fromARGB(255, 229, 229, 229)),
-
               const SizedBox(height: 40),
-
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.all(20.0),
@@ -92,22 +88,25 @@ class _SettingsPageState extends State<SettingsPage> {
                         buildListItem(Icons.account_circle, 'Profile',
                             const EditProfilePage()),
                         const SizedBox(height: 10),
-                        const Divider(color: Color.fromARGB(255, 229, 229, 229)),
+                        const Divider(
+                            color: Color.fromARGB(255, 229, 229, 229)),
                         const SizedBox(height: 10),
                         buildListItem(Icons.notifications, 'Notifications',
                             const NotificationPage()),
                         const SizedBox(height: 10),
-                        const Divider(color: Color.fromARGB(255, 229, 229, 229)),
+                        const Divider(
+                            color: Color.fromARGB(255, 229, 229, 229)),
                         const SizedBox(height: 10),
                         buildListItem(Icons.dark_mode, 'Appearance',
                             const AppearancePage()),
                         const SizedBox(height: 10),
-                        const Divider(color: Color.fromARGB(255, 229, 229, 229)),
+                        const Divider(
+                            color: Color.fromARGB(255, 229, 229, 229)),
                         const SizedBox(height: 10),
-                        buildListItem(
-                            Icons.feedback, 'Feedback', const DoctorPage()),
+                        buildListItem(Icons.feedback, 'Feedback'),
                         const SizedBox(height: 10),
-                        const Divider(color: Color.fromARGB(255, 229, 229, 229)),
+                        const Divider(
+                            color: Color.fromARGB(255, 229, 229, 229)),
                         const SizedBox(height: 10),
                         buildListItem(
                             Icons.article_outlined, 'Terms of Service'),
@@ -117,7 +116,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
               ),
-
               Container(
                 decoration: BoxDecoration(
                   color: ThemeColors.secondary,
@@ -138,7 +136,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   ],
                 ),
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -160,11 +157,30 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   DropdownButton<String>(
                     underline: Container(),
-                    icon: const Icon(Icons.keyboard_arrow_down, size: 17),
+                    icon: const Icon(Icons.keyboard_arrow_down, size: 16),
                     value: 'English',
                     items: const [
                       DropdownMenuItem(
-                          value: 'English', child: Text('English')),
+                          value: 'English',
+                          child: Text(
+                            'English',
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal, fontSize: 14),
+                          )),
+                      DropdownMenuItem(
+                          value: 'Spanish',
+                          child: Text(
+                            'Spanish',
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal, fontSize: 14),
+                          )),
+                      DropdownMenuItem(
+                          value: 'Français',
+                          child: Text(
+                            'Français',
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal, fontSize: 14),
+                          )),
                     ],
                     onChanged: (value) {},
                   ),
