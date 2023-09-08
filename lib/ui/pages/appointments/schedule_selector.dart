@@ -9,8 +9,7 @@ class ScheduleSelector extends StatefulWidget {
 
 class _ScheduleSelectorState extends State<ScheduleSelector> {
   double _dragPosition = 0.0;
-  bool _isFutureSelected =
-      false;
+  bool _isFutureSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +55,8 @@ class _ScheduleSelectorState extends State<ScheduleSelector> {
             ),
             Row(
               children: [
-                _buildOption("Past Schedules", false),
-                _buildOption("Future Schedules", true),
+                _buildOption("Future Schedules", false),
+                _buildOption("Past Schedules", true),
               ],
             ),
           ],

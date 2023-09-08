@@ -73,18 +73,6 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF4757E9),
-        title: const Text(
-          'DermoSkin',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
-        automaticallyImplyLeading:
-            false, // Prevent the back button from being shown
-      ),
       body: SafeArea(
         child: Center(
           child: Padding(
