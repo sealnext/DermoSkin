@@ -1,26 +1,11 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'main_logic.dart';
+part of 'app_logic.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$isUserSignedInHash() => r'efeb9933edd891c4ee556d89336d0b320e5c3b6e';
-
-/// See also [isUserSignedIn].
-@ProviderFor(isUserSignedIn)
-final isUserSignedInProvider = AutoDisposeStreamProvider<bool>.internal(
-  isUserSignedIn,
-  name: r'isUserSignedInProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$isUserSignedInHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef IsUserSignedInRef = AutoDisposeStreamProviderRef<bool>;
 String _$isFirstTimeHash() => r'a49173885ed2dfb6c437adcdcae2ac58eb033317';
 
 /// See also [isFirstTime].

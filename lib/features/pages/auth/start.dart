@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:dermo/features/main_logic.dart';
+import 'package:dermo/features/app_logic.dart';
 
 @RoutePage()
 class StartPage extends ConsumerWidget {

@@ -1,24 +1,24 @@
-import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/logic/data_objects/value_objects/email.dart';
 import 'package:dermo/logic/data_objects/value_objects/password.dart';
-import 'package:dermo/logic/use_cases/sign_in_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:io';
 
-class LoginPage extends StatefulWidget {
+import 'package:dermo/features/pages/auth/auth_logic.dart';
+
+
+class LoginPage extends ConsumerStatefulWidget {
   final void Function() toggleRegisterPage;
 
   const LoginPage({super.key, required this.toggleRegisterPage});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  ConsumerState<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  final _signIn = injector<SignInUseCase>();
-
+class _LoginPageState extends ConsumerState<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
     try {
       var email = Email(_emailController.text);
       var password = Password(_passwordController.text);
-      await _signIn(email: email, password: password);
+      await ref.read(authProvider.notifier).signIn(email: email.value, password: password.value);
     } catch (e) {
       debugPrint("$e");
     }

@@ -5,7 +5,7 @@ class SearchDoctor extends StatefulWidget {
   const SearchDoctor({super.key});
 
   @override
-  _SearchDoctorState createState() => _SearchDoctorState();
+  State<SearchDoctor> createState() => _SearchDoctorState();
 }
 
 class _SearchDoctorState extends State<SearchDoctor> {

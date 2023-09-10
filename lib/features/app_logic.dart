@@ -1,13 +1,13 @@
-import 'package:dermo/core/utility/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:dermo/features/user/user_logic.dart';
 
-part 'main_logic.g.dart';
+part 'app_logic.g.dart';
 
-@riverpod
-Stream<bool> isUserSignedIn(IsUserSignedInRef ref) {
-  return FirebaseAuth.instance.authStateChanges().map((user) => user != null);
+enum AppStatus {
+  firstTime,
+  authentication,
+  running
 }
 
 @riverpod

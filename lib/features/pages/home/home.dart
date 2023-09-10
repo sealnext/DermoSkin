@@ -1,22 +1,22 @@
 import 'package:auto_route/annotations.dart';
 import 'package:dermo/core/utility/injector.dart';
+import 'package:dermo/features/user/user_logic.dart';
 import 'package:dermo/logic/managers/user_manager.dart';
 import 'package:dermo/features/shared_widgets/search_doctors.dart';
 import 'package:dermo/features/shared_widgets/user_avatar_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:dermo/core/resources/color_manager.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @RoutePage()
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final _userManager = injector<UserManager>();
-
+class _HomePageState extends ConsumerState<HomePage> {
   Widget _buildAppointment({
     required String doctorName,
     required String doctorProfession,
@@ -149,6 +149,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final MyUser user = ref.watch(userProvider);
     return Scaffold(
         backgroundColor: ThemeColors.backgroundPrimary,
         body: SafeArea(
@@ -165,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                              "${_userManager.user.firstName.value} ${_userManager.user.lastName.value}",
+                              "${user.firstName} ${user.lastName}",
                               style: const TextStyle(fontSize: 20)),
                           const Text(
                             "Keep healthy!",
@@ -180,9 +181,9 @@ class _HomePageState extends State<HomePage> {
                     CircleAvatar(
                       radius: 30,
                       // Replace with actual image
-                      backgroundImage:
-                          UserAvatarViewModel(avatar: _userManager.user.avatar)
-                              .avatarImageProvider(),
+                      // backgroundImage:
+                      //     UserAvatarViewModel(avatar: user.avatar)
+                      //         .avatarImageProvider(),
                     ),
                   ],
                 ),

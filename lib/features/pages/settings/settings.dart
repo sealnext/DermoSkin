@@ -1,29 +1,27 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dermo/core/utility/injector.dart';
-import 'package:dermo/logic/managers/user_manager.dart';
-import 'package:dermo/logic/use_cases/sign_out_use_case.dart';
-import 'package:dermo/features/shared_widgets/user_avatar_view_model.dart';
+import 'package:dermo/features/pages/auth/auth_logic.dart';
+import 'package:dermo/features/user/user_logic.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dermo/core/resources/color_manager.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'notification.dart';
 import 'profile.dart';
 import 'appearance.dart';
 
 @RoutePage()
-class SettingsPage extends StatefulWidget {
+class SettingsPage extends ConsumerStatefulWidget {
   const SettingsPage({super.key});
 
   @override
-  State<SettingsPage> createState() => _SettingsPageState();
+  ConsumerState<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
-  final _userManager = injector<UserManager>();
-  final _signOut = injector<SignOutUseCase>();
-
+class _SettingsPageState extends ConsumerState<SettingsPage> {
   @override
   Widget build(BuildContext context) {
+    MyUser user = ref.watch(userProvider);
+
     return Scaffold(
         backgroundColor: ThemeColors.backgroundPrimary,
         body: SafeArea(
@@ -40,9 +38,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   CircleAvatar(
                     radius: 30,
-                    backgroundImage:
-                        UserAvatarViewModel(avatar: _userManager.user.avatar)
-                            .avatarImageProvider(),
+                    // backgroundImage:
+                    //     UserAvatarViewModel(avatar: user.avatar)
+                    //         .avatarImageProvider(),
                   ),
                   const SizedBox(width: 16.0),
                   Column(
@@ -53,7 +51,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: TextStyle(color: Colors.grey, fontSize: 20.0),
                       ),
                       Text(
-                        "${_userManager.user.firstName.value} ${_userManager.user.lastName.value}",
+                        "${user.firstName} ${user.lastName}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20.0),
                       ),
@@ -61,8 +59,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   const Spacer(),
                   GestureDetector(
-                    onTap: () {
-                      _signOut();
+                    onTap: () async {
+                      await ref.read(authProvider.notifier).signOut();
                     },
                     child: const Icon(Icons.logout),
                   )
