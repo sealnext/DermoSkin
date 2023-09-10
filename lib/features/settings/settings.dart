@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dermo/features/pages/auth/auth_logic.dart';
+import 'package:dermo/features/auth/auth_logic.dart';
 import 'package:dermo/features/user/user_logic.dart';
 import 'package:flutter/material.dart';
 

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:dermo/core/config/firebase_options.dart';
-import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/routes/app_router.dart';
 import 'package:dermo/routes/app_router.gr.dart';
 
@@ -15,8 +14,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await initializeDependencies();
-  await injector.allReady();
   runApp(ProviderScope(child: App()));
 }
 

@@ -68,20 +68,19 @@ final userProvider = AutoDisposeProvider<MyUser>.internal(
 );
 
 typedef UserRef = AutoDisposeProviderRef<MyUser>;
-String _$updateUserHash() => r'acd96d9cb7a82328e33c8922b30a5049fe93024c';
+String _$dbUserHash() => r'8b13b01d604689ef5568d8750c46080f11ad50c9';
 
-/// See also [UpdateUser].
-@ProviderFor(UpdateUser)
-final updateUserProvider =
-    AutoDisposeAsyncNotifierProvider<UpdateUser, void>.internal(
-  UpdateUser.new,
-  name: r'updateUserProvider',
+/// See also [DbUser].
+@ProviderFor(DbUser)
+final dbUserProvider = AutoDisposeAsyncNotifierProvider<DbUser, void>.internal(
+  DbUser.new,
+  name: r'dbUserProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$updateUserHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$dbUserHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$UpdateUser = AutoDisposeAsyncNotifier<void>;
+typedef _$DbUser = AutoDisposeAsyncNotifier<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

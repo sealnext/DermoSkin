@@ -9,14 +9,14 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i9;
-import 'package:dermo/features/pages/appointments/appointments.dart' as _i1;
-import 'package:dermo/features/pages/auth/auth_wrapper.dart' as _i2;
-import 'package:dermo/features/pages/auth/start.dart' as _i8;
-import 'package:dermo/features/pages/camera/camera.dart' as _i3;
-import 'package:dermo/features/pages/chat/rooms.dart' as _i6;
-import 'package:dermo/features/pages/home/home.dart' as _i4;
-import 'package:dermo/features/pages/main_screen.dart' as _i5;
-import 'package:dermo/features/pages/settings/settings.dart' as _i7;
+import 'package:dermo/features/appointments/appointments.dart' as _i1;
+import 'package:dermo/features/auth/auth_wrapper.dart' as _i2;
+import 'package:dermo/features/auth/start.dart' as _i8;
+import 'package:dermo/features/camera/camera.dart' as _i3;
+import 'package:dermo/features/chat/rooms.dart' as _i6;
+import 'package:dermo/features/home/home.dart' as _i4;
+import 'package:dermo/features/navbar_wrapper.dart' as _i5;
+import 'package:dermo/features/settings/settings.dart' as _i7;
 
 abstract class $AppRouter extends _i9.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -50,7 +50,7 @@ abstract class $AppRouter extends _i9.RootStackRouter {
     MainRoute.name: (routeData) {
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.MainScreen(),
+        child: const _i5.NavbarWrapper(),
       );
     },
     RoomsRoute.name: (routeData) {
@@ -131,7 +131,7 @@ class HomeRoute extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.MainScreen]
+/// [_i5.NavbarWrapper]
 class MainRoute extends _i9.PageRouteInfo<void> {
   const MainRoute({List<_i9.PageRouteInfo>? children})
       : super(

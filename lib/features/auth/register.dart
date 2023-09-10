@@ -1,68 +1,48 @@
-import 'package:dermo/logic/data_objects/value_objects/email.dart';
-import 'package:dermo/logic/data_objects/value_objects/first_name.dart';
-import 'package:dermo/logic/data_objects/value_objects/last_name.dart';
-import 'package:dermo/logic/data_objects/value_objects/password.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:dermo/logic/use_cases/sign_up_use_case.dart';
-import 'package:dermo/core/utility/injector.dart';
+import 'auth_logic.dart';
 
-class RegisterPage extends StatefulWidget {
+class RegisterPage extends ConsumerStatefulWidget {
   final void Function() toggleLoginPage;
 
   const RegisterPage({super.key, required this.toggleLoginPage});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  ConsumerState<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageState extends ConsumerState<RegisterPage> {
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _signUp = injector<SignUpUseCase>();
 
   String? _firstNameErrorText;
   String? _lastNameErrorText;
   String? _emailErrorText;
   String? _passwordErrorText;
 
-  void createAccount() async {
-    FirstName? firstName;
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> createAccount() async {
     try {
-      firstName = FirstName(_firstNameController.text);
-    } catch (e) {
-      _firstNameErrorText = e.toString();
-      return;
-    }
-    LastName? lastName;
-    try {
-      lastName = LastName(_lastNameController.text);
-    } catch (e) {
-      _lastNameErrorText = e.toString();
-      return;
-    }
-    Email? email;
-    try {
-      email = Email(_emailController.text);
-    } catch (e) {
-      _emailErrorText = e.toString();
-      return;
-    }
-    Password? password;
-    try {
-      password = Password(_passwordController.text);
-    } catch (e) {
-      _passwordErrorText = e.toString();
-      return;
-    }
-    try {
-      await _signUp(
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: password);
+      try {
+        await ref.read(authProvider.notifier).signUp(
+            email: _emailController.text,
+            password: _passwordController.text,
+            firstName: _firstNameController.text,
+            lastName: _lastNameController.text);
+      } catch (e) {
+        debugPrint("$e");
+      }
     } catch (e) {
       debugPrint("$e");
       return;

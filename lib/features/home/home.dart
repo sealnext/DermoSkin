@@ -1,9 +1,6 @@
 import 'package:auto_route/annotations.dart';
-import 'package:dermo/core/utility/injector.dart';
 import 'package:dermo/features/user/user_logic.dart';
-import 'package:dermo/logic/managers/user_manager.dart';
 import 'package:dermo/features/shared_widgets/search_doctors.dart';
-import 'package:dermo/features/shared_widgets/user_avatar_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:dermo/core/resources/color_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

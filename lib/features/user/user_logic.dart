@@ -23,9 +23,17 @@ class MyUser with _$MyUser {
 }
 
 @riverpod
-class UpdateUser extends _$UpdateUser {
+class DbUser extends _$DbUser {
   @override
   Future<void> build() async {}
+
+  Future<void> createUser(MyUser newUser) async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() => FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .set(newUser.toJson()));
+  }
 
   Future<void> updateUser(MyUser newUser) async {
     state = const AsyncValue.loading();
@@ -63,15 +71,3 @@ MyUser user(UserRef ref) {
   MyUser user = MyUser.fromJson(userJsonMap.value as Map<String, Object?>);
   return user;
 }
-
-// @riverpod
-// Future<void> updateUser(UpdateUserRef ref, MyUser newUser) {
-//   User? user = FirebaseAuth.instance.currentUser;
-//   if (user == null) {
-//     return Future.error("User is offline");
-//   }
-//   return FirebaseFirestore.instance
-//       .collection('users')
-//       .doc(user.uid)
-//       .update(newUser.toJson());
-// }

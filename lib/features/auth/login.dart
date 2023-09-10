@@ -1,12 +1,10 @@
-import 'package:dermo/logic/data_objects/value_objects/email.dart';
-import 'package:dermo/logic/data_objects/value_objects/password.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:io';
 
-import 'package:dermo/features/pages/auth/auth_logic.dart';
+import 'package:dermo/features/auth/auth_logic.dart';
 
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -24,9 +22,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   Future<void> signIn() async {
     try {
-      var email = Email(_emailController.text);
-      var password = Password(_passwordController.text);
-      await ref.read(authProvider.notifier).signIn(email: email.value, password: password.value);
+      await ref.read(authProvider.notifier).signIn(email: _emailController.text, password: _passwordController.text);
     } catch (e) {
       debugPrint("$e");
     }

@@ -1,3 +1,4 @@
+import 'package:dermo/features/user/user_logic.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -34,6 +35,8 @@ class Auth extends _$Auth {
       state = AuthStatus.unauthenticated;
       throw Exception('Sign up failed: $error');
     }
+    final user = MyUser(firstName: firstName, lastName: lastName, email: email, avatar: '');
+    ref.read(dbUserProvider.notifier).createUser(user);
     state = AuthStatus.authenticated;
   }
 

@@ -1,7 +1,7 @@
 import 'package:dermo/core/resources/color_manager.dart';
-import 'package:dermo/features/pages/appointments/about_doctor_page.dart';
-import 'package:dermo/features/pages/appointments/address_doctor_page.dart';
-import 'package:dermo/features/pages/appointments/appointment_page.dart';
+import 'package:dermo/features/appointments/about_doctor_page.dart';
+import 'package:dermo/features/appointments/address_doctor_page.dart';
+import 'package:dermo/features/appointments/appointment_page.dart';
 import 'package:flutter/material.dart';
 
 class DoctorPage extends StatefulWidget {

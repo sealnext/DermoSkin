@@ -343,7 +343,7 @@ class _EditProfilePageState extends ConsumerState<EditProfilePage> {
                                 email: email,
                                 avatar: '');
                             await ref
-                                .read(updateUserProvider.notifier)
+                                .read(dbUserProvider.notifier)
                                 .updateUser(newUser);
                             if (context.mounted) {
                               if (context.loaderOverlay.visible) {

@@ -4,8 +4,8 @@ import 'package:dermo/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+class NavbarWrapper extends StatelessWidget {
+  const NavbarWrapper({super.key});
 
   @override
   Widget build(BuildContext context) {
