@@ -76,16 +76,14 @@ class _EditProfilePageState extends ConsumerState<EditProfilePage> {
               child: Column(
                 children: [
                   // profile picture
-                  Stack(
+                  const Stack(
                     alignment: Alignment.topRight,
                     children: [
                       CircleAvatar(
                         radius: 80.0,
-                        // backgroundImage:
-                        //     UserAvatarViewModel(avatar: _userManager.user.avatar)
-                        //         .avatarImageProvider(),
+                        backgroundImage: NetworkImage("https://i.pravatar.cc/300"),
                       ),
-                      const CircleAvatar(
+                      CircleAvatar(
                         radius: 25.0,
                         backgroundColor: ThemeColors.white,
                         child: CircleAvatar(
@@ -102,7 +100,7 @@ class _EditProfilePageState extends ConsumerState<EditProfilePage> {
                   Container(
                     alignment: Alignment.topLeft,
                     child: const Text(
-                      "Name",
+                      "First Name",
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -253,7 +251,7 @@ class _EditProfilePageState extends ConsumerState<EditProfilePage> {
                   Container(
                     alignment: Alignment.topLeft,
                     child: const Text(
-                      "Address",
+                      "Last Name",
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -340,7 +338,7 @@ class _EditProfilePageState extends ConsumerState<EditProfilePage> {
                             final newUser = MyUser(
                                 firstName: firstNameController.text,
                                 lastName: lastNameController.text,
-                                email: email,
+                                email: emailController.text,
                                 avatar: '');
                             await ref
                                 .read(dbUserProvider.notifier)

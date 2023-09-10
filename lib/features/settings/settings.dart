@@ -36,11 +36,9 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
               ),
               Row(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 30,
-                    // backgroundImage:
-                    //     UserAvatarViewModel(avatar: user.avatar)
-                    //         .avatarImageProvider(),
+                    backgroundImage: NetworkImage("https://i.pravatar.cc/300"),
                   ),
                   const SizedBox(width: 16.0),
                   Column(
