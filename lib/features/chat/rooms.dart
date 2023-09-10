@@ -13,10 +13,11 @@ class ChatRoom {
 
 @RoutePage()
 class RoomsPage extends StatelessWidget {
+  static const _chatPage = ChatPage();
   static const List<ChatRoom> chatRooms = [
     ChatRoom(
-        name: 'Rebeca Popescu',
-        lastMessage: 'Hey, how are you?',
+        name: 'Group of 3',
+        lastMessage: 'John Doe: Nice ☺️',
         avatarUrl: 'https://i.pravatar.cc/100?img=1'),
     ChatRoom(
         name: 'Ion Popa',
@@ -48,7 +49,7 @@ class RoomsPage extends StatelessWidget {
             trailing: Text('1$index:3$index AM'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => const ChatPage(),
+                builder: (BuildContext context) => _chatPage,
               ));
             },
           );
