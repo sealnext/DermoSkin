@@ -1,5 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:dermo/features/chat/chat.dart';
+import 'package:dermo/features/chat/chat2.dart';
+import 'package:dermo/features/chat/chat3.dart';
 import 'package:flutter/material.dart';
 
 class ChatRoom {
@@ -13,7 +15,6 @@ class ChatRoom {
 
 @RoutePage()
 class RoomsPage extends StatelessWidget {
-  static const _chatPage = ChatPage();
   static const List<ChatRoom> chatRooms = [
     ChatRoom(
         name: 'Group of 3',
@@ -21,11 +22,11 @@ class RoomsPage extends StatelessWidget {
         avatarUrl: 'https://i.pravatar.cc/100?img=1'),
     ChatRoom(
         name: 'Ion Popa',
-        lastMessage: 'Did you watch the game?',
+        lastMessage: 'Ai vazut ce s-a intamplat?',
         avatarUrl: 'https://i.pravatar.cc/100?img=7'),
     ChatRoom(
         name: 'Matei Dumitru',
-        lastMessage: 'Flutter 2.5 is out!',
+        lastMessage: 'Buna ziua!',
         avatarUrl: 'https://i.pravatar.cc/100?img=3'),
   ];
 
@@ -48,9 +49,19 @@ class RoomsPage extends StatelessWidget {
             subtitle: Text(chatRooms[index].lastMessage),
             trailing: Text('1$index:3$index AM'),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => _chatPage,
-              ));
+              if (index == 0) {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => const ChatPage(),
+                ));
+              } else if (index == 1) {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => const ChatPage2(),
+                ));
+              } else {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => const ChatPage3(),
+                ));
+              }
             },
           );
         },

@@ -18,7 +18,7 @@ enum Gender { male, female }
 class _EditProfilePageState extends ConsumerState<EditProfilePage> {
   String name = '';
   String address = '';
-  String gender = '';
+  String gender = 'male';
   String email = '';
   DateTime dateOfBirth = DateTime.now();
 
