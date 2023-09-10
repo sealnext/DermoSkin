@@ -1,43 +1,59 @@
 import 'package:auto_route/annotations.dart';
+import 'package:dermo/features/chat/chat.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
-import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
-import 'widgets/room_tile.dart';
+
+class ChatRoom {
+  final String name;
+  final String lastMessage;
+  final String avatarUrl;
+
+  const ChatRoom(
+      {required this.name, required this.lastMessage, required this.avatarUrl});
+}
 
 @RoutePage()
 class RoomsPage extends StatelessWidget {
+  static const List<ChatRoom> chatRooms = [
+    ChatRoom(
+        name: 'Rebeca Popescu',
+        lastMessage: 'Hey, how are you?',
+        avatarUrl: 'https://i.pravatar.cc/100?img=1'),
+    ChatRoom(
+        name: 'Ion Popa',
+        lastMessage: 'Did you watch the game?',
+        avatarUrl: 'https://i.pravatar.cc/100?img=7'),
+    ChatRoom(
+        name: 'Matei Dumitru',
+        lastMessage: 'Flutter 2.5 is out!',
+        avatarUrl: 'https://i.pravatar.cc/100?img=3'),
+  ];
+
   const RoomsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<types.Room>>(
-        stream: FirebaseChatCore.instance.rooms(),
-        initialData: const [],
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Center(
-              child: Text('Error: ${snapshot.error}'),
-            );
-          }
-
-          // Show a loading spinner when connecting to the stream
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          // Display the list of rooms
-          List<types.Room>? rooms = snapshot.data;
-          if (rooms == null || rooms.isEmpty) {
-            return const Center(child: Text('No rooms available.'));
-          }
-
-          return ListView.builder(
-            itemCount: rooms.length,
-            itemBuilder: (context, index) {
-              final room = rooms[index];
-              return RoomTile(room: room);
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Chat Rooms'),
+      ),
+      body: ListView.builder(
+        itemCount: chatRooms.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: CircleAvatar(
+              backgroundImage: NetworkImage(chatRooms[index].avatarUrl),
+            ),
+            title: Text(chatRooms[index].name),
+            subtitle: Text(chatRooms[index].lastMessage),
+            trailing: Text('1$index:3$index AM'),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => const ChatPage(),
+              ));
             },
           );
-        });
+        },
+      ),
+    );
   }
 }

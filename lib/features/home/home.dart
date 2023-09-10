@@ -177,7 +177,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                     const CircleAvatar(
                       radius: 30,
-                      backgroundImage: NetworkImage("https://i.pravatar.cc/300"),
+                      backgroundImage: NetworkImage("https://i.pravatar.cc/300?img=52"),
                     ),
                   ],
                 ),

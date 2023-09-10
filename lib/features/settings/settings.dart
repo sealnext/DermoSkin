@@ -38,7 +38,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
                 children: [
                   const CircleAvatar(
                     radius: 30,
-                    backgroundImage: NetworkImage("https://i.pravatar.cc/300"),
+                    backgroundImage: NetworkImage("https://i.pravatar.cc/300?img=52"),
                   ),
                   const SizedBox(width: 16.0),
                   Column(

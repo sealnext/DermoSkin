@@ -82,7 +82,7 @@ class _EditProfilePageState extends ConsumerState<EditProfilePage> {
                       CircleAvatar(
                         radius: 80.0,
                         backgroundImage:
-                            NetworkImage("https://i.pravatar.cc/300"),
+                            NetworkImage("https://i.pravatar.cc/300?img=52"),
                       ),
                       CircleAvatar(
                         radius: 25.0,
