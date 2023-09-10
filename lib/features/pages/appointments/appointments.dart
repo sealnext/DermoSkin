@@ -1,11 +1,34 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dermo/features/pages/appointments/add_appointments.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dermo/core/resources/color_manager.dart';
 
+class FutureAppointment {
+  final String doctorName;
+  final String doctorProfession;
+  final String reason;
+  final String date;
+  final String duration;
+  final String clinicLocation;
+  final String imageUrl;
+
+  FutureAppointment({
+    required this.doctorName,
+    required this.doctorProfession,
+    required this.reason,
+    required this.date,
+    required this.duration,
+    required this.clinicLocation,
+    required this.imageUrl,
+  });
+}
+
+
 @RoutePage()
 class AppointmentPage extends StatefulWidget {
-  const AppointmentPage({super.key});
+  FutureAppointment? futureAppointment;
+  AppointmentPage(this.futureAppointment, {Key? key}) : super(key: key);
 
   @override
   State<AppointmentPage> createState() => _AppointmentPage();
@@ -15,10 +38,62 @@ class _AppointmentPage extends State<AppointmentPage> {
   double _dragPosition = 0.0;
   bool _isFutureSelected = false;
 
+  late List<FutureAppointment> appointments;
+
+  @override
+  void initState() {
+    super.initState();
+
+    appointments = [
+      FutureAppointment(
+        doctorName: "John Doe",
+        doctorProfession: "Dermatologist",
+        reason: "Monthly check-up",
+        date: "15/05/23",
+        duration: "09:15-10:10",
+        clinicLocation: "AllerCare",
+        imageUrl: "https://www.jeanlouismedical.com/img/doctor-profile-small.png",
+      ),
+      FutureAppointment(
+        doctorName: "John Doe",
+        doctorProfession: "Dermatologist",
+        reason: "Monthly check-up",
+        date: "15/05/23",
+        duration: "09:15-10:10",
+        clinicLocation: "Clinica Muller",
+        imageUrl: "https://www.henrymayo.com/app/files/public/dhanda.l--0002.jpg",
+      ),
+    ];
+
+    if (widget.futureAppointment != null) {
+      appointments.add(widget.futureAppointment!);
+    }
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ThemeColors.backgroundPrimary,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddAppointment(),
+            ),
+          );
+        },
+        child: Icon(Icons.add),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(30.0),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(25.0),
@@ -79,29 +154,18 @@ class _AppointmentPage extends State<AppointmentPage> {
                               status: "Completed",
                             ),
                           ]
-                        : [
-                            _buildAppointment(
-                              doctorName: "John Doe",
-                              doctorProfession: "Dermatologist",
-                              reason: "Monthly check-up",
-                              date: "15/05/23",
-                              duration: "09:15-10:10",
-                              clinicLocation: "AllerCare",
-                              imageUrl:
-                                  "https://www.jeanlouismedical.com/img/doctor-profile-small.png",
-                            ),
-                            _buildAppointment(
-                              doctorName: "John Doe",
-                              doctorProfession: "Dermatologist",
-                              reason: "Monthly check-up",
-                              date: "15/05/23",
-                              duration: "09:15-10:10",
-                              clinicLocation: "Clinca Muller",
-                              imageUrl:
-                                  "https://www.henrymayo.com/app/files/public/dhanda.l--0002.jpg",
-                            ),
-                            // Adaugă mai multe programări
-                          ]),
+                        : appointments.map((appointment) {
+                          return _buildAppointment(
+                        doctorName: appointment.doctorName,
+                        doctorProfession: appointment.doctorProfession,
+                        reason: appointment.reason,
+                        date: appointment.date,
+                        duration: appointment.duration,
+                        clinicLocation: appointment.clinicLocation,
+                        imageUrl: appointment.imageUrl,
+                      );
+                    }).toList(),
+                ),
               ),
             ],
           ),
@@ -230,7 +294,6 @@ class _AppointmentPage extends State<AppointmentPage> {
       ),
     );
   }
-
   Widget _buildAppointment({
     required String doctorName,
     required String doctorProfession,

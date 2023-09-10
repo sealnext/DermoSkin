@@ -2,16 +2,20 @@ import 'package:dermo/core/resources/color_manager.dart';
 import 'package:dermo/features/pages/appointments/about_doctor_page.dart';
 import 'package:dermo/features/pages/appointments/address_doctor_page.dart';
 import 'package:dermo/features/pages/appointments/appointment_page.dart';
+import 'package:dermo/features/pages/appointments/appointments.dart';
 import 'package:flutter/material.dart';
 
 class DoctorPage extends StatefulWidget {
-  const DoctorPage({super.key});
+  final String? name;
+  final String? image;
+  DoctorPage({Key? key, required this.name, required this.image}) : super(key: key);
 
   @override
   State<DoctorPage> createState() => _DoctorPageState();
 }
 
 class _DoctorPageState extends State<DoctorPage> {
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -65,15 +69,15 @@ class _DoctorPageState extends State<DoctorPage> {
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(15),
-                        child: Image.asset(
-                          'assets/images/doctor_ex.jpeg', // Replace with your actual image asset path
+                        child: Image.network(
+                          widget.image!, // Replace with your actual image asset path
                           width: 80, // Set the width of the image
                           height: 80, // Set the height of the image
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
-                    const Padding(
+                     Padding(
                       padding:
                           EdgeInsets.only(left: 16.0, right: 16.0, top: 8.0),
                       child: SizedBox(
@@ -82,7 +86,7 @@ class _DoctorPageState extends State<DoctorPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "dr. Domnu Exemplu",
+                             widget.name!,
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -158,7 +162,7 @@ class _DoctorPageState extends State<DoctorPage> {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
-                  child: tabsFunction(),
+                  child: tabsFunction(widget.name!,widget.image!),
                 ),
               ),
             ],
@@ -241,8 +245,8 @@ class _DoctorPageState extends State<DoctorPage> {
   }
 
   //tabs
-  tabsFunction() {
-    return const SizedBox(
+  tabsFunction(String? name, String? image) {
+    return  SizedBox(
       height: 490,
       child: Column(
         children: [
@@ -258,7 +262,7 @@ class _DoctorPageState extends State<DoctorPage> {
           Expanded(
             child: TabBarView(
               children: [
-                AppointmentPage(),
+                AppointmentPageDoctor(name: name!, image: image!),
                 Address(),
                 AboutDoctorPage(),
               ],
