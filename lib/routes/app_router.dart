@@ -10,7 +10,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: StartRoute.page, initial: true),
         AutoRoute(page: AuthRoute.page),
         AutoRoute(
-          page: MainRoute.page,
+          page: NavbarWrapper.page,
           children: [
             AutoRoute(page: HomeRoute.page),
             AutoRoute(page: AppointmentRoute.page),

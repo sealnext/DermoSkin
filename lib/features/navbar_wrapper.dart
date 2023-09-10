@@ -10,12 +10,12 @@ class NavbarWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      routes: const [
-        HomeRoute(),
-        AppointmentRoute(),
-        CameraRoute(),
-        RoomsRoute(),
-        SettingsRoute(),
+      routes: [
+        const HomeRoute(),
+        AppointmentRoute(futureAppointment: null),
+        const CameraRoute(),
+        const RoomsRoute(),
+        const SettingsRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return NavigationBar(

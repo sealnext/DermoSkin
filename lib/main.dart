@@ -52,7 +52,7 @@ class App extends ConsumerWidget {
             else if (appState == AppStatus.authentication)
               const AuthRoute()
             else
-              const MainRoute()
+              const NavbarWrapper()
           ],
         ),
         routeInformationParser: _appRouter.defaultRouteParser());

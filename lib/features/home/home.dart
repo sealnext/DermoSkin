@@ -227,7 +227,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   child: ListView(
                     children: [
                       _buildAppointment(
-                        doctorName: "John Doe",
+                        doctorName: "Ion Albu",
                         doctorProfession: "",
                         reason: "Cardiologist",
                         date: "15/05/23",
@@ -237,7 +237,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                             "https://www.jeanlouismedical.com/img/doctor-profile-small.png",
                       ),
                       _buildAppointment(
-                        doctorName: "Jane Smith",
+                        doctorName: "Andrei Badescu",
                         doctorProfession: "",
                         reason: "Neurologist",
                         date: "20/05/23",
@@ -247,7 +247,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                             "https://www.henrymayo.com/app/files/public/dhanda.l--0002.jpg",
                       ),
                       _buildAppointment(
-                        doctorName: "Mark Brown",
+                        doctorName: "Mihai Balint",
                         doctorProfession: "",
                         reason: "Orthopedic Surgeon",
                         date: "25/05/23",
@@ -257,7 +257,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                             "https://www.kauveryhospital.com/doctorimage/recent/Arju_Ashok2021-12-24-12:54:06pm.jpg",
                       ),
                       _buildAppointment(
-                        doctorName: "Robert Johnson",
+                        doctorName: "Robert Tataru",
                         doctorProfession: "",
                         reason: "Dermatologist",
                         date: "28/05/23",

@@ -17,6 +17,7 @@ import 'package:dermo/features/chat/rooms.dart' as _i6;
 import 'package:dermo/features/home/home.dart' as _i4;
 import 'package:dermo/features/navbar_wrapper.dart' as _i5;
 import 'package:dermo/features/settings/settings.dart' as _i7;
+import 'package:flutter/material.dart' as _i10;
 
 abstract class $AppRouter extends _i9.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -24,9 +25,13 @@ abstract class $AppRouter extends _i9.RootStackRouter {
   @override
   final Map<String, _i9.PageFactory> pagesMap = {
     AppointmentRoute.name: (routeData) {
+      final args = routeData.argsAs<AppointmentRouteArgs>();
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.AppointmentPage(),
+        child: _i1.AppointmentPage(
+          args.futureAppointment,
+          key: args.key,
+        ),
       );
     },
     AuthRoute.name: (routeData) {
@@ -47,7 +52,7 @@ abstract class $AppRouter extends _i9.RootStackRouter {
         child: const _i4.HomePage(),
       );
     },
-    MainRoute.name: (routeData) {
+    NavbarWrapper.name: (routeData) {
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i5.NavbarWrapper(),
@@ -76,16 +81,40 @@ abstract class $AppRouter extends _i9.RootStackRouter {
 
 /// generated route for
 /// [_i1.AppointmentPage]
-class AppointmentRoute extends _i9.PageRouteInfo<void> {
-  const AppointmentRoute({List<_i9.PageRouteInfo>? children})
-      : super(
+class AppointmentRoute extends _i9.PageRouteInfo<AppointmentRouteArgs> {
+  AppointmentRoute({
+    required _i1.FutureAppointment? futureAppointment,
+    _i10.Key? key,
+    List<_i9.PageRouteInfo>? children,
+  }) : super(
           AppointmentRoute.name,
+          args: AppointmentRouteArgs(
+            futureAppointment: futureAppointment,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AppointmentRoute';
 
-  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
+  static const _i9.PageInfo<AppointmentRouteArgs> page =
+      _i9.PageInfo<AppointmentRouteArgs>(name);
+}
+
+class AppointmentRouteArgs {
+  const AppointmentRouteArgs({
+    required this.futureAppointment,
+    this.key,
+  });
+
+  final _i1.FutureAppointment? futureAppointment;
+
+  final _i10.Key? key;
+
+  @override
+  String toString() {
+    return 'AppointmentRouteArgs{futureAppointment: $futureAppointment, key: $key}';
+  }
 }
 
 /// generated route for
@@ -132,14 +161,14 @@ class HomeRoute extends _i9.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.NavbarWrapper]
-class MainRoute extends _i9.PageRouteInfo<void> {
-  const MainRoute({List<_i9.PageRouteInfo>? children})
+class NavbarWrapper extends _i9.PageRouteInfo<void> {
+  const NavbarWrapper({List<_i9.PageRouteInfo>? children})
       : super(
-          MainRoute.name,
+          NavbarWrapper.name,
           initialChildren: children,
         );
 
-  static const String name = 'MainRoute';
+  static const String name = 'NavbarWrapper';
 
   static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }

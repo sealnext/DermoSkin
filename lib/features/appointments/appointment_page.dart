@@ -1,18 +1,26 @@
 import 'package:dermo/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class AppointmentPage extends StatefulWidget {
-  const AppointmentPage({super.key});
+import 'appointments.dart';
+
+class AppointmentPageDoctor extends StatefulWidget {
+  final String? name;
+  final String? image;
+  const AppointmentPageDoctor({super.key,  required this.name, required this.image});
 
   @override
-  State<AppointmentPage> createState() => _AppointmentState();
+  State<AppointmentPageDoctor> createState() => _AppointmentState();
 }
 
-class _AppointmentState extends State<AppointmentPage> {
+class _AppointmentState extends State<AppointmentPageDoctor> {
   String? about =
       "dr. Dhayu Erprida is board certified in Endocrinologists by the Association Doctor of Indo-nesia. His subspecialities/internat";
 
+  int? _indexSelected;
+  String? _hourSelected;
+  DateTime _calendarValue = DateTime.now();
   String getFirst129Chars(String input) {
     if (input.length <= 129) {
       return input;
@@ -49,9 +57,17 @@ class _AppointmentState extends State<AppointmentPage> {
             height: 10,
           ),
           TableCalendar(
+            onDaySelected: (selectedDay, focusedDay) {
+              setState(() {
+                _calendarValue = selectedDay;
+              });
+            },
+            selectedDayPredicate: (DateTime date) {
+              return isSameDay(_calendarValue, date);
+            },
             firstDay: DateTime.utc(2010, 10, 16),
             lastDay: DateTime.utc(2030, 3, 14),
-            focusedDay: DateTime.now(),
+            focusedDay: _calendarValue,
             availableCalendarFormats: const {
               CalendarFormat.month: 'Month',
               CalendarFormat.week: 'Week',
@@ -59,7 +75,7 @@ class _AppointmentState extends State<AppointmentPage> {
             headerStyle: HeaderStyle(
               formatButtonDecoration: BoxDecoration(
                 color:
-                    ThemeColors.primary, // The background color of the button
+                ThemeColors.primary, // The background color of the button
                 borderRadius: BorderRadius.circular(8.0),
               ),
               formatButtonTextStyle: const TextStyle(
@@ -67,10 +83,10 @@ class _AppointmentState extends State<AppointmentPage> {
               ),
               leftChevronIcon: const Icon(Icons.chevron_left,
                   color:
-                      ThemeColors.primary), // Change the left arrow color here
+                  ThemeColors.primary), // Change the left arrow color here
               rightChevronIcon: const Icon(Icons.chevron_right,
                   color:
-                      ThemeColors.primary), // Change the right arrow color here
+                  ThemeColors.primary), // Change the right arrow color here
             ),
             daysOfWeekStyle: const DaysOfWeekStyle(
               // Change the color of the weekdays text
@@ -81,7 +97,7 @@ class _AppointmentState extends State<AppointmentPage> {
             calendarStyle: const CalendarStyle(
               selectedDecoration: BoxDecoration(
                 color:
-                    ThemeColors.primary, // Background color of the selected day
+                ThemeColors.primary, // Background color of the selected day
                 shape: BoxShape.circle,
               ),
               todayDecoration: BoxDecoration(
@@ -106,17 +122,22 @@ class _AppointmentState extends State<AppointmentPage> {
             child: Row(
               children: List.generate(
                 generateHourTexts().length,
-                (index) => Row(
+                    (index) => Row(
                   children: [
                     if (index != 0)
                       const SizedBox(
                           width:
-                              10), // Add space of 10 units except before the first button
+                          10), // Add space of 10 units except before the first button
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          _indexSelected = index;
+                          _hourSelected = generateHourTexts()[index];
+                        });
+                      },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: ThemeColors.primary,
-                        backgroundColor: ThemeColors.backgroundPrimary,
+                        backgroundColor: _indexSelected == index ? ThemeColors.primary : ThemeColors.backgroundPrimary,
                         minimumSize: const Size(30, 50),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
@@ -125,7 +146,10 @@ class _AppointmentState extends State<AppointmentPage> {
                               width: 1.5), // Black border
                         ),
                       ),
-                      child: Text(generateHourTexts()[index]),
+                      child: Text(generateHourTexts()[index],
+                        style: TextStyle(
+                          color: _indexSelected == index ? Colors.white: ThemeColors.primary,
+                        ),),
                     ),
                   ],
                 ),
@@ -136,7 +160,14 @@ class _AppointmentState extends State<AppointmentPage> {
             height: 20,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              var future = new FutureAppointment(doctorName: widget.name!, doctorProfession: '', reason: 'Monthly check-up', date: DateFormat('dd/MM/yyyy').format(_calendarValue), duration: _hourSelected! , clinicLocation: '', imageUrl: widget.image!);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AppointmentPage(future),
+                  ));
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: ThemeColors.primary,
               minimumSize: const Size(500, 50),
@@ -149,7 +180,8 @@ class _AppointmentState extends State<AppointmentPage> {
             ),
             child: const Text(
               "Book",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
           ),
         ],
