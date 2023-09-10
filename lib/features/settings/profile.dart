@@ -81,7 +81,8 @@ class _EditProfilePageState extends ConsumerState<EditProfilePage> {
                     children: [
                       CircleAvatar(
                         radius: 80.0,
-                        backgroundImage: NetworkImage("https://i.pravatar.cc/300"),
+                        backgroundImage:
+                            NetworkImage("https://i.pravatar.cc/300"),
                       ),
                       CircleAvatar(
                         radius: 25.0,
@@ -108,6 +109,40 @@ class _EditProfilePageState extends ConsumerState<EditProfilePage> {
                   TextFormField(
                     style: const TextStyle(fontSize: 16),
                     controller: firstNameController,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(7.0),
+                        borderSide: const BorderSide(
+                            color: Color.fromARGB(255, 182, 182, 182)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(7.0),
+                        borderSide: const BorderSide(
+                            color: Color.fromARGB(255, 182, 182, 182)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(7.0),
+                        borderSide: const BorderSide(
+                            color: Color.fromARGB(255, 182, 182, 182)),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 15.0),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
+                    alignment: Alignment.topLeft,
+                    child: const Text(
+                      "Last Name",
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  TextFormField(
+                    style: const TextStyle(fontSize: 16),
+                    controller: lastNameController,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -246,40 +281,6 @@ class _EditProfilePageState extends ConsumerState<EditProfilePage> {
                         ),
                       ),
                     ],
-                  ),
-                  const SizedBox(height: 25),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    child: const Text(
-                      "Last Name",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  TextFormField(
-                    style: const TextStyle(fontSize: 16),
-                    controller: lastNameController,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(7.0),
-                        borderSide: const BorderSide(
-                            color: Color.fromARGB(255, 182, 182, 182)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(7.0),
-                        borderSide: const BorderSide(
-                            color: Color.fromARGB(255, 182, 182, 182)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(7.0),
-                        borderSide: const BorderSide(
-                            color: Color.fromARGB(255, 182, 182, 182)),
-                      ),
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 15.0),
-                    ),
                   ),
                   const SizedBox(height: 25),
                   Container(
