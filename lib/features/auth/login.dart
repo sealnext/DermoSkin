@@ -6,7 +6,6 @@ import 'dart:io';
 
 import 'package:dermo/features/auth/auth_logic.dart';
 
-
 class LoginPage extends ConsumerStatefulWidget {
   final void Function() toggleRegisterPage;
 
@@ -22,7 +21,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   Future<void> signIn() async {
     try {
-      await ref.read(authProvider.notifier).signIn(email: _emailController.text, password: _passwordController.text);
+      await ref.read(authProvider.notifier).signIn(
+          email: _emailController.text, password: _passwordController.text);
     } catch (e) {
       debugPrint("$e");
     }
@@ -30,10 +30,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   void signWithGoogle() async {
     final GoogleSignInAccount? googleSignInAccount =
-    await GoogleSignIn().signIn();
+        await GoogleSignIn().signIn();
 
     final GoogleSignInAuthentication googleSignInAuthentication =
-    await googleSignInAccount!.authentication;
+        await googleSignInAccount!.authentication;
 
     final credential = GoogleAuthProvider.credential(
       accessToken: googleSignInAuthentication.accessToken,
@@ -43,8 +43,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
-  void signInWithApple() async {
-  }
+  void signInWithApple() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +82,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   ),
                   //email
                   TextField(
+                    keyboardType: TextInputType.name,
                     controller: _emailController,
                     decoration: InputDecoration(
                         hintText: 'Email',
@@ -99,6 +99,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   ),
                   //password
                   TextField(
+                    keyboardType: TextInputType.name,
                     controller: _passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
